@@ -1,0 +1,71 @@
+@import url('../../styles/global.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+body {
+    background-color: var(--g2);
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    height: 100vh;
+}
+
+.nav-container {
+    background-color: var(--g11);
+    margin: 16px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 24px;
+}
+
+.nav-container h1 {
+    font-family: 'Roboto';
+    font-weight: var(--medium);
+    color: var(--g1);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.nav-container .nav-logo, .nav-container .nav-menu{
+    margin-bottom: 32px;
+}
+
+.nav-container h2, .nav-projetos span {
+    font-family: 'Roboto';
+    font-weight: var(--regular);
+    color: var(--g5);
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.nav-container li a{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.nav-container li a {
+    color: var(--g1);
+    text-decoration: none;
+    font-family: 'Roboto';
+    font-weight: var(--medium);
+    color: var(--g1);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.nav-projetos{
+    position: relative;
+}
+
+.nav-projetos span {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+

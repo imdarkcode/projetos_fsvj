@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --g1: #F6F6F6;
+    --g2: #E7E7E7;
+    --g3: #D1D1D1;
+    --g4: #B0B0B0;
+    --g5: #888888;
+    --g6: #6D6D6D;
+    --g8: #4F4F4F;
+    --g10: #3D3D3D;
+    --g11: #1D1D1D;
+    --r7: #D72B2B;
+    --r8: #B22020;
+    --o5: #FB933C;
+    --o6: #F97F29;
+    --o8: #C2420C;
+    --y5: #E69E2A;
+    --y6: #E08520;
+    --gr6: #75C019;
+    --gr7: #5CA010;
+    --gr8: #477A11;
+    --regular: 400;
+    --medium: 500;
+    --semibold: 600;
+}
