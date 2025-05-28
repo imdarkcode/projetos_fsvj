@@ -33,7 +33,8 @@
         </div>
 
         <a href="#" class="esqueci-senha">Esqueceu sua senha?</a>
-        <p class="erro">E-mail ou senha inválidos</p>
+        
+        <p class="erro"><i class="bi bi-exclamation-circle-fill"></i> E-mail ou senha inválidos</p>
 
         <button type="submit">Entrar</button>
       </form>
