@@ -20,16 +20,20 @@
 
     <section class="login-container">
       <h1>ProjetosFSVJ</h1>
-      <p class="descricao">Faça login para acessar ou gerenciar seus projetos de forma prática e organizada</p>
+      <p class="descricao">Faça login para acessar ou gerenciar seus projetos de forma prática e organizada.</p>
 
       <form method="POST">
-        <label for="email">E-mail</label>
-        <input type="text" id="email" name="email" placeholder="Digite seu e-mail" />
+        <div class="email-container">
+          <label for="email">E-mail</label>
+          <input type="text" id="email" name="email" placeholder="Digite seu e-mail" />
+        </div>
 
-        <label for="senha">Senha</label>
         <div class="senha-container">
-          <input type="password" id="senha" name="senha" placeholder="Digite sua senha" />
-          <i class="bi bi-eye-slash-fill eye"></i>
+          <label for="senha">Senha</label>
+          <div class="input-senha">
+            <input type="password" id="senha" name="senha" placeholder="Digite sua senha" />
+            <i class="bi bi-eye-slash-fill eye"></i>
+          </div>
         </div>
 
         <a href="#" class="esqueci-senha">Esqueceu sua senha?</a>
@@ -47,7 +51,7 @@
 </html>
 
 <?php
-  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  /*if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST["email"];
     $senha = $_POST["senha"];
 
@@ -59,6 +63,6 @@
     }
 
     $mysqli -> close();
-  }
+  }*/
 ?>
 
