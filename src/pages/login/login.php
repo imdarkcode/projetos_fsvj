@@ -1,3 +1,7 @@
+<?php
+  include("../../../conexao.php");
+?>
+
 <!DOCTYPE html>
 
 <html lang="pt-br">
@@ -37,14 +41,23 @@
       <p class="rodape">
         Este ambiente é exclusivo para usuários autorizados do <strong>Fundo Social Vale do Jequitinhonha</strong>
       </p>
-    </section>
+    </section> 
   </body>
 </html>
 
 <?php
-  $email = $_POST["email"];
-  $senha = $_POST["senha"];
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST["email"];
+    $senha = $_POST["senha"];
 
-  echo $_POST["email"];
+    $sql = "SELECT * FROM USUARIOS U WHERE U.EMAIL = '$email' AND U.SENHA = '$senha'";
+    $query_usuario = $mysqli -> query($sql);
+
+    if ($query_usuario -> num_rows > 0) {
+      header('Location: ../projetos/projetos.php');
+    }
+
+    $mysqli -> close();
+  }
 ?>
 
