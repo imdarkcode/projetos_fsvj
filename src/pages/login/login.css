@@ -14,16 +14,14 @@ body {
     height: 100vh;
     font-family: 'Roboto';
 }
-.imagem img{
+.imagem-container img{
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 20px;
     margin: 16px;
-
-
 }
-.nav-container {
+.login-container {
     background-color: var(--g11);
     margin: 16px;
     border-radius: 20px;
@@ -31,11 +29,10 @@ body {
     padding: 24px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    
+    justify-content: center;   
 }
 
-.nav-container h1 {
+.login-container h1 {
     font-family: 'Roboto';
     font-weight: var(--medium);
     color: var(--g1);
@@ -43,8 +40,19 @@ body {
     line-height: 1.5;
 }
 
-.nav-container .nav-logo, .nav-container .nav-menu{
-    margin-bottom: 32px;
+.descricao {
+    font-size: 14px;
+    color: var(--g1);
+    margin-bottom: 20px;
 }
+
+label {
+    margin-top: 12px;
+    font-weight: bold;
+    color: var(--g1);
+}
+
+
+
 
 
