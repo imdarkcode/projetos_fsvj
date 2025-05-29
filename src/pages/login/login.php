@@ -1,5 +1,23 @@
 <?php
-  include("../../../conexao.php");
+    include("../../../conexao.php");
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $email = $_POST["email"];
+        $senha = $_POST["senha"];
+        $erroSenha = false;
+
+        $sql = "SELECT * FROM USUARIOS U WHERE U.EMAIL = '$email' AND U.SENHA = '$senha'";
+        $query_usuario = $mysqli -> query($sql);
+
+        if ($query_usuario -> num_rows > 0) {
+            header("Location: ../projetos/projetos.php");
+        }
+        else {
+            $erroSenha = true;
+        }
+
+        $mysqli -> close();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -24,20 +42,22 @@
 
             <form method="POST">
                 <div class="email-container">
-                    <label for="email">E-mail</label>
-                    <input type="text" id="email" name="email" placeholder="Digite seu e-mail" />
+                    <label for="inputEmail">E-mail</label>
+                    <input type="email" id="inputEmail" name="email" placeholder="Digite seu e-mail" autocomplete="off" />
                 </div>
 
                 <div class="senha-container">
-                    <label for="senha">Senha</label>
+                    <label for="inputSenha">Senha</label>
                     <div class="input-senha">
-                        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" />
-                        <i class="bi bi-eye-slash-fill eye" aria-hidden="true"></i>
+                        <input type="password" id="inputSenha" name="senha" placeholder="Digite sua senha" autocomplete="off" />
+                        <i id="btnExibirSenha" class="bi bi-eye-slash-fill senha-escondida" onclick="ExibirSenha()"></i>
+                        <i id="btnEsconderSenha" class="bi bi-eye-fill senha-exibida" onclick="EsconderSenha()"></i>
                     </div>
                 </div>
 
                 <a href="#" class="esqueci-senha">Esqueceu sua senha?</a>
-                <p class="erro"><i class="bi bi-exclamation-circle-fill"></i> E-mail ou senha inválidos</p>
+                <p class="erro" style="<?php if ($erroSenha) {echo 'display: block;';}?>"><i class="bi bi-exclamation-circle-fill"></i>E-mail ou senha inválidos</p>
+                <div class="login-divisor"></div>
                 <button type="submit">Entrar</button>
             </form>
 
@@ -45,22 +65,8 @@
                 Este ambiente é exclusivo para usuários autorizados do <strong>Fundo Social Vale do Jequitinhonha</strong>
             </p>
         </section> 
+
+        <script src="login.js"></script>
     </body>
 </html>
-
-<?php
-  /*if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST["email"];
-    $senha = $_POST["senha"];
-
-    $sql = "SELECT * FROM USUARIOS U WHERE U.EMAIL = '$email' AND U.SENHA = '$senha'";
-    $query_usuario = $mysqli -> query($sql);
-
-    if ($query_usuario -> num_rows > 0) {
-      header('Location: ../projetos/projetos.php');
-    }
-
-    $mysqli -> close();
-  }*/
-?>
 
