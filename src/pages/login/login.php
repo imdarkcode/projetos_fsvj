@@ -32,9 +32,10 @@
           <label for="senha">Senha</label>
           <div class="input-senha">
             <input type="password" id="senha" name="senha" placeholder="Digite sua senha" />
-            <i class="bi bi-eye-slash-fill eye"></i>
+            <i class="bi bi-eye-slash-fill eye" aria-hidden="true"></i>
           </div>
         </div>
+
 
         <a href="#" class="esqueci-senha">Esqueceu sua senha?</a>
         
