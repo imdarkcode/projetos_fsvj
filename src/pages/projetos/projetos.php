@@ -11,14 +11,26 @@
     <body>
         <nav class="nav-container">
             <section class="nav-logo">
-                <h1>ProjetosFSVJ</h1>
+                <img class="logo" src="../../assets/images/logo_menu.svg" alt="Logo do software">                
             </section>
+            <div>
+                <p class="mensagem-usuario">Olá, Usuário</p>
+            </div>
 
             <section class="nav-menu">
                 <h2>Menu</h2>
                 <ul>
                     <li>
                         <a href=""><i class="bi bi-archive-fill"></i> Projetos</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="bi bi-people-fill"></i>Usuário</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="bi bi-geo-alt-fill"></i>Locais</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="bi bi-person-circle"></i>Perfil</a>
                     </li>
                     <li>                        
                         <a href=""><i class="bi bi-box-arrow-right"></i> Sair</a>
@@ -27,23 +39,71 @@
             </section>
 
             <section class="nav-projetos">
-                <h2>Projetos</h2>
+                <h2>Projetos Atuais</h2>
                 <span>0</span>
-                <ul></ul>
+                <ul>
+                    <li>
+                        <p class="nome-projeto">Nome do Projeto</p>
+                    </li>
+                </ul>
             </section>
         </nav>
 
         <main>
             <section class="main-header">
                 <h2>Projetos</h2>
-
-                <div>
-                    <button><i class="bi bi-funnel-fill"></i> Filtrar</button>
+                <div class="botoes-header">
+                    <button class="adicionar"><i class="bi bi-plus-lg"></i> Adicionar Projeto</button>
+                    <button class="filtrar"><i class="bi bi-funnel-fill"></i> Filtrar</button>
                 </div>
             </section>
-
+                <section class="main-projetos">
+                    <div class="projetos">
+                        <div class=titulo-projetos>
+                            <h2>Nome do Projeto</h2>
+                            <p>Nome do Coodenador</p>
+                        </div>
+                        <div class="botoes-projetos">
+                            <button><i class="bi bi-trash3-fill"></i></button>
+                            <button><i class="bi bi-plus-lg"></i></button>
+                            <button><i class="bi bi-sliders"></i></button>
+                            <button><i class="bi bi-people-fill"></i></button>
+                            <button><i class="bi bi-info"></i></button>
+                            <button><i class="bi bi-caret-down-fill"></i></button>
+                        </div>                      
+                    </div>
+                    <div class="barra-progresso">
+                        <div class=progresso>                            
+                        </div>
+                    </div>                 
+            </section>
+            <section class="main-fases">
+                <div class="fases">
+                    <div>
+                        <h2>Fase</h2>
+                        <p>Concluído</p>
+                    </div>
+                </div>
+            </section>
             <section class="main-projetos">
-
+                    <div class="projetos">
+                        <div class=titulo-projetos>
+                            <h2>Nome do Projeto</h2>
+                            <p>Nome do Coodenador</p>
+                        </div>
+                        <div class="botoes-projetos">
+                            <button><i class="bi bi-trash3-fill"></i></button>
+                            <button><i class="bi bi-plus-lg"></i></button>
+                            <button><i class="bi bi-sliders"></i></button>
+                            <button><i class="bi bi-people-fill"></i></button>
+                            <button><i class="bi bi-info"></i></button>
+                            <button><i class="bi bi-caret-down-fill"></i></button>
+                        </div>                      
+                    </div>
+                    <div class="barra-progresso">
+                        <div class=progresso>                            
+                        </div>
+                    </div>                 
             </section>
         </main>
     </body>
