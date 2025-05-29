@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27/05/2025 às 13:08
+-- Tempo de geração: 29/05/2025 às 15:53
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `documentos` (
   `ID_DOCUMENTO` int(11) NOT NULL,
   `NOME` varchar(50) NOT NULL,
-  `ANEXADO_EM` date NOT NULL
+  `ANEXADO_EM` date DEFAULT curdate()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -81,9 +81,21 @@ CREATE TABLE `fases` (
   `ESCOPO` mediumtext DEFAULT NULL,
   `DATA_INICIO` date NOT NULL,
   `DATA_TERMINO` date NOT NULL,
-  `GASTOS` float DEFAULT 0,
   `ID_PROJETO` int(11) NOT NULL,
-  `ID_EQUIPAMENTO_UTILIZADO` int(11) DEFAULT NULL
+  `ID_EQUIPAMENTO_UTILIZADO` int(11) DEFAULT NULL,
+  `ID_GASTO` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `gastos`
+--
+
+CREATE TABLE `gastos` (
+  `ID_GASTO` int(11) NOT NULL,
+  `DESTINO` varchar(50) NOT NULL,
+  `VALOR` float DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -108,14 +120,28 @@ CREATE TABLE `projetos` (
   `ID_PROJETO` int(11) NOT NULL,
   `NOME` varchar(50) NOT NULL,
   `ESCOPO` mediumtext DEFAULT NULL,
-  `RECUROS_FINANCEIRO` float DEFAULT 0,
   `DATA_INICIO` date NOT NULL,
   `DATA_TERMINO` date NOT NULL,
   `CRIADO_EM` date DEFAULT curdate(),
   `ID_LOCAL` int(11) DEFAULT NULL,
   `ID_USUARIO` int(11) NOT NULL,
+  `ID_DIRETOR` int(11) NOT NULL,
+  `ID_COORDENADOR` int(11) NOT NULL,
   `ID_EQUIPAMENTO` int(11) DEFAULT NULL,
-  `ID_DOCUMENTO` int(11) DEFAULT NULL
+  `ID_DOCUMENTO` int(11) DEFAULT NULL,
+  `ID_RECURSO` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `recursos`
+--
+
+CREATE TABLE `recursos` (
+  `ID_RECURSO` int(11) NOT NULL,
+  `FONTE` varchar(50) NOT NULL,
+  `VALOR` float DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -158,11 +184,21 @@ CREATE TABLE `tarefas` (
 CREATE TABLE `usuarios` (
   `ID_USUARIO` int(11) NOT NULL,
   `NOME` varchar(50) NOT NULL,
+  `EMAIL` varchar(50) NOT NULL,
   `SENHA` varchar(50) NOT NULL,
   `HIERARQUIA` enum('DIRETOR','COORDENADOR','VOLUNTARIO') NOT NULL,
   `CRIADO_EM` date DEFAULT curdate(),
   `EXCLUIDO` varchar(1) DEFAULT 'N'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`ID_USUARIO`, `NOME`, `EMAIL`, `SENHA`, `HIERARQUIA`, `CRIADO_EM`, `EXCLUIDO`) VALUES
+(1, 'João Augusto', 'joao@email.com', '#senha123', 'DIRETOR', '2025-05-29', 'N'),
+(2, 'Ana Souza', 'ana@email.com', '#senha123', 'COORDENADOR', '2025-05-29', 'N'),
+(3, 'Guilherme Oliveira', 'guilherme@email.com', '#senha123', 'VOLUNTARIO', '2025-05-29', 'N');
 
 --
 -- Índices para tabelas despejadas
@@ -191,22 +227,29 @@ ALTER TABLE `equipamentos`
 --
 ALTER TABLE `equipamentos_utilizados`
   ADD PRIMARY KEY (`ID_EQUIPAMENTO_UTILIZADO`),
-  ADD KEY `ID_EQUIPAMENTO` (`ID_EQUIPAMENTO`);
+  ADD KEY `FK_EQUIPAMENTOS_UTILIZADOS_EQUIPAMENTOS` (`ID_EQUIPAMENTO`);
 
 --
 -- Índices de tabela `fases`
 --
 ALTER TABLE `fases`
   ADD PRIMARY KEY (`ID_FASE`),
-  ADD KEY `ID_PROJETO` (`ID_PROJETO`),
-  ADD KEY `ID_EQUIPAMENTO_UTILIZADO` (`ID_EQUIPAMENTO_UTILIZADO`);
+  ADD KEY `FK_FASES_PROJETOS` (`ID_PROJETO`),
+  ADD KEY `ID_EQUIPAMENTO_UTILIZADO` (`ID_EQUIPAMENTO_UTILIZADO`),
+  ADD KEY `ID_GASTO` (`ID_GASTO`);
+
+--
+-- Índices de tabela `gastos`
+--
+ALTER TABLE `gastos`
+  ADD PRIMARY KEY (`ID_GASTO`);
 
 --
 -- Índices de tabela `locais`
 --
 ALTER TABLE `locais`
   ADD PRIMARY KEY (`ID_LOCAL`),
-  ADD KEY `ID_ENDERECO` (`ID_ENDERECO`);
+  ADD KEY `FK_LOCAIS_ENDERECOS` (`ID_ENDERECO`);
 
 --
 -- Índices de tabela `projetos`
@@ -214,16 +257,25 @@ ALTER TABLE `locais`
 ALTER TABLE `projetos`
   ADD PRIMARY KEY (`ID_PROJETO`),
   ADD KEY `ID_LOCAL` (`ID_LOCAL`),
-  ADD KEY `ID_USUARIO` (`ID_USUARIO`),
+  ADD KEY `FK_PROJETOS_USUARIOS` (`ID_USUARIO`),
+  ADD KEY `FK_PROJETOS_DIRETORES` (`ID_DIRETOR`),
+  ADD KEY `FK_PROJETOS_COORDENADORES` (`ID_COORDENADOR`),
   ADD KEY `ID_EQUIPAMENTO` (`ID_EQUIPAMENTO`),
-  ADD KEY `ID_DOCUMENTO` (`ID_DOCUMENTO`);
+  ADD KEY `ID_DOCUMENTO` (`ID_DOCUMENTO`),
+  ADD KEY `ID_RECURSO` (`ID_RECURSO`);
+
+--
+-- Índices de tabela `recursos`
+--
+ALTER TABLE `recursos`
+  ADD PRIMARY KEY (`ID_RECURSO`);
 
 --
 -- Índices de tabela `relatorios`
 --
 ALTER TABLE `relatorios`
   ADD PRIMARY KEY (`ID_RELATORIO`),
-  ADD KEY `ID_FASE` (`ID_FASE`);
+  ADD KEY `FK_RELATORIOS_FASES` (`ID_FASE`);
 
 --
 -- Índices de tabela `tarefas`
@@ -231,14 +283,15 @@ ALTER TABLE `relatorios`
 ALTER TABLE `tarefas`
   ADD PRIMARY KEY (`ID_TAREFA`),
   ADD KEY `ID_USUARIO` (`ID_USUARIO`),
-  ADD KEY `ID_FASE` (`ID_FASE`),
+  ADD KEY `FK_TAREFAS_FASES` (`ID_FASE`),
   ADD KEY `ID_DOCUMENTO` (`ID_DOCUMENTO`);
 
 --
 -- Índices de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`ID_USUARIO`);
+  ADD PRIMARY KEY (`ID_USUARIO`),
+  ADD UNIQUE KEY `EMAIL` (`EMAIL`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
@@ -275,6 +328,12 @@ ALTER TABLE `fases`
   MODIFY `ID_FASE` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `gastos`
+--
+ALTER TABLE `gastos`
+  MODIFY `ID_GASTO` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `locais`
 --
 ALTER TABLE `locais`
@@ -285,6 +344,12 @@ ALTER TABLE `locais`
 --
 ALTER TABLE `projetos`
   MODIFY `ID_PROJETO` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `recursos`
+--
+ALTER TABLE `recursos`
+  MODIFY `ID_RECURSO` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `relatorios`
@@ -302,7 +367,7 @@ ALTER TABLE `tarefas`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `ID_USUARIO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_USUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restrições para tabelas despejadas
@@ -312,43 +377,47 @@ ALTER TABLE `usuarios`
 -- Restrições para tabelas `equipamentos_utilizados`
 --
 ALTER TABLE `equipamentos_utilizados`
-  ADD CONSTRAINT `equipamentos_utilizados_ibfk_1` FOREIGN KEY (`ID_EQUIPAMENTO`) REFERENCES `equipamentos` (`ID_EQUIPAMENTO`);
+  ADD CONSTRAINT `FK_EQUIPAMENTOS_UTILIZADOS_EQUIPAMENTOS` FOREIGN KEY (`ID_EQUIPAMENTO`) REFERENCES `equipamentos` (`ID_EQUIPAMENTO`);
 
 --
 -- Restrições para tabelas `fases`
 --
 ALTER TABLE `fases`
-  ADD CONSTRAINT `fases_ibfk_1` FOREIGN KEY (`ID_PROJETO`) REFERENCES `projetos` (`ID_PROJETO`),
-  ADD CONSTRAINT `fases_ibfk_2` FOREIGN KEY (`ID_EQUIPAMENTO_UTILIZADO`) REFERENCES `equipamentos_utilizados` (`ID_EQUIPAMENTO_UTILIZADO`);
+  ADD CONSTRAINT `FK_FASES_PROJETOS` FOREIGN KEY (`ID_PROJETO`) REFERENCES `projetos` (`ID_PROJETO`),
+  ADD CONSTRAINT `fases_ibfk_1` FOREIGN KEY (`ID_EQUIPAMENTO_UTILIZADO`) REFERENCES `equipamentos_utilizados` (`ID_EQUIPAMENTO_UTILIZADO`),
+  ADD CONSTRAINT `fases_ibfk_2` FOREIGN KEY (`ID_GASTO`) REFERENCES `gastos` (`ID_GASTO`);
 
 --
 -- Restrições para tabelas `locais`
 --
 ALTER TABLE `locais`
-  ADD CONSTRAINT `locais_ibfk_1` FOREIGN KEY (`ID_ENDERECO`) REFERENCES `enderecos` (`ID_ENDERECO`);
+  ADD CONSTRAINT `FK_LOCAIS_ENDERECOS` FOREIGN KEY (`ID_ENDERECO`) REFERENCES `enderecos` (`ID_ENDERECO`);
 
 --
 -- Restrições para tabelas `projetos`
 --
 ALTER TABLE `projetos`
+  ADD CONSTRAINT `FK_PROJETOS_COORDENADORES` FOREIGN KEY (`ID_COORDENADOR`) REFERENCES `usuarios` (`ID_USUARIO`),
+  ADD CONSTRAINT `FK_PROJETOS_DIRETORES` FOREIGN KEY (`ID_DIRETOR`) REFERENCES `usuarios` (`ID_USUARIO`),
+  ADD CONSTRAINT `FK_PROJETOS_USUARIOS` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuarios` (`ID_USUARIO`),
   ADD CONSTRAINT `projetos_ibfk_1` FOREIGN KEY (`ID_LOCAL`) REFERENCES `locais` (`ID_LOCAL`),
-  ADD CONSTRAINT `projetos_ibfk_2` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuarios` (`ID_USUARIO`),
-  ADD CONSTRAINT `projetos_ibfk_3` FOREIGN KEY (`ID_EQUIPAMENTO`) REFERENCES `equipamentos` (`ID_EQUIPAMENTO`),
-  ADD CONSTRAINT `projetos_ibfk_4` FOREIGN KEY (`ID_DOCUMENTO`) REFERENCES `documentos` (`ID_DOCUMENTO`);
+  ADD CONSTRAINT `projetos_ibfk_2` FOREIGN KEY (`ID_EQUIPAMENTO`) REFERENCES `equipamentos` (`ID_EQUIPAMENTO`),
+  ADD CONSTRAINT `projetos_ibfk_3` FOREIGN KEY (`ID_DOCUMENTO`) REFERENCES `documentos` (`ID_DOCUMENTO`),
+  ADD CONSTRAINT `projetos_ibfk_4` FOREIGN KEY (`ID_RECURSO`) REFERENCES `recursos` (`ID_RECURSO`);
 
 --
 -- Restrições para tabelas `relatorios`
 --
 ALTER TABLE `relatorios`
-  ADD CONSTRAINT `relatorios_ibfk_1` FOREIGN KEY (`ID_FASE`) REFERENCES `fases` (`ID_FASE`);
+  ADD CONSTRAINT `FK_RELATORIOS_FASES` FOREIGN KEY (`ID_FASE`) REFERENCES `fases` (`ID_FASE`);
 
 --
 -- Restrições para tabelas `tarefas`
 --
 ALTER TABLE `tarefas`
+  ADD CONSTRAINT `FK_TAREFAS_FASES` FOREIGN KEY (`ID_FASE`) REFERENCES `fases` (`ID_FASE`),
   ADD CONSTRAINT `tarefas_ibfk_1` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuarios` (`ID_USUARIO`),
-  ADD CONSTRAINT `tarefas_ibfk_2` FOREIGN KEY (`ID_FASE`) REFERENCES `fases` (`ID_FASE`),
-  ADD CONSTRAINT `tarefas_ibfk_3` FOREIGN KEY (`ID_DOCUMENTO`) REFERENCES `documentos` (`ID_DOCUMENTO`);
+  ADD CONSTRAINT `tarefas_ibfk_2` FOREIGN KEY (`ID_DOCUMENTO`) REFERENCES `documentos` (`ID_DOCUMENTO`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
