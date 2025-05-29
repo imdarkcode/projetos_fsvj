@@ -9,7 +9,7 @@
         $query_usuario = $mysqli -> query($sql);
 
         if ($query_usuario -> num_rows > 0) {
-            header("Location: ../verificacao_codigo/verificacao_codigo.php");
+            header("Location: ../verificacao_codigo/verificacao_codigo.php?email=$email");
         }
         else {
             $erroEmail = true;

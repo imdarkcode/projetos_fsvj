@@ -10,7 +10,9 @@
         $query_usuario = $mysqli -> query($sql);
 
         if ($query_usuario -> num_rows > 0) {
-            header("Location: ../projetos/projetos.php");
+            $row = $query_usuario -> fetch_assoc();
+            $id_usuario = $row["ID_USUARIO"];
+            header("Location: ../projetos/projetos.php?id_usuario=$id_usuario");
         }
         else {
             $erroSenha = true;
