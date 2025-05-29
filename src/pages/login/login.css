@@ -127,12 +127,15 @@ button:hover {
     background-color: var(--g10);
 }
 
+
 .rodape {
     margin-top: 30px;
     font-size: 0.9rem;
     color: var(--g11);
     text-align: center;
 }
+
+
 
 
 
