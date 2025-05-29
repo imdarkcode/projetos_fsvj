@@ -14,6 +14,7 @@ body {
     height: 100vh;
     font-family: 'Roboto';
     overflow-y: hidden;
+    align-items: center;
 }
 
 .imagem-container {
@@ -32,31 +33,28 @@ body {
     padding: 40px 32px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    width: 100%;
+    align-items: center;
+    width: 448px;
+    justify-self: center;
 }
 
-.login-container h1 {
-    font-family: 'Roboto';
-    font-weight: var(--medium);
-    color: var(--g11);
-    font-size: 24px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 8px;
+.logo {
+    width: 320px;
+    margin-bottom: 48px;
 }
 
 .descricao {
     font-size: 16px;
     color: var(--g11);
-    margin-bottom: 32px;
+    margin-bottom: 40px;
     text-align: center;
+    line-height: 1.5;
 }
 
 form {
     display: flex;
     flex-direction: column;
-     gap: 20px;
+    width: 100%;
 }
 
 label {
@@ -70,6 +68,7 @@ label {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    margin-bottom: 32px;
 }
 
 
@@ -95,8 +94,6 @@ input {
     padding-right: 44px;
 }
 
-
-
 .senha-container {
     position: relative;
     width: 100%;
@@ -121,7 +118,7 @@ input {
 }
 
 .erro {
-    color: var(--r7);
+    color: var(--r8);
     font-size: 0.9rem;
     margin-top: 5px;
     font-weight: var(--semibold);
