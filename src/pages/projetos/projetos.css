@@ -132,7 +132,7 @@ body {
     align-items: center;
     background-color: var(--g1);
     border-radius: 20px;
-    height: 124px;
+    height: 120px;
 }
 
 .main-projetos h2 {
@@ -142,6 +142,7 @@ body {
     font-weight: var(--semibold);
     line-height: 1.5;
     margin-left: 24px;
+    margin-top: 24px;
 
 }
 
@@ -171,6 +172,7 @@ body {
     border: none;
     border-radius: 12px;
     color: var(--g1);
+    margin-top: 24px;
 }
 
 .botoes-projetos button:nth-child(1) {
@@ -194,9 +196,10 @@ body {
 }
 
 .barra-progresso {
-    width: 100%;
+    width: 1056px;
     height: 8px;
     border-radius: 4px;
+    margin: 0 auto;
 }
 
 .progresso {
@@ -206,6 +209,59 @@ body {
     border-radius: 4px;
 }
 
+.main-fases {
+    align-items: center;
+    background-color: var(--g1);
+    border-radius: 20px 20px 0 0;
+    height: 124px;
+    margin-top: 12px;
+    height: 96px;
+}
+
+.fases {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.fases h2 {
+    color: var(--g11);
+    font-family: 'Poppins';
+    font-size: 24px;
+    font-weight: var(--semibold);
+    line-height: 1.5;
+    margin-left: 24px;
+    margin-top: 24px;
+}
+
+.fases p {
+    color: var(--g5);
+    font-family: 'Roboto';
+    font-size: 16px;
+    font-weight: var(--regular);
+    margin-left: 24px;
+}
+
+.fases a {
+    color: var(--g11);
+    font-family: 'Roboto';
+    font-size: 16px;
+    font-weight: var(--medium);
+    
+}
+
+.main-tarefas {
+    margin-right: 32px;
+    margin-top: 46px;
+}
+
+.fases-divisor {
+    height: 1px;
+    background-color: var(--g3);
+    width: 100%;
+    margin-top: 12px;
+}
 
 
 

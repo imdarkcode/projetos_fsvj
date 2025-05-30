@@ -83,27 +83,11 @@
                         <h2>Fase</h2>
                         <p>Concluído</p>
                     </div>
-                </div>
-            </section>
-            <section class="main-projetos">
-                    <div class="projetos">
-                        <div class=titulo-projetos>
-                            <h2>Nome do Projeto</h2>
-                            <p>Nome do Coodenador</p>
-                        </div>
-                        <div class="botoes-projetos">
-                            <button><i class="bi bi-trash3-fill"></i></button>
-                            <button><i class="bi bi-plus-lg"></i></button>
-                            <button><i class="bi bi-sliders"></i></button>
-                            <button><i class="bi bi-people-fill"></i></button>
-                            <button><i class="bi bi-info"></i></button>
-                            <button><i class="bi bi-caret-down-fill"></i></button>
-                        </div>                      
+                    <div class="main-tarefas">
+                        <a href="#">Ver Tarefas <i class="bi bi-arrow-right"></i></a>
                     </div>
-                    <div class="barra-progresso">
-                        <div class=progresso>                            
-                        </div>
-                    </div>                 
+                </div>
+                <div class="fases-divisor"></div>
             </section>
         </main>
     </body>
