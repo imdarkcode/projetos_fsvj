@@ -80,10 +80,8 @@
                         <a href="#">Ver Tarefas<i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
-<<<<<<< HEAD
-=======
+                
                 <div class="fase-divisor"></div>
->>>>>>> 5800e3d97df8e094460f2ea7145b117415a2a54a
             </section>
         </main>
 
