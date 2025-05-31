@@ -1,0 +1,366 @@
+@import url('../../styles/global.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+body {
+    background-color: var(--g2);
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    height: 100vh;
+}
+
+.nav-container {
+    background-color: var(--g11);
+    margin: 16px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 24px;
+}
+
+.nav-container h1 {
+    font-family: 'Roboto';
+    font-weight: var(--medium);
+    color: var(--g1);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.nav-container .nav-logo, .nav-container .nav-menu{
+    margin-bottom: 32px;
+}
+
+.nav-container h2, .nav-projetos span {
+    font-family: 'Roboto';
+    font-weight: var(--regular);
+    color: var(--g5);
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.nav-container li a{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.nav-container li a {
+    color: var(--g1);
+    text-decoration: none;
+    font-family: 'Roboto';
+    font-weight: var(--medium);
+    color: var(--g1);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.nav-projetos{
+    position: relative;
+}
+
+.nav-projetos span {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.mensagem-usuario {
+    color: var(--g1);
+    font-family: 'Roboto';
+    font-size: 16px;
+    font-weight: var(--medium);
+    line-height: 1.5;
+    margin: 24px 0;
+}
+
+.nome-projeto {
+    color: var(--g1);
+    font-family: 'Roboto';
+    font-size: 12px;
+    font-weight: var(--medium);
+    line-height: 1.5;
+    margin: 16px 0;
+}
+.main-header {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    margin-top: 32px;
+}
+
+.btn-voltar {
+    background-color: var(--g11);
+    border: none;
+    color: var(--g1);
+    border-radius: 20px;
+    width: 36px;
+    height: 36px;
+}
+
+.btn-voltar i {
+    font-size: 20px;
+}
+
+.btn-voltar :hover {
+    transform: scale(1.05);
+}
+
+.titulo {
+    display: block;
+}
+
+.titulo p {
+    font-family: 'Roboto';
+    color: var(--g5);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.titulo h1 {
+    font-family: 'Roboto';
+    color: var(--g11);
+    font-size: 32px;
+    font-weight: var(--semibold);
+    line-height: 1.5;
+}
+
+.main-header p {
+    color: var(--g5);
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-weight: var(--regular);
+}
+.main-header h2 {
+    color: var(--g11);
+    font-family: 'Poppins';
+    font-size: 32px;
+    font-weight: var(--semibold);
+    margin-right: 68px;
+}
+
+.botoes-header {
+    display: flex;
+    margin-right: 32px;
+    gap: 16px;
+}
+
+.botoes-header button {
+    color: var(--g1);
+    font-weight: var(--medium);
+    font-family: "Roboto";
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.botoes-header button i {
+    margin-right: 8px;
+}
+
+.botoes-header button:nth-child(1) {
+    background-color: var(--gr8); 
+}
+
+.botoes-header button:nth-child(2){
+    background-color: var(--r8); 
+}
+
+.botoes-header button:nth-child(3) {
+    background-color: var(--g10); 
+
+}
+
+.botoes-header button:nth-child(4) {
+    background-color: var(--o8); 
+}
+
+.botoes-header button:nth-child(5) {
+    background-color: var(--g11); 
+}
+
+.titulo-container {
+    display: flex;
+    gap: 24px;
+    margin-left: 24px;
+    align-items: center;
+}
+
+.kanban-container {
+    display: flex;
+    gap: 32px;
+    padding: 32px;
+    align-items: flex-start;
+}
+
+.kanban-coluna {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.kanban-coluna h2 {
+    color: var(--g11);
+    font-family: "Poppins";
+    font-size: 20px;
+    font-weight: var(--regular);
+    margin-bottom: 8px;
+
+}
+
+.kanban-coluna h2 span {
+    color: var(--g5);
+    margin-left: 8px;
+}
+
+.kanban-coluna h3 {
+    color: var(--g11);
+    font-family: "Roboto";
+    font-size: 20px;
+    font-weight: var(--semibold);
+    margin-left: 24px;
+    margin-top: 8px;
+
+   
+}
+
+.kanban-coluna p {
+    color: var(--g8);
+    font-family: "Roboto";
+    font-size: 12px;
+    font-weight: var(--regular);
+    line-height: 1.5;
+    margin-left: 24px;
+}
+
+
+
+.kanban-tarefa {
+    background-color: var(--g1);
+    border-radius: 20px;
+    padding: 16px 24px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+}
+
+.kanban-tarefa::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    margin-top: 16px;
+    margin-left: 24px;
+    left: 24px;
+    width: 32px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--g11);
+}
+
+.kanban-coluna:nth-child(1) .kanban-tarefa::before {
+    background-color: var(--r7);
+}
+
+.kanban-coluna:nth-child(2) .kanban-tarefa::before {
+    background-color: var(--y5);
+}
+
+.kanban-coluna:nth-child(3) .kanban-tarefa::before {
+    background-color: var(--gr6);
+}
+
+.data-tarefa {
+    color: var(--g11);
+    font-family: "Roboto";
+    font-size: 16px;
+    font-weight: var(--semibold);
+    line-height: 1.5;
+    margin-left: 24px;
+}
+
+
+
+@media (max-width: 1440px) {
+  .botoes-header button {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .kanban-container {
+    flex-direction: column;
+    gap: 24px;
+    padding: 16px;
+  }
+
+  .main-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    margin: 16px;
+  }
+
+  .titulo-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-left: 16px;
+  }
+
+  .botoes-header {
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0 16px;
+  }
+
+  .nav-container {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .nav-menu, .nav-projetos {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .kanban-tarefa {
+    padding: 12px 16px;
+  }
+
+  .kanban-tarefa::before {
+    left: 16px;
+  }
+
+  .kanban-coluna h2 {
+    font-size: 18px;
+  }
+
+  .kanban-coluna h3 {
+    font-size: 16px;
+    margin-left: 16px;
+  }
+
+  .kanban-coluna p,
+  .data-tarefa {
+    font-size: 12px;
+    margin-left: 16px;
+  }
+}
+
