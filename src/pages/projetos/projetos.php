@@ -9,17 +9,27 @@
     $hierarquia = $row_usuario["HIERARQUIA"];
     $nome_usuario = $row_usuario["NOME"];
 
-    $sql = "SELECT COUNT(*) AS QUANTIDADE_TAREFAS FROM TAREFAS T WHERE T.ID_USUARIO = '$id_usuario'";
-    $query_tarefa = $mysqli -> query($sql);
+    $sql = "SELECT * FROM USUARIOS_TAREFAS UT INNER JOIN TAREFAS T ON UT.ID_TAREFA = T.ID_TAREFA INNER JOIN FASES F ON T.ID_FASE = F.ID_FASE INNER JOIN PROJETOS P ON F.ID_PROJETO = P.ID_PROJETO WHERE UT.ID_USUARIO = '$id_usuario' AND P.DATA_INICIO < CURRENT_DATE() AND P.DATA_TERMINO > CURRENT_DATE()";
+    $query_usuario_tarefa = $mysqli -> query($sql);
 
-    $row_tarefa = $query_tarefa -> fetch_assoc();
-    $quantidade_tarefas = $row_tarefa["QUANTIDADE_TAREFAS"];
+    $row_usuario_tarefa = $query_usuario_tarefa -> fetch_assoc();
+    $quantidade_tarefa = $query_usuario_tarefa -> num_rows;
 
-    $sql = "SELECT COUNT(P.ID_PROJETO) AS QUANTIDADE_PROJETOS, P.ID_PROJETO, P.NOME, P.ID_COORDENADOR FROM PROJETOS P WHERE P.ID_USUARIO = '$id_usuario' AND P.DATA_TERMINO	< CURRENT_DATE()";
-    $query_projeto_atual = $mysqli -> query($sql);
-
-    $row_projeto_atual = $query_projeto_atual -> fetch_assoc();
-    $quantidade_projetos_atuais = $row_projeto_atual["QUANTIDADE_PROJETOS"];
+    if ($hierarquia == "VOLUNTARIO") {
+        $sql = "SELECT * FROM PROJETOS P INNER JOIN usuarios_projetos UP ON UP.ID_PROJETO = P.ID_PROJETO WHERE UP.ID_USUARIO = '$id_usuario' AND P.DATA_INICIO < CURRENT_DATE() AND P.DATA_TERMINO > CURRENT_DATE()";
+        $query_projeto_atual = $mysqli -> query($sql);
+        $quantidade_projeto_atual = $query_projeto_atual -> num_rows;
+    }
+    elseif ($hierarquia == "COORDENADOR") {
+        $sql = "SELECT * FROM PROJETOS P INNER JOIN usuarios_projetos UP ON UP.ID_PROJETO = P.ID_PROJETO WHERE UP.ID_USUARIO = '$id_usuario' OR P.ID_COORDENADOR = '$id_usuario' AND P.DATA_INICIO < CURRENT_DATE() AND P.DATA_TERMINO > CURRENT_DATE()";
+        $query_projeto_atual = $mysqli -> query($sql);
+        $quantidade_projeto_atual = $query_projeto_atual -> num_rows;
+    }
+    else {
+        $sql = "SELECT * FROM PROJETOS P WHERE P.DATA_INICIO < CURRENT_DATE() AND P.DATA_TERMINO > CURRENT_DATE()";
+        $query_projeto_atual = $mysqli -> query($sql);
+        $quantidade_projeto_atual = $query_projeto_atual -> num_rows;
+    }
 
 ?>
 
@@ -32,6 +42,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
         <link rel="stylesheet" href="projetos.css" />
         <link rel="stylesheet" href="../../styles/components/navbar.css" />
+        <link rel="stylesheet" href="../../styles/components/projeto.css" />
     </head>
 
     <body>
@@ -47,42 +58,33 @@
                 </div>
             </section>
 
-            <section class="projeto-container">
-                <div class="projeto-header">
-                    <div class="titulo-projeto">
-                        <h2>Nome do Projeto</h2>
-                        <p>Nome do Coodenador</p>
-                    </div>
-                    <div class="botoes-projeto">
-                        <?php if ($hierarquia == "DIRETOR") {echo '<button><i class="bi bi-trash3-fill"></i></button>';} ?>
-                        <?php if ($hierarquia == "COORDENADOR") {echo '<button><i class="bi bi-plus-lg"></i></button>';} ?>
-                        <?php if ($hierarquia == "DIRETOR") {echo '<button><i class="bi bi-sliders"></i></button>';} ?>
-                        <?php if ($hierarquia != "VOLUNTARIO") {echo '<button><i class="bi bi-people-fill"></i></button>';} ?>
+            <?php
+                if ($hierarquia == "VOLUNTARIO") {
+                    $sql = "SELECT * FROM PROJETOS P INNER JOIN usuarios_projetos UP ON UP.ID_PROJETO = P.ID_PROJETO WHERE UP.ID_USUARIO = '$id_usuario' AND P.DATA_INICIO < CURRENT_DATE() AND P.DATA_TERMINO > CURRENT_DATE()";
+                    $query_projeto = $mysqli -> query($sql);
+                }
 
-                        <button><i class="bi bi-info"></i></button>
-                        <button id="btnExibirFases" onclick="ExibirFases()"><i class="bi bi-caret-down-fill"></i></button>
-                        <button id="btnEsconderFases" onclick="EsconderFases()"><i class="bi bi-caret-up-fill"></i></button>
-                    </div>                      
-                </div>
+                elseif ($hierarquia == "COORDENADOR") {
+                    $sql = "SELECT * FROM PROJETOS P INNER JOIN usuarios_projetos UP ON UP.ID_PROJETO = P.ID_PROJETO WHERE UP.ID_USUARIO = '$id_usuario' OR P.ID_COORDENADOR = '$id_usuario' AND P.DATA_INICIO < CURRENT_DATE() AND P.DATA_TERMINO > CURRENT_DATE()";
+                    $query_projeto = $mysqli -> query($sql);
+                }
 
-                <div class="progresso-container">
-                    <div class="progresso progresso-vazio"></div>
-                </div>                 
-            </section>
+                else {
+                    $sql = "SELECT * FROM PROJETOS P WHERE P.DATA_INICIO < CURRENT_DATE() AND P.DATA_TERMINO > CURRENT_DATE()";
+                    $query_projeto = $mysqli -> query($sql);
+                }
 
-            <section id="fasesProjeto" class="fases-container">
-                <div class="fase">
-                    <div>
-                        <h2>Fase</h2>
-                        <p>Concluído</p>
-                    </div>
-                    <div class="link-tarefas">
-                        <a href="#">Ver Tarefas<i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="fase-divisor"></div>
-            </section>
+                while ($row_projeto = $query_projeto -> fetch_assoc()) {
+                        $id_projeto = $row_projeto["ID_PROJETO"];
+                        $id_coordenador = $row_projeto["ID_COORDENADOR"];
+
+                        $sql = "SELECT * FROM USUARIOS U WHERE U.ID_USUARIO = '$id_coordenador'";
+                        $query_coordenador = $mysqli -> query($sql);
+                        $row_coordenador = $query_coordenador -> fetch_assoc();
+
+                        include("../../components/projeto.php");
+                    }
+            ?>
         </main>
 
         <script src="projetos.js"></script>

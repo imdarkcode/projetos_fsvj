@@ -56,34 +56,33 @@
     font-size: 16px;
 }
 
-.nav-item-projetos {
+.nav-menu-item, .nav-projetos-item {
     display: grid;
     grid-template-columns: 1fr auto;
 }
 
-.nav-item-projetos div {
+.nav-menu-item div, .nav-projetos-item div {
     width: 20px;
     height: 20px;
     border-radius: 20px;
     background-color: var(--o6);
     display: flex;
     justify-content: center;
-    align-items: center;
     align-self: center;
 }
 
-.nav-item-projetos div span {
+.nav-menu-item div span, .nav-projetos-item div span {
     color: var(--g1);
     font-size: 12px;
     line-height: 1.5;
-    font-family: 'Poppins';
+    font-family: 'Roboto';
 }
 
 .nav-projetos{
     position: relative;
 }
 
-.nav-projetos span {
+.nav-projetos > span {
     position: absolute;
     top: 0;
     right: 0;
