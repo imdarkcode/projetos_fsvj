@@ -13,98 +13,31 @@ body {
     height: 100vh;
 }
 
-.nav-container {
-    background-color: var(--g11);
-    margin: 16px;
-    border-radius: 20px;
-    box-sizing: border-box;
-    padding: 24px;
+.main-container {
+    margin-right: 32px;
 }
 
-.nav-container h1 {
-    font-family: 'Roboto';
-    font-weight: var(--medium);
-    color: var(--g1);
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-.nav-container .nav-logo, .nav-container .nav-menu{
-    margin-bottom: 32px;
-}
-
-.nav-container h2, .nav-projetos span {
-    font-family: 'Roboto';
-    font-weight: var(--regular);
-    color: var(--g5);
-    font-size: 12px;
-    line-height: 1.5;
-    margin-bottom: 16px;
-}
-
-.nav-container li a{
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 16px;
-    margin-bottom: 16px;
-}
-
-.nav-container li a {
-    color: var(--g1);
-    text-decoration: none;
-    font-family: 'Roboto';
-    font-weight: var(--medium);
-    color: var(--g1);
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-.nav-projetos{
-    position: relative;
-}
-
-.nav-projetos span {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-.mensagem-usuario {
-    color: var(--g1);
-    font-family: 'Roboto';
-    font-size: 16px;
-    font-weight: var(--medium);
-    line-height: 1.5;
-    margin: 24px 0;
-}
-
-.nome-projeto {
-    color: var(--g1);
-    font-family: 'Roboto';
-    font-size: 12px;
-    font-weight: var(--medium);
-    line-height: 1.5;
-    margin: 16px 0;
-}
 .main-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 32px;
+    margin-bottom: 24px;
 }
 
-.main-header h2 {
+.main-header h1 {
     color: var(--g11);
     font-family: 'Poppins';
     font-size: 32px;
+    line-height: 1.5;
     font-weight: var(--semibold);
-    margin: 16px;
 }
 
 .botoes-header {
     display: flex;
     gap: 16px;
-    margin-right: 32px;
 }
+
 .adicionar {
     background-color: var(--g10);
     color: var(--g1);
@@ -116,6 +49,7 @@ body {
     background-color: 0.3s;
     cursor: pointer;
 }
+
 .filtrar {
     background-color: var(--g11);
     color: var(--g1);
@@ -128,16 +62,19 @@ body {
     cursor: pointer;
 }
 
-.main-projetos{
+.projeto-container{
     align-items: center;
     background-color: var(--g1);
     border-radius: 20px;
+<<<<<<< HEAD
     height: 120px;
+=======
+>>>>>>> 5800e3d97df8e094460f2ea7145b117415a2a54a
     box-sizing: border-box;
     padding: 24px;
 }
 
-.main-projetos h2 {
+.projeto-container h2 {
     color: var(--g11);
     font-family: 'Poppins';
     font-size: 24px;
@@ -145,66 +82,88 @@ body {
     line-height: 1.5;
 }
 
-.main-projetos p {
+.projeto-container p {
     color: var(--g5);
     font-family: 'Roboto';
     font-size: 16px;
     font-weight: var(--regular);
+<<<<<<< HEAD
 }
 
 .projetos {
+=======
+    line-height: 1.5;
+}
+
+.projeto-header {
+>>>>>>> 5800e3d97df8e094460f2ea7145b117415a2a54a
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 8px;
 }
 
-.botoes-projetos {
+.botoes-projeto {
     display: flex;
     gap: 16px;
     align-items:start;
 }
-.botoes-projetos button {
+.botoes-projeto button {
     font-size: 20px;
     padding: 10px;
     border: none;
     border-radius: 12px;
     color: var(--g1);
+<<<<<<< HEAD
+=======
+    cursor: pointer;
+>>>>>>> 5800e3d97df8e094460f2ea7145b117415a2a54a
 }
 
-.botoes-projetos button:nth-child(1) {
-    background-color: var(--r8);  
+#btnEsconderFases {
+    display: none;
 }
 
-.botoes-projetos button:nth-child(2),.botoes-projetos button:nth-child(3) {
-    background-color: var(--y6);  
-}
-
-.botoes-projetos button:nth-child(4) {
-    background-color: var(--gr8);  
-}
-
-.botoes-projetos button:nth-child(5) {
-    background-color: var(--o8);  
-}
-
-.botoes-projetos button:nth-child(6) {
+.botoes-projeto button:nth-last-child(-n + 2) {
     background-color: var(--g11);  
 }
 
+<<<<<<< HEAD
 .barra-progresso {
     width: 100%;
     height: 8px;
     border-radius: 4px;
+=======
+.botoes-projeto button:nth-last-child(3) {
+    background-color: var(--o8);  
+}
+
+.botoes-projeto button:nth-last-child(4) {
+    background-color: var(--gr8);  
+}
+
+.botoes-projeto button:nth-last-child(5) {
+    background-color: var(--y6);  
+}
+
+.botoes-projeto button:nth-last-child(6) {
+    background-color: var(--r8);  
+}
+
+.progresso-container {
+    width: 100%;
+    height: 8px;
+>>>>>>> 5800e3d97df8e094460f2ea7145b117415a2a54a
 }
 
 .progresso {
     width: 100%;
     height: 100%;
-    background-color: var(--o6);
+    
     border-radius: 4px;
 }
 
+<<<<<<< HEAD
 .main-fases {
     align-items: center;
     background-color: var(--g1);
@@ -212,47 +171,73 @@ body {
     height: 124px;
     margin-top: 12px;
     height: 96px;
+=======
+.progresso-vazio {
+    background-color: var(--g3);
+>>>>>>> 5800e3d97df8e094460f2ea7145b117415a2a54a
 }
 
-.fases {
+.progresso-cheio {
+    background-color: var(--o6);
+}
+
+.fases-container {
+    align-items: center;
+    background-color: var(--g1);
+    border-radius: 20px;
+    margin-top: 12px;
+    margin-bottom: 24px;
+    box-sizing: border-box;
+    padding: 24px;
+    display: none;
+}
+
+.fase {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     margin-bottom: 8px;
 }
 
-.fases h2 {
+.fase h2 {
     color: var(--g11);
     font-family: 'Poppins';
     font-size: 24px;
     font-weight: var(--semibold);
     line-height: 1.5;
-    margin-left: 24px;
-    margin-top: 24px;
 }
 
-.fases p {
+.fase p {
     color: var(--g5);
     font-family: 'Roboto';
     font-size: 16px;
-    font-weight: var(--regular);
-    margin-left: 24px;
+    line-height: 1.5;
 }
 
-.fases a {
+.link-tarefas a {
+    text-decoration: none;
     color: var(--g11);
     font-family: 'Roboto';
     font-size: 16px;
     font-weight: var(--medium);
-    
+    line-height: 1.5;
 }
 
-.main-tarefas {
-    margin-right: 32px;
-    margin-top: 46px;
+.link-tarefas a i {
+    margin-left: 8px;
 }
 
+<<<<<<< HEAD
 
+=======
+.fase-divisor {
+    height: 1px;
+    background-color: var(--g3);
+    width: 100%;
+    margin-top: 12px;
+}
+>>>>>>> 5800e3d97df8e094460f2ea7145b117415a2a54a
 
 
 

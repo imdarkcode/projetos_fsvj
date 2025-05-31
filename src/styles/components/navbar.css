@@ -1,0 +1,99 @@
+.nav-container {
+    background-color: var(--g11);
+    margin: 16px 24px 16px 16px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 24px;
+}
+
+.nav-container .nav-logo{
+    margin-bottom: 24px;
+}
+
+.mensagem-usuario p {
+    color: var(--g1);
+    font-family: 'Roboto';
+    font-size: 16px;
+    font-weight: var(--medium);
+    line-height: 1.5;
+    margin-bottom: 32px;
+}
+
+.nav-menu {
+    margin-bottom: 32px;
+}
+
+.nav-menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.nav-container h2, .nav-projetos span {
+    font-family: 'Roboto';
+    font-weight: var(--regular);
+    color: var(--g5);
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.nav-container li a{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+    color: var(--g1);
+    text-decoration: none;
+    font-family: 'Roboto';
+    font-weight: var(--medium);
+    color: var(--g1);
+    font-size: 12px;
+    line-height: 1.5;
+    align-items: center;
+}
+
+.nav-container li a i {
+    font-size: 16px;
+}
+
+.nav-item-projetos {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.nav-item-projetos div {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: var(--o6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.nav-item-projetos div span {
+    color: var(--g1);
+    font-size: 12px;
+    line-height: 1.5;
+    font-family: 'Poppins';
+}
+
+.nav-projetos{
+    position: relative;
+}
+
+.nav-projetos span {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.nome-projeto {
+    color: var(--g1);
+    font-family: 'Roboto';
+    font-size: 12px;
+    font-weight: var(--medium);
+    line-height: 1.5;
+    margin: 16px 0;
+}
