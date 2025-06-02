@@ -1,0 +1,232 @@
+@import url('../../styles/global.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+body {
+    background-color: var(--g2);
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    height: 100vh;
+}
+
+.nav-container {
+    background-color: var(--g11);
+    margin: 16px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 24px;
+}
+
+.nav-container h1 {
+    font-family: 'Roboto';
+    font-weight: var(--medium);
+    color: var(--g1);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.nav-container .nav-logo, .nav-container .nav-menu{
+    margin-bottom: 32px;
+}
+
+.nav-container h2, .nav-projetos span {
+    font-family: 'Roboto';
+    font-weight: var(--regular);
+    color: var(--g5);
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.nav-container li a{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.nav-container li a {
+    color: var(--g1);
+    text-decoration: none;
+    font-family: 'Roboto';
+    font-weight: var(--medium);
+    color: var(--g1);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.nav-projetos{
+    position: relative;
+}
+
+.nav-projetos span {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.mensagem-usuario {
+    color: var(--g1);
+    font-family: 'Roboto';
+    font-size: 16px;
+    font-weight: var(--medium);
+    line-height: 1.5;
+    margin: 24px 0;
+}
+
+.nome-projeto {
+    color: var(--g1);
+    font-family: 'Roboto';
+    font-size: 12px;
+    font-weight: var(--medium);
+    line-height: 1.5;
+    margin: 16px 0;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 32px 24px 0;
+}
+
+.main-header h1 {
+    color: var(--g11);
+    font-family: 'Poppins';
+    font-size: 32px;
+    font-weight: var(--semibold);
+}
+
+.main-header p {
+    color: var(--g5);
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-weight: var(--regular);
+}
+
+form {
+    display: grid;
+}
+
+.dados-container {
+    display: grid;
+    grid-template-columns: 1fr 700px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.dados-container label {
+    font-family: "Roboto";
+    font-size: 18px;
+    font-weight: var(--medium);
+    color: var(--g11);
+
+}
+
+.dados-container input {
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: none;
+    font-size: 18px;
+    background-color: var(--g1);
+    color: var(--g11);
+    height: 48px;
+    margin-right: 142px;
+}
+
+.perfil-container {
+
+  background-color: var(--g2);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.perfil-divisor {
+    border-bottom: 1px solid var(--g3);
+    margin: 48px 0 32px;
+}
+
+.editar-container h2 {
+    font-size: 30px;
+    font-family: "Poppins";
+    font-weight: var(--semibold);
+    color: var(--g11);
+    margin-bottom: 24px;
+}
+
+.input-senha {
+  position: relative;
+
+  display: grid;
+}
+
+.seta {
+    position: absolute;
+    right: 158px;
+    top: 40%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: var(--g10);
+    cursor: pointer;
+}
+
+.senha-escondida,
+.senha-exibida {
+    position: absolute;
+    right: 158px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: var(--g11);
+    cursor: pointer;
+}
+
+.senha-escondida {
+    display: block;
+}
+
+.senha-exibida {
+    display: none;
+}
+
+.erro {    
+    color: var(--r8);
+    font-size: 16px;
+    font-weight: var(--semibold);
+    font-family: "Roboto";
+    line-height: 1.5;
+    margin-top: 8px;
+    margin-bottom: 24px;
+}
+
+
+.botao-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 32px;
+    padding-right: 142px;
+}
+.botao-salvar {
+    background-color: var(--g11);
+    color: var(--g1);
+    padding: 12px 32px;
+    border: none;
+    border-radius: 12px;
+    font-family: "Roboto";
+    font-size: 22px;
+    font-weight: var(--medium);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.botao-salvar:hover {
+  background-color: var(--g9);
+}
+
+
