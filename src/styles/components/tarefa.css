@@ -1,0 +1,56 @@
+.kanban-tarefa h3 {
+    color: var(--g11);
+    font-family: "Roboto";
+    font-size: 20px;
+    font-weight: var(--semibold);
+    line-height: 1.5;
+}
+
+.kanban-tarefa p {
+    color: var(--g8);
+    font-family: "Roboto";
+    font-size: 12px;
+    font-weight: var(--regular);
+    line-height: 1.5;
+    height: 36px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.kanban-tarefa {
+    background-color: var(--g1);
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 16px 24px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tarefa-estado {
+    width: 32px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--g11);
+}
+
+.a-fazer {
+    background-color: var(--r7);
+}
+
+.em-andamento {
+    background-color: var(--y5);
+}
+
+.concluida {
+    background-color: var(--gr6);
+}
+
+.data-tarefa {
+    color: var(--g11);
+    font-family: "Roboto";
+    font-size: 16px;
+    font-weight: var(--semibold);
+    line-height: 1.5;
+}
