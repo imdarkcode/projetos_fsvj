@@ -1,4 +1,5 @@
 .projeto-container{
+    margin-top: 24px;
     align-items: center;
     background-color: var(--g1);
     border-radius: 20px;
@@ -42,7 +43,7 @@
     color: var(--g1);
 }
 
-#btnEsconderFases {
+.btnEsconderFases {
     display: none;
 }
 

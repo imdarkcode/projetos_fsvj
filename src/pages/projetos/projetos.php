@@ -21,7 +21,7 @@
         $quantidade_projeto_atual = $query_projeto_atual -> num_rows;
     }
     elseif ($hierarquia == "COORDENADOR") {
-        $sql = "SELECT * FROM PROJETOS P INNER JOIN usuarios_projetos UP ON UP.ID_PROJETO = P.ID_PROJETO WHERE UP.ID_USUARIO = '$id_usuario' OR P.ID_COORDENADOR = '$id_usuario' AND P.DATA_INICIO < CURRENT_DATE() AND P.DATA_TERMINO > CURRENT_DATE()";
+        $sql = "SELECT * FROM PROJETOS P INNER JOIN usuarios_projetos UP ON UP.ID_PROJETO = P.ID_PROJETO WHERE UP.ID_USUARIO = '$id_usuario' AND P.DATA_INICIO < CURRENT_DATE() AND P.DATA_TERMINO > CURRENT_DATE() OR P.ID_COORDENADOR = '$id_usuario'";
         $query_projeto_atual = $mysqli -> query($sql);
         $quantidade_projeto_atual = $query_projeto_atual -> num_rows;
     }
@@ -30,7 +30,6 @@
         $query_projeto_atual = $mysqli -> query($sql);
         $quantidade_projeto_atual = $query_projeto_atual -> num_rows;
     }
-
 ?>
 
 <!DOCTYPE html>
@@ -65,12 +64,12 @@
                 }
 
                 elseif ($hierarquia == "COORDENADOR") {
-                    $sql = "SELECT * FROM PROJETOS P INNER JOIN usuarios_projetos UP ON UP.ID_PROJETO = P.ID_PROJETO WHERE UP.ID_USUARIO = '$id_usuario' OR P.ID_COORDENADOR = '$id_usuario' AND P.DATA_INICIO < CURRENT_DATE() AND P.DATA_TERMINO > CURRENT_DATE()";
+                    $sql = "SELECT * FROM PROJETOS P LEFT JOIN usuarios_projetos UP ON UP.ID_PROJETO = P.ID_PROJETO WHERE UP.ID_USUARIO = '$id_usuario' AND P.DATA_INICIO < CURRENT_DATE() AND P.DATA_TERMINO > CURRENT_DATE() OR P.ID_COORDENADOR = '$id_usuario'";
                     $query_projeto = $mysqli -> query($sql);
                 }
 
                 else {
-                    $sql = "SELECT * FROM PROJETOS P WHERE P.DATA_INICIO < CURRENT_DATE() AND P.DATA_TERMINO > CURRENT_DATE()";
+                    $sql = "SELECT * FROM PROJETOS P";
                     $query_projeto = $mysqli -> query($sql);
                 }
 
