@@ -5,12 +5,12 @@
             <p><?php echo $row_coordenador["NOME"]; ?></p>
         </div>
         <div class="botoes-projeto">
-            <?php if ($hierarquia == "DIRETOR") {echo '<button id="btnExcluirProjeto'.$id_projeto.' onclick="ExcluirProjeto()"><i class="bi bi-trash3-fill"></i></button>';} ?>
-            <?php if ($hierarquia == "COORDENADOR") {echo '<button id="btnAdcionarFase'.$id_projeto.' onclick="AdicionarFase()><i class="bi bi-plus-lg"></i></button>';} ?>
-            <?php if ($hierarquia == "DIRETOR") {echo '<button id="btnEditarProjeto'.$id_projeto.' onclick="EditarProjeto()><i class="bi bi-sliders"></i></button>';} ?>
-            <?php if ($hierarquia != "VOLUNTARIO") {echo '<button id="btnParticipantesProjeto'.$id_projeto.' onclick="ParticipantesProjeto()><i class="bi bi-people-fill"></i></button>';} ?>
+            <?php if ($hierarquia == "DIRETOR") {echo '<a href="projeto.php?id_usuario='.$id_usuario.'&id_projeto='.$id_projeto.'" id="btnExcluirProjeto'.$id_projeto.' onclick="ExcluirProjeto()"><i class="bi bi-trash3-fill"></i></a>';} ?>
+            <?php if ($hierarquia == "COORDENADOR") {echo '<a href="projeto.php?id_usuario='.$id_usuario.'&id_projeto='.$id_projeto.'" id="btnAdcionarFase'.$id_projeto.' onclick="AdicionarFase()><i class="bi bi-plus-lg"></i></a>';} ?>
+            <?php if ($hierarquia == "DIRETOR") {echo '<a href="projeto.php?id_usuario='.$id_usuario.'&id_projeto='.$id_projeto.'" id="btnEditarProjeto'.$id_projeto.' onclick="EditarProjeto()><i class="bi bi-sliders"></i></a>';} ?>
+            <?php if ($hierarquia != "VOLUNTARIO") {echo '<a href="projeto.php?id_usuario='.$id_usuario.'&id_projeto='.$id_projeto.'" id="btnParticipantesProjeto'.$id_projeto.' onclick="ParticipantesProjeto()><i class="bi bi-people-fill"></i></a>';} ?>
 
-            <button><i class="bi bi-info"></i></button>
+            <a><i class="bi bi-info"></i></a>
             <button id="btnExibirFases<?php echo $id_projeto; ?>" onclick="ExibirFases<?php echo $id_projeto;?>()"><i class="bi bi-caret-down-fill"></i></button>
             <button id="btnEsconderFases<?php echo $id_projeto; ?>" class="btnEsconderFases" onclick="EsconderFases<?php echo $id_projeto;?>()"><i class="bi bi-caret-up-fill"></i></button>
         </div>                      

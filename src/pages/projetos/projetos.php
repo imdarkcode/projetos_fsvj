@@ -42,11 +42,13 @@
         <link rel="stylesheet" href="projetos.css" />
         <link rel="stylesheet" href="../../styles/components/navbar.css" />
         <link rel="stylesheet" href="../../styles/components/projeto.css" />
+        <link rel="stylesheet" href="../../styles/components/informacoes_projeto.css" />
     </head>
 
     <body>
         
         <?php include("../../components/navbar.php"); ?>
+        <?php include("../../components/informacoes_projeto.php"); ?>
 
         <main class="main-container">
             <section class="main-header">

@@ -1,0 +1,98 @@
+.informacoes-projeto {
+    position: absolute;
+    display: none;
+}
+
+.fundo-escuro {
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000050;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-informacoes-projeto {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--g1);
+    border-radius: 20px;
+    width: 1128px;
+    height: 928px;
+}
+
+.card-informacoes-projeto > .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--g11);
+    width: 100%;
+    height: 64px;
+    border-radius: 20px 20px 0 0;
+    box-sizing: border-box;
+    padding: 0 48px;
+}
+
+.card-informacoes-projeto > .card-header > h2 {
+    font-family: 'Poppins';
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--g1);
+    font-weight: var(--regular);
+}
+
+.card-informacoes-projeto > .card-header > i {
+    font-family: 'Poppins';
+    font-size: 24px;
+    color: var(--g1);
+    font-weight: var(--regular);
+}
+
+.card-informacoes-projeto > .card-main > .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+    row-gap: 16px;
+    box-sizing: border-box;
+    padding: 24px 48px;
+}
+
+.card-informacoes-projeto label {
+    font-family: 'Roboto';
+    color: var(--g11);
+    font-weight: var(--medium);
+    line-height: 1.5;
+}
+
+.card-informacoes-projeto input {
+    height: 48px;
+    border: none;
+    background-color: var(--g2);
+    color: var(--g11);
+    border-radius: 12px;
+    box-sizing: border-box;
+    padding: 0 24px;
+    font-family: 'Roboto';
+    font-size: 16px;
+}
+
+.card-informacoes-projeto textarea {
+    min-height: 320px;
+    border: none;
+    background-color: var(--g2);
+    color: var(--g11);
+    border-radius: 12px;
+    box-sizing: border-box;
+    padding: 0 24px;
+}
+
+.card-informacoes-projeto .input-nome-projeto,  .card-informacoes-projeto .input-escopo{
+    grid-column: 1 / 3;
+}
+
+.card-informacoes-projeto .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
