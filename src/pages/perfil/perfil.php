@@ -68,7 +68,6 @@
                             <option value="Coordenador">Coordenador</option>
                             <option value="Diretor">Diretor</option>
                         </select>
-
                     </div>
                     <div class="dados-container">
                         <label for="inputEmail">E-mail</label>
@@ -88,15 +87,28 @@
                     <div class="editar-container">
                         <h2>Editar Informações</h2>
                     </div>
+                    <div class="editar-container">
+                        <label for="nomeEditar">Nome do Usuário</label>
+                        <input type="text" id="nomeEditar" name="nome" placeholder="Nome do Usuário" autocomplete="off">
+                    </div>
+                    <div class="editar-container">
+                        <label for="inputCargo">Cargo</label>
+                        <select name="cargo" id="cargoEditar">
+                            <option value="Escolha-Cargo">Escolha o Cargo</option>
+                            <option value="Voluntário">Voluntário</option>
+                            <option value="Coordenador">Coordenador</option>
+                            <option value="Diretor">Diretor</option>
+                        </select>
+                    </div>
 
                     <div class="editar-container">
-                        <label for="inputEmailEditar">E-mail</label>
-                        <input type="email" id="inputEmailEditar" name="emailEditar" placeholder="usuario@email.com" autocomplete="off" />
+                        <label for="emailEditar">E-mail</label>
+                        <input type="email" id="emailEditar" name="emailEditar" placeholder="usuario@email.com" autocomplete="off" />
                     </div>
                     <span class="erro"><i class="bi bi-exclamation-circle-fill"></i> Formato de E-mail Inválido</span>
 
                     <div class="dados-container input-senhaEditar">
-                        <label for="inputSenhaEditar">Senha</label>
+                        <label for="inputSenhaEditar">Nova Senha</label>
                         <div class="input-senhaEditar">
                             <input type="password" id="inputSenhaEditar" name="senhaEditar" placeholder="Digite sua senha" autocomplete="off" />
                             <i class="bi bi-eye-slash-fill senha-escondida" onclick="ExibirSenha()"></i>
