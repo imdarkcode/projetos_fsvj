@@ -1,5 +1,5 @@
 <?php
-    if ($hierarquia == "VOLUNTARIO") {
+    if ($hierarquia == "VOLUNTÁRIO") {
         $sql = "SELECT * FROM PROJETOS P INNER JOIN usuarios_projetos UP ON UP.ID_PROJETO = P.ID_PROJETO WHERE UP.ID_USUARIO = '$id_usuario' AND P.DATA_INICIO <= CURRENT_DATE() AND P.DATA_TERMINO >= CURRENT_DATE()";
         $query_projeto = $mysqli -> query($sql);
     }

@@ -1,11 +1,11 @@
 <?php
-    if ($hierarquia == "VOLUNTARIO") {
-        $sql = "SELECT * FROM PROJETOS P INNER JOIN USUARIOS_PROJETOS UP ON P.ID_PROJETO = UP.ID_PROJETO WHERE UP.ID_USUARIO = '$id_usuario' AND P.DATA_INICIO <= CURRENT_DATE() AND P.DATA_TERMINO >= CURRENT_DATE()";
+    if ($hierarquia == "VOLUNTÁRIO") {
+        $sql = "SELECT DISTINCT P.ID_PROJETO, P.ID_COORDENADOR, P.NOME FROM PROJETOS P INNER JOIN USUARIOS_PROJETOS UP ON P.ID_PROJETO = UP.ID_PROJETO WHERE UP.ID_USUARIO = '$id_usuario' AND P.DATA_INICIO <= CURRENT_DATE() AND P.DATA_TERMINO >= CURRENT_DATE()";
         $query_projeto = $mysqli -> query($sql);
     }
 
     elseif ($hierarquia == "COORDENADOR") {
-        $sql = "SELECT * FROM PROJETOS P LEFT JOIN USUARIOS_PROJETOS UP ON P.ID_PROJETO = UP.ID_PROJETO WHERE UP.ID_USUARIO = '$id_usuario' AND P.DATA_INICIO <= CURRENT_DATE() AND P.DATA_TERMINO >= CURRENT_DATE() OR P.ID_COORDENADOR = '$id_usuario'";
+        $sql = "SELECT DISTINCT P.ID_PROJETO, P.ID_COORDENADOR, P.NOME FROM PROJETOS P LEFT JOIN USUARIOS_PROJETOS UP ON P.ID_PROJETO = UP.ID_PROJETO WHERE UP.ID_USUARIO = '$id_usuario' AND P.DATA_INICIO <= CURRENT_DATE() AND P.DATA_TERMINO >= CURRENT_DATE() OR P.ID_COORDENADOR = '$id_usuario'";
         $query_projeto = $mysqli -> query($sql);
     }
 
@@ -33,10 +33,10 @@
                         <p>'.$nome_coordenador.'</p>
                     </div>
                     <div class="botoes-projeto">
-                        '.($hierarquia == "DIRETOR" ? '<button id="btnExcluirProjeto'.$id_projeto.'" onclick="ExcluirProjeto()"><i class="bi bi-trash3-fill"></i></button>' : '').'
+                        '.($hierarquia == "DIRETOR" ? '<button id="btnExcluirProjeto'.$id_projeto.'" onclick="AbrirExcluirProjeto'.$id_projeto.'()"><i class="bi bi-trash3-fill"></i></button>' : '').'
                         '.($hierarquia == "COORDENADOR" ? '<button id="btnAdcionarFase'.$id_projeto.'" onclick="AdicionarFase()"><i class="bi bi-plus-lg"></i></button>' : '').'
                         '.($hierarquia == "DIRETOR" ? '<button id="btnEditarProjeto'.$id_projeto.'" onclick="AbrirEditarProjeto'.$id_projeto.'()"><i class="bi bi-sliders"></i></button>' : '').'
-                        '.($hierarquia != "VOLUNTARIO" ? '<button id="btnParticipantesProjeto'.$id_projeto.'" onclick="AbrirParticipantesProjeto'.$id_projeto.'()"><i class="bi bi-people-fill"></i></button>' : '').'
+                        '.($hierarquia != "VOLUNTÁRIO" ? '<button id="btnParticipantesProjeto'.$id_projeto.'" onclick="AbrirParticipantesProjeto'.$id_projeto.'()"><i class="bi bi-people-fill"></i></button>' : '').'
 
                         <button onclick="AbrirInformacoesProjeto'.$id_projeto.'()"><i class="bi bi-info"></i></button>
                         <button id="btnExibirFases'.$id_projeto.'" onclick="ExibirFases'.$id_projeto.'()"><i class="bi bi-caret-down-fill"></i></button>

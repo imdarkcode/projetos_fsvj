@@ -17,6 +17,8 @@
         <link rel="stylesheet" href="../../styles/components/participantes_projeto.css" />
         <link rel="stylesheet" href="../../styles/components/editar_projeto.css" />
         <link rel="stylesheet" href="../../styles/components/adicionar_projeto.css" />
+        <link rel="stylesheet" href="../../styles/components/excluir_projeto.css" />
+        <link rel="stylesheet" href="../../styles/components/filtrar_projeto.css" />
     </head>
 
     <body>
@@ -26,13 +28,15 @@
         <?php include("../../components/participantes_projeto.php"); ?>
         <?php include("../../components/editar_projeto.php"); ?>
         <?php include("../../components/adicionar_projeto.php"); ?>
+        <?php include("../../components/excluir_projeto.php"); ?>
+        <?php include("../../components/filtrar_projeto.php"); ?>
         
         <main class="main-container">
             <section class="main-header">
                 <h1>Projetos</h1>
                 <div class="botoes-header">
                     <?php if ($hierarquia == "DIRETOR") {echo '<button class="adicionar" onclick="AbrirAdicionarProjeto()"><i class="bi bi-plus-lg"></i> Adicionar Projeto</button>';} ?>
-                    <button class="filtrar"><i class="bi bi-funnel-fill"></i>Filtrar</button>
+                    <button class="filtrar" onclick="AbrirFiltrarProjeto()"><i class="bi bi-funnel-fill"></i>Filtrar</button>
                 </div>
             </section>
 

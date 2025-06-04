@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02/06/2025 às 14:03
+-- Tempo de geração: 04-Jun-2025 às 18:24
 -- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- versão do PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `documentos`
+-- Estrutura da tabela `documentos`
 --
 
 CREATE TABLE `documentos` (
@@ -34,10 +34,17 @@ CREATE TABLE `documentos` (
   `ID_PROJETO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `documentos`
+--
+
+INSERT INTO `documentos` (`ID_DOCUMENTO`, `NOME`, `ANEXADO_EM`, `ID_PROJETO`) VALUES
+(1, 'Comprovante de aluguel de cadeiras', '2025-06-04', 1);
+
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `enderecos`
+-- Estrutura da tabela `enderecos`
 --
 
 CREATE TABLE `enderecos` (
@@ -49,10 +56,17 @@ CREATE TABLE `enderecos` (
   `CEP` varchar(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `enderecos`
+--
+
+INSERT INTO `enderecos` (`ID_ENDERECO`, `RUA`, `BAIRRO`, `NUMERO`, `CIDADE`, `CEP`) VALUES
+(1, 'Rua das Flores', 'Centro', 123, 'Taquaritinga', '15900-000');
+
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `equipamentos`
+-- Estrutura da tabela `equipamentos`
 --
 
 CREATE TABLE `equipamentos` (
@@ -62,10 +76,17 @@ CREATE TABLE `equipamentos` (
   `ID_PROJETO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `equipamentos`
+--
+
+INSERT INTO `equipamentos` (`ID_EQUIPAMENTO`, `NOME`, `QUANTIDADE_DISPONIVEL`, `ID_PROJETO`) VALUES
+(1, 'Notebook', 20, 1);
+
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `equipamentos_utilizados`
+-- Estrutura da tabela `equipamentos_utilizados`
 --
 
 CREATE TABLE `equipamentos_utilizados` (
@@ -75,33 +96,40 @@ CREATE TABLE `equipamentos_utilizados` (
   `ID_FASE` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `equipamentos_utilizados`
+--
+
+INSERT INTO `equipamentos_utilizados` (`ID_EQUIPAMENTO_UTILIZADO`, `QUANTIDADE_UTILIZADA`, `ID_EQUIPAMENTO`, `ID_FASE`) VALUES
+(1, 5, 1, 1);
+
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `fases`
+-- Estrutura da tabela `fases`
 --
 
 CREATE TABLE `fases` (
   `ID_FASE` int(11) NOT NULL,
   `NOME` varchar(50) NOT NULL,
   `ESCOPO` mediumtext DEFAULT NULL,
+  `ESTADO` enum('NÃO INICIADA','EM ANDAMENTO','CONCLUÍDA') DEFAULT 'NÃO INICIADA',
   `DATA_INICIO` date NOT NULL,
   `DATA_TERMINO` date NOT NULL,
-  `ID_PROJETO` int(11) NOT NULL,
-  `ESTADO` enum('Não Iniciada','Em Andamento','Concluída') DEFAULT NULL
+  `ID_PROJETO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `fases`
+-- Extraindo dados da tabela `fases`
 --
 
-INSERT INTO `fases` (`ID_FASE`, `NOME`, `ESCOPO`, `DATA_INICIO`, `DATA_TERMINO`, `ID_PROJETO`, `ESTADO`) VALUES
-(1, 'Planejamento', 'Escopo da fase', '2025-06-04', '2025-06-12', 1, 'Não Iniciada');
+INSERT INTO `fases` (`ID_FASE`, `NOME`, `ESCOPO`, `ESTADO`, `DATA_INICIO`, `DATA_TERMINO`, `ID_PROJETO`) VALUES
+(1, 'Planejamento', 'Escopo da fase', 'NÃO INICIADA', '2025-06-04', '2025-06-12', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `gastos`
+-- Estrutura da tabela `gastos`
 --
 
 CREATE TABLE `gastos` (
@@ -111,10 +139,17 @@ CREATE TABLE `gastos` (
   `ID_FASE` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `gastos`
+--
+
+INSERT INTO `gastos` (`ID_GASTO`, `DESTINO`, `VALOR`, `ID_FASE`) VALUES
+(1, 'Compra de camisetas', 5000, 1);
+
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `locais`
+-- Estrutura da tabela `locais`
 --
 
 CREATE TABLE `locais` (
@@ -123,10 +158,17 @@ CREATE TABLE `locais` (
   `ID_ENDERECO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `locais`
+--
+
+INSERT INTO `locais` (`ID_LOCAL`, `NOME`, `ID_ENDERECO`) VALUES
+(1, 'Edícula São Joaõ', 1);
+
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `projetos`
+-- Estrutura da tabela `projetos`
 --
 
 CREATE TABLE `projetos` (
@@ -142,16 +184,16 @@ CREATE TABLE `projetos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `projetos`
+-- Extraindo dados da tabela `projetos`
 --
 
 INSERT INTO `projetos` (`ID_PROJETO`, `NOME`, `ESCOPO`, `DATA_INICIO`, `DATA_TERMINO`, `CRIADO_EM`, `ID_LOCAL`, `ID_DIRETOR`, `ID_COORDENADOR`) VALUES
-(1, 'Aprender na prática', 'Escopo do projeto', '2025-05-20', '2025-06-20', '2025-05-31', NULL, 1, 2);
+(1, 'Aprender na prática', 'Escopo do projeto', '2025-06-04', '2025-07-04', '2025-06-04', NULL, 1, 2);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `recursos`
+-- Estrutura da tabela `recursos`
 --
 
 CREATE TABLE `recursos` (
@@ -161,10 +203,17 @@ CREATE TABLE `recursos` (
   `ID_PROJETO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `recursos`
+--
+
+INSERT INTO `recursos` (`ID_RECURSO`, `FONTE`, `VALOR`, `ID_PROJETO`) VALUES
+(1, 'Prefeitura Municipal de Taquaritinga', 300000, 1);
+
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `relatorios`
+-- Estrutura da tabela `relatorios`
 --
 
 CREATE TABLE `relatorios` (
@@ -174,17 +223,24 @@ CREATE TABLE `relatorios` (
   `ID_FASE` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `relatorios`
+--
+
+INSERT INTO `relatorios` (`ID_RELATORIO`, `NOME`, `GERADO_EM`, `ID_FASE`) VALUES
+(1, 'Relatório do Planejamento do projeto Aprender na P', '2025-06-04', 1);
+
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tarefas`
+-- Estrutura da tabela `tarefas`
 --
 
 CREATE TABLE `tarefas` (
   `ID_TAREFA` int(11) NOT NULL,
   `NOME` varchar(50) NOT NULL,
   `DESCRICAO` mediumtext DEFAULT NULL,
-  `ESTADO` enum('A FAZER','EM ANDAMENTO','CONCLUIDO') DEFAULT 'A FAZER',
+  `ESTADO` enum('A FAZER','EM ANDAMENTO','CONCLUÍDA') DEFAULT 'A FAZER',
   `CRIADO_EM` date DEFAULT curdate(),
   `DATA_VENCIMENTO` date NOT NULL,
   `ID_FASE` int(11) NOT NULL,
@@ -192,16 +248,16 @@ CREATE TABLE `tarefas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `tarefas`
+-- Extraindo dados da tabela `tarefas`
 --
 
 INSERT INTO `tarefas` (`ID_TAREFA`, `NOME`, `DESCRICAO`, `ESTADO`, `CRIADO_EM`, `DATA_VENCIMENTO`, `ID_FASE`, `ID_DOCUMENTO`) VALUES
-(1, 'Coletar assinaturas', 'Descrição da tarefa', 'A FAZER', '2025-05-31', '2025-06-12', 1, NULL);
+(1, 'Coletar Assinaturas', 'Descrição da tarefa', 'A FAZER', '2025-06-04', '2025-06-10', 1, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuarios`
+-- Estrutura da tabela `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -209,24 +265,24 @@ CREATE TABLE `usuarios` (
   `NOME` varchar(50) NOT NULL,
   `EMAIL` varchar(50) NOT NULL,
   `SENHA` varchar(50) NOT NULL,
-  `HIERARQUIA` enum('DIRETOR','COORDENADOR','VOLUNTARIO') NOT NULL,
+  `HIERARQUIA` enum('DIRETOR','COORDENADOR','VOLUNTÁRIO') NOT NULL,
   `CRIADO_EM` date DEFAULT curdate(),
   `EXCLUIDO` varchar(1) DEFAULT 'N'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `usuarios`
+-- Extraindo dados da tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`ID_USUARIO`, `NOME`, `EMAIL`, `SENHA`, `HIERARQUIA`, `CRIADO_EM`, `EXCLUIDO`) VALUES
-(1, 'João Augusto', 'joao@email.com', '#senha123', 'DIRETOR', '2025-05-31', 'N'),
-(2, 'Ana Souza', 'ana@email.com', '#senha123', 'COORDENADOR', '2025-05-31', 'N'),
-(3, 'Guilherme Oliveira', 'guilherme@email.com', '#senha123', 'VOLUNTARIO', '2025-05-31', 'N');
+(1, 'João Augusto', 'joao@email.com', '#senha123', 'DIRETOR', '2025-06-04', 'N'),
+(2, 'Ana Souza', 'ana@email.com', '#senha123', 'COORDENADOR', '2025-06-04', 'N'),
+(3, 'Guilherme Oliveira', 'guilherme@email.com', '#senha123', 'VOLUNTÁRIO', '2025-06-04', 'N');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuarios_projetos`
+-- Estrutura da tabela `usuarios_projetos`
 --
 
 CREATE TABLE `usuarios_projetos` (
@@ -236,16 +292,17 @@ CREATE TABLE `usuarios_projetos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `usuarios_projetos`
+-- Extraindo dados da tabela `usuarios_projetos`
 --
 
 INSERT INTO `usuarios_projetos` (`ID_USUARIO_PROJETO`, `ID_USUARIO`, `ID_PROJETO`) VALUES
-(1, 3, 1);
+(1, 3, 1),
+(2, 3, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuarios_tarefas`
+-- Estrutura da tabela `usuarios_tarefas`
 --
 
 CREATE TABLE `usuarios_tarefas` (
@@ -255,38 +312,31 @@ CREATE TABLE `usuarios_tarefas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `usuarios_tarefas`
---
-
-INSERT INTO `usuarios_tarefas` (`ID_USUARIO_TAREFA`, `ID_USUARIO`, `ID_TAREFA`) VALUES
-(1, 3, 1);
-
---
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices de tabela `documentos`
+-- Índices para tabela `documentos`
 --
 ALTER TABLE `documentos`
   ADD PRIMARY KEY (`ID_DOCUMENTO`),
   ADD KEY `FK_DOCUMENTOS_PROJETOS` (`ID_PROJETO`);
 
 --
--- Índices de tabela `enderecos`
+-- Índices para tabela `enderecos`
 --
 ALTER TABLE `enderecos`
   ADD PRIMARY KEY (`ID_ENDERECO`);
 
 --
--- Índices de tabela `equipamentos`
+-- Índices para tabela `equipamentos`
 --
 ALTER TABLE `equipamentos`
   ADD PRIMARY KEY (`ID_EQUIPAMENTO`),
   ADD KEY `FK_EQUIPAMENTOS_PROJETOS` (`ID_PROJETO`);
 
 --
--- Índices de tabela `equipamentos_utilizados`
+-- Índices para tabela `equipamentos_utilizados`
 --
 ALTER TABLE `equipamentos_utilizados`
   ADD PRIMARY KEY (`ID_EQUIPAMENTO_UTILIZADO`),
@@ -294,28 +344,28 @@ ALTER TABLE `equipamentos_utilizados`
   ADD KEY `FK_EQUIPAMENTOS_UTILIZADOS_FASE` (`ID_FASE`);
 
 --
--- Índices de tabela `fases`
+-- Índices para tabela `fases`
 --
 ALTER TABLE `fases`
   ADD PRIMARY KEY (`ID_FASE`),
   ADD KEY `FK_FASES_PROJETOS` (`ID_PROJETO`);
 
 --
--- Índices de tabela `gastos`
+-- Índices para tabela `gastos`
 --
 ALTER TABLE `gastos`
   ADD PRIMARY KEY (`ID_GASTO`),
   ADD KEY `FK_GASTOS_FASES` (`ID_FASE`);
 
 --
--- Índices de tabela `locais`
+-- Índices para tabela `locais`
 --
 ALTER TABLE `locais`
   ADD PRIMARY KEY (`ID_LOCAL`),
   ADD KEY `FK_LOCAIS_ENDERECOS` (`ID_ENDERECO`);
 
 --
--- Índices de tabela `projetos`
+-- Índices para tabela `projetos`
 --
 ALTER TABLE `projetos`
   ADD PRIMARY KEY (`ID_PROJETO`),
@@ -324,21 +374,21 @@ ALTER TABLE `projetos`
   ADD KEY `FK_PROJETOS_COORDENADORES` (`ID_COORDENADOR`);
 
 --
--- Índices de tabela `recursos`
+-- Índices para tabela `recursos`
 --
 ALTER TABLE `recursos`
   ADD PRIMARY KEY (`ID_RECURSO`),
   ADD KEY `FK_RECURSOS_PROJETOS` (`ID_PROJETO`);
 
 --
--- Índices de tabela `relatorios`
+-- Índices para tabela `relatorios`
 --
 ALTER TABLE `relatorios`
   ADD PRIMARY KEY (`ID_RELATORIO`),
   ADD KEY `FK_RELATORIOS_FASES` (`ID_FASE`);
 
 --
--- Índices de tabela `tarefas`
+-- Índices para tabela `tarefas`
 --
 ALTER TABLE `tarefas`
   ADD PRIMARY KEY (`ID_TAREFA`),
@@ -346,14 +396,14 @@ ALTER TABLE `tarefas`
   ADD KEY `ID_DOCUMENTO` (`ID_DOCUMENTO`);
 
 --
--- Índices de tabela `usuarios`
+-- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`ID_USUARIO`),
   ADD UNIQUE KEY `EMAIL` (`EMAIL`);
 
 --
--- Índices de tabela `usuarios_projetos`
+-- Índices para tabela `usuarios_projetos`
 --
 ALTER TABLE `usuarios_projetos`
   ADD PRIMARY KEY (`ID_USUARIO_PROJETO`),
@@ -361,7 +411,7 @@ ALTER TABLE `usuarios_projetos`
   ADD KEY `FK_USUARIOS_PROJETOS_USUARIOS` (`ID_USUARIO`);
 
 --
--- Índices de tabela `usuarios_tarefas`
+-- Índices para tabela `usuarios_tarefas`
 --
 ALTER TABLE `usuarios_tarefas`
   ADD PRIMARY KEY (`ID_USUARIO_TAREFA`),
@@ -369,32 +419,32 @@ ALTER TABLE `usuarios_tarefas`
   ADD KEY `FK_USUARIOS_TAREFAS_USUARIOS` (`ID_USUARIO`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `ID_DOCUMENTO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_DOCUMENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `enderecos`
 --
 ALTER TABLE `enderecos`
-  MODIFY `ID_ENDERECO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_ENDERECO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `equipamentos`
 --
 ALTER TABLE `equipamentos`
-  MODIFY `ID_EQUIPAMENTO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_EQUIPAMENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `equipamentos_utilizados`
 --
 ALTER TABLE `equipamentos_utilizados`
-  MODIFY `ID_EQUIPAMENTO_UTILIZADO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_EQUIPAMENTO_UTILIZADO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `fases`
@@ -406,13 +456,13 @@ ALTER TABLE `fases`
 -- AUTO_INCREMENT de tabela `gastos`
 --
 ALTER TABLE `gastos`
-  MODIFY `ID_GASTO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_GASTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `locais`
 --
 ALTER TABLE `locais`
-  MODIFY `ID_LOCAL` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_LOCAL` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `projetos`
@@ -424,13 +474,13 @@ ALTER TABLE `projetos`
 -- AUTO_INCREMENT de tabela `recursos`
 --
 ALTER TABLE `recursos`
-  MODIFY `ID_RECURSO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_RECURSO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `relatorios`
 --
 ALTER TABLE `relatorios`
-  MODIFY `ID_RELATORIO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_RELATORIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `tarefas`
@@ -448,57 +498,57 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `usuarios_projetos`
 --
 ALTER TABLE `usuarios_projetos`
-  MODIFY `ID_USUARIO_PROJETO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_USUARIO_PROJETO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios_tarefas`
 --
 ALTER TABLE `usuarios_tarefas`
-  MODIFY `ID_USUARIO_TAREFA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_USUARIO_TAREFA` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Restrições para tabelas despejadas
+-- Restrições para despejos de tabelas
 --
 
 --
--- Restrições para tabelas `documentos`
+-- Limitadores para a tabela `documentos`
 --
 ALTER TABLE `documentos`
   ADD CONSTRAINT `FK_DOCUMENTOS_PROJETOS` FOREIGN KEY (`ID_PROJETO`) REFERENCES `projetos` (`ID_PROJETO`);
 
 --
--- Restrições para tabelas `equipamentos`
+-- Limitadores para a tabela `equipamentos`
 --
 ALTER TABLE `equipamentos`
   ADD CONSTRAINT `FK_EQUIPAMENTOS_PROJETOS` FOREIGN KEY (`ID_PROJETO`) REFERENCES `projetos` (`ID_PROJETO`);
 
 --
--- Restrições para tabelas `equipamentos_utilizados`
+-- Limitadores para a tabela `equipamentos_utilizados`
 --
 ALTER TABLE `equipamentos_utilizados`
   ADD CONSTRAINT `FK_EQUIPAMENTOS_UTILIZADOS_EQUIPAMENTOS` FOREIGN KEY (`ID_EQUIPAMENTO`) REFERENCES `equipamentos` (`ID_EQUIPAMENTO`),
   ADD CONSTRAINT `FK_EQUIPAMENTOS_UTILIZADOS_FASE` FOREIGN KEY (`ID_FASE`) REFERENCES `fases` (`ID_FASE`);
 
 --
--- Restrições para tabelas `fases`
+-- Limitadores para a tabela `fases`
 --
 ALTER TABLE `fases`
   ADD CONSTRAINT `FK_FASES_PROJETOS` FOREIGN KEY (`ID_PROJETO`) REFERENCES `projetos` (`ID_PROJETO`);
 
 --
--- Restrições para tabelas `gastos`
+-- Limitadores para a tabela `gastos`
 --
 ALTER TABLE `gastos`
   ADD CONSTRAINT `FK_GASTOS_FASES` FOREIGN KEY (`ID_FASE`) REFERENCES `fases` (`ID_FASE`);
 
 --
--- Restrições para tabelas `locais`
+-- Limitadores para a tabela `locais`
 --
 ALTER TABLE `locais`
   ADD CONSTRAINT `FK_LOCAIS_ENDERECOS` FOREIGN KEY (`ID_ENDERECO`) REFERENCES `enderecos` (`ID_ENDERECO`);
 
 --
--- Restrições para tabelas `projetos`
+-- Limitadores para a tabela `projetos`
 --
 ALTER TABLE `projetos`
   ADD CONSTRAINT `FK_PROJETOS_COORDENADORES` FOREIGN KEY (`ID_COORDENADOR`) REFERENCES `usuarios` (`ID_USUARIO`),
@@ -506,33 +556,33 @@ ALTER TABLE `projetos`
   ADD CONSTRAINT `projetos_ibfk_1` FOREIGN KEY (`ID_LOCAL`) REFERENCES `locais` (`ID_LOCAL`);
 
 --
--- Restrições para tabelas `recursos`
+-- Limitadores para a tabela `recursos`
 --
 ALTER TABLE `recursos`
   ADD CONSTRAINT `FK_RECURSOS_PROJETOS` FOREIGN KEY (`ID_PROJETO`) REFERENCES `projetos` (`ID_PROJETO`);
 
 --
--- Restrições para tabelas `relatorios`
+-- Limitadores para a tabela `relatorios`
 --
 ALTER TABLE `relatorios`
   ADD CONSTRAINT `FK_RELATORIOS_FASES` FOREIGN KEY (`ID_FASE`) REFERENCES `fases` (`ID_FASE`);
 
 --
--- Restrições para tabelas `tarefas`
+-- Limitadores para a tabela `tarefas`
 --
 ALTER TABLE `tarefas`
   ADD CONSTRAINT `FK_TAREFAS_FASES` FOREIGN KEY (`ID_FASE`) REFERENCES `fases` (`ID_FASE`),
   ADD CONSTRAINT `tarefas_ibfk_1` FOREIGN KEY (`ID_DOCUMENTO`) REFERENCES `documentos` (`ID_DOCUMENTO`);
 
 --
--- Restrições para tabelas `usuarios_projetos`
+-- Limitadores para a tabela `usuarios_projetos`
 --
 ALTER TABLE `usuarios_projetos`
   ADD CONSTRAINT `FK_USUARIOS_PROJETOS_PROJETOS` FOREIGN KEY (`ID_PROJETO`) REFERENCES `projetos` (`ID_PROJETO`),
   ADD CONSTRAINT `FK_USUARIOS_PROJETOS_USUARIOS` FOREIGN KEY (`ID_USUARIO`) REFERENCES `usuarios` (`ID_USUARIO`);
 
 --
--- Restrições para tabelas `usuarios_tarefas`
+-- Limitadores para a tabela `usuarios_tarefas`
 --
 ALTER TABLE `usuarios_tarefas`
   ADD CONSTRAINT `FK_USUARIOS_TAREFAS_TAREFAS` FOREIGN KEY (`ID_TAREFA`) REFERENCES `tarefas` (`ID_TAREFA`),
