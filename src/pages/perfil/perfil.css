@@ -216,6 +216,7 @@ select {
   display: flex;
   justify-content: flex-end;
   margin-top: 32px;
+  margin-bottom: 80px;
 }
 .botao-salvar {
   background-color: var(--g11);

@@ -212,3 +212,14 @@
 .card-editar-main::-webkit-scrollbar-thumb:hover {
   background: var(--g10);
 }
+
+@media (max-height: 1440px) {
+    .card-editar-projeto {
+        max-height: 100vh;
+    }
+    .card-editar-header {
+        height: 64px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }  
+}

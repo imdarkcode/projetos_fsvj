@@ -209,3 +209,25 @@
 .card-participantes-main::-webkit-scrollbar-thumb:hover {
   background: var(--g10);
 }
+
+@media screen and (max-height: 1440px) {
+  .card-particiantes-projeto {
+    height: 90vh;
+    max-height: 928px;
+  }
+}
+
+@media screen and (max-height: 1366px) {
+  .card-particiantes-projeto {
+    height: 88vh;
+    max-height: 880px;
+  }
+}
+
+@media screen and (max-height: 1024px) {
+  .card-particiantes-projeto {
+    height: 85vh;
+    max-height: 840px;
+  }
+}
+

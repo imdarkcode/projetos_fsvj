@@ -162,3 +162,15 @@
 .card-informacoes-projeto > .card-main::-webkit-scrollbar-thumb:hover {
   background: var(--g10);
 }
+
+@media (max-height: 1440px) {
+    .card-informacoes-projeto  {
+        max-height: 100vh;
+  }
+    .card-informacoes-projeto > .card-header{
+        height: 64px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+  } 
+}
+

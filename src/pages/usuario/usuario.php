@@ -57,12 +57,8 @@
                 </div>
             </section>
             <section class="main-search">
-                <div class="buscar-container">
                     <input type="text" placeholder="Nome do Usuário">
-                </div>
-                <div class= "main-botao">
                     <button class="botao-buscar"><i class="bi bi-search"></i></button>
-                </div>
             </section>
             <section class="usuarios-container">
                 <div class="usuarios-titulo">

@@ -114,9 +114,9 @@ body {
 }
 
 .main-search {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 8px;
     margin: 32px 24px 0;
 }
 
@@ -126,7 +126,6 @@ input {
     border-radius: 12px;
     height: 48px;
     border: none;
-    width: 950px;
     font-family: "Roboto";
     font-size: 16px;
 }
@@ -139,7 +138,6 @@ input {
     height: 48px;
     width: 48px;
     border: none;
-    margin-left: 8px; 
     background-color: 0.3s;
     cursor: pointer;   
 }
@@ -205,4 +203,19 @@ input {
 .usuarios-divisor {
     border-bottom: 1px solid var(--g4);
     margin: 16px 24px;
+}
+
+@media (max-width: 1440px) {
+    body {
+        grid-template-columns: 240px 1fr;
+    }
+
+   .nav-container {
+    height: 600px;
+   }
+
+   .main-container { 
+    height: 100%;
+
+   }
 }

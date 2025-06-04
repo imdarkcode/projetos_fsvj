@@ -213,3 +213,14 @@
 .card-adicionar-main::-webkit-scrollbar-thumb:hover {
   background: var(--g10);
 }
+
+@media (max-height: 1440px) {
+    .card-adicionar-projeto   {
+        max-height: 100vh;
+  }
+    .card-adicionar-header {
+        height: 64px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+  } 
+}

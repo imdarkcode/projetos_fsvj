@@ -67,6 +67,23 @@ body {
 }
 
 
+@media (max-width: 1440px) {
+    body {
+        grid-template-columns: 240px 1fr;
+    }
+
+   .nav-container {
+    height: 600px;
+   }
+
+   .main-container { 
+    height: 100%;
+
+   }
+}
+
+
+
 
 
 

@@ -206,3 +206,18 @@ input {
     border-bottom: 1px solid var(--g4);
     margin: 16px 24px;
 }
+
+@media (max-width: 1440px) {
+    body {
+        grid-template-columns: 240px 1fr;
+    }
+
+   .nav-container {
+    height: 600px;
+   }
+
+   .main-container { 
+    height: 100%;
+
+   }
+}
