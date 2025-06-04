@@ -1,6 +1,4 @@
 <?php
-    $id_usuario = $_GET["id_usuario"];
-
     $sql = "SELECT * FROM USUARIOS U WHERE U.ID_USUARIO = '$id_usuario'";
     $query_usuario = $mysqli -> query($sql);
 

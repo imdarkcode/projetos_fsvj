@@ -1,5 +1,6 @@
 <?php
     include("../../../conexao.php");
+    $id_usuario = $_GET["id_usuario"];
 ?>
 
 <!DOCTYPE html>

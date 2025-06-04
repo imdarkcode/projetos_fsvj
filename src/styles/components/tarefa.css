@@ -1,3 +1,15 @@
+.kanban-tarefa {
+    background-color: var(--g1);
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 16px 24px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    cursor: pointer;
+}
+
 .kanban-tarefa h3 {
     color: var(--g11);
     font-family: "Roboto";
@@ -17,16 +29,6 @@
     text-overflow: ellipsis;
 }
 
-.kanban-tarefa {
-    background-color: var(--g1);
-    border-radius: 20px;
-    box-sizing: border-box;
-    padding: 16px 24px;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
 
 .tarefa-estado {
     width: 32px;
