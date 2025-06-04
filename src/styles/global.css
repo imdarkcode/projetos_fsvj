@@ -24,3 +24,35 @@
     --medium: 500;
     --semibold: 600;
 }
+
+.fundo-vermelho {
+    background-color: var(--r8);
+}
+
+.fundo-verde {
+    background-color: var(--gr7);
+}
+
+.fundo-preto {
+    background-color: var(--g11);
+}
+
+.fundo-branco {
+    background-color: var(--g1);
+}
+
+.fundo-cinza-claro {
+    background-color: var(--g2);
+}
+
+.fundo-cinza-escuro {
+    background-color: var(--g10);
+}
+
+.fonte-preta {
+    color: var(--g11);
+}
+
+.fonte-branca {
+    color: var(--g1);
+}
