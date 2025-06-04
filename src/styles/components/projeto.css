@@ -36,7 +36,7 @@
     align-items:start;
 }
 
-.botoes-projeto a, .botoes-projeto button {
+.botoes-projeto button {
     font-size: 20px;
     padding: 10px;
     border: none;
@@ -53,19 +53,19 @@
     background-color: var(--g11);  
 }
 
-.botoes-projeto a:nth-last-child(3) {
+.botoes-projeto button:nth-last-child(3) {
     background-color: var(--o8);  
 }
 
-.botoes-projeto a:nth-last-child(4) {
+.botoes-projeto button:nth-last-child(4) {
     background-color: var(--gr8);  
 }
 
-.botoes-projeto a:nth-last-child(5) {
+.botoes-projeto button:nth-last-child(5) {
     background-color: var(--y6);  
 }
 
-.botoes-projeto a:nth-last-child(6) {
+.botoes-projeto button:nth-last-child(6) {
     background-color: var(--r8);  
 }
 
@@ -122,6 +122,11 @@
     font-family: 'Roboto';
     font-size: 16px;
     line-height: 1.5;
+    text-transform: lowercase;
+}
+
+.fase p::first-letter {
+    text-transform: uppercase;
 }
 
 .link-tarefas a {

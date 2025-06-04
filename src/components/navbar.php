@@ -1,10 +1,27 @@
+<?php
+    $id_usuario = $_GET["id_usuario"];
+
+    $sql = "SELECT * FROM USUARIOS U WHERE U.ID_USUARIO = '$id_usuario'";
+    $query_usuario = $mysqli -> query($sql);
+
+    $row_usuario = $query_usuario -> fetch_assoc();
+    $hierarquia = $row_usuario["HIERARQUIA"];
+    $nome_usuario = $row_usuario["NOME"];
+
+    $sql = "SELECT * FROM TAREFAS T INNER JOIN USUARIOS_TAREFAS UT ON T.ID_TAREFA = UT.ID_TAREFA INNER JOIN FASES F ON T.ID_FASE = F.ID_FASE INNER JOIN PROJETOS P ON F.ID_PROJETO = P.ID_PROJETO WHERE UT.ID_USUARIO = '$id_usuario' AND P.DATA_INICIO <= CURRENT_DATE() AND P.DATA_TERMINO >= CURRENT_DATE()";
+    $query_tarefas_atuais = $mysqli -> query($sql);
+
+    $row_tarefas_atuais = $query_tarefas_atuais -> fetch_assoc();
+    $quantidade_tarefas_atuais = $query_tarefas_atuais -> num_rows;
+?>
+
 <nav class="nav-container">
     <section class="nav-logo">
         <img class="logo" src="../../assets/images/logo_menu.svg" alt="Logo do software">                
     </section>
 
     <div class="mensagem-usuario">
-        <p><?php echo "Olá, ". $nome_usuario; ?></p>
+        <p><?php echo "Olá, ".$nome_usuario; ?></p>
     </div>
 
     <section class="nav-menu">
@@ -14,7 +31,7 @@
             <li>
                 <div class="nav-menu-item">
                     <a href="../projetos/projetos.php?id_usuario=<?php echo $id_usuario; ?>"><i class="bi bi-archive-fill"></i>Projetos</a>
-                    <?php if ($hierarquia != "DIRETOR") {echo '<div><span>'.$quantidade_tarefa.'</span></div>';} ?>
+                    <?php if ($hierarquia != "DIRETOR") {echo '<div><span>'.$quantidade_tarefas_atuais.'</span></div>';} ?>
                 </div>
             </li>
 
@@ -28,17 +45,39 @@
 
     <section class="nav-projetos">
         <h2>Projetos Atuais</h2>
-        <span><?php echo $quantidade_projeto_atual;?></span>
+
+        <?php
+            if ($hierarquia == "VOLUNTARIO") {
+                $sql = "SELECT * FROM PROJETOS P INNER JOIN USUARIOS_PROJETOS UP ON P.ID_PROJETO = UP.ID_PROJETO WHERE UP.ID_USUARIO = '$id_usuario' AND P.DATA_INICIO <= CURRENT_DATE() AND P.DATA_TERMINO >= CURRENT_DATE()";
+                $query_projetos_atuais = $mysqli -> query($sql);
+                $quantidade_projetos_atuais = $query_projetos_atuais -> num_rows;
+            }
+            elseif ($hierarquia == "COORDENADOR") {
+                $sql = "SELECT * FROM PROJETOS P INNER JOIN USUARIOS_PROJETOS UP ON P.ID_PROJETO = UP.ID_PROJETO WHERE UP.ID_USUARIO = '$id_usuario' AND P.DATA_INICIO <= CURRENT_DATE() AND P.DATA_TERMINO >= CURRENT_DATE() OR P.ID_COORDENADOR = '$id_usuario' AND P.DATA_INICIO <= CURRENT_DATE() AND P.DATA_TERMINO >= CURRENT_DATE()";
+                $query_projetos_atuais = $mysqli -> query($sql);
+                $quantidade_projetos_atuais = $query_projetos_atuais -> num_rows;
+            }
+            else {
+                $sql = "SELECT * FROM PROJETOS P WHERE P.DATA_INICIO <= CURRENT_DATE() AND P.DATA_TERMINO >= CURRENT_DATE()";
+                $query_projetos_atuais = $mysqli -> query($sql);
+                $quantidade_projetos_atuais = $query_projetos_atuais -> num_rows;
+            }
+        ?>
+
+        <span><?php echo $quantidade_projetos_atuais;?></span>
         
         <ul>
             <?php
-                while($row_projeto_atual = $query_projeto_atual -> fetch_assoc()) {
-                    $id_projeto = $row_projeto_atual["ID_PROJETO"];
-                    $sql = "SELECT COUNT(*) AS QUANTIDADE_TAREFA FROM USUARIOS_TAREFAS UT INNER JOIN TAREFAS T ON UT.ID_TAREFA = T.ID_TAREFA INNER JOIN FASES F ON T.ID_FASE = F.ID_FASE INNER JOIN PROJETOS P ON F.ID_PROJETO = P.ID_PROJETO WHERE UT.ID_USUARIO = '$id_usuario' AND P.ID_PROJETO = '$id_projeto' AND P.DATA_INICIO < CURRENT_DATE() AND P.DATA_TERMINO > CURRENT_DATE()";
-                    $query_quantidade_tarefa = $mysqli -> query($sql);
-                    $row_quantidade_tarefa = $query_quantidade_tarefa -> fetch_assoc();
+                while($row_projetos_atuais = $query_projetos_atuais -> fetch_assoc()) {
+                    $id_projeto = $row_projetos_atuais["ID_PROJETO"];
+                    $nome_projeto = $row_projetos_atuais["NOME"];
 
-                    echo '<li><div class="nav-projetos-item"><p class="nome-projeto">'.$row_projeto_atual["NOME"].'</p><div><span>'.$row_quantidade_tarefa["QUANTIDADE_TAREFA"].'</span></div></div></li>';
+                    $sql = "SELECT * FROM TAREFAS T INNER JOIN USUARIOS_TAREFAS UT ON T.ID_TAREFA = UT.ID_TAREFA INNER JOIN FASES F ON T.ID_FASE = F.ID_FASE INNER JOIN PROJETOS P ON F.ID_PROJETO = P.ID_PROJETO WHERE UT.ID_USUARIO = '$id_usuario' AND P.ID_PROJETO = '$id_projeto' AND P.DATA_INICIO <= CURRENT_DATE() AND P.DATA_TERMINO >= CURRENT_DATE()";
+                    $query_tarefas_atuais = $mysqli -> query($sql);
+
+                    $quantidade_tarefas_atuais = $query_tarefas_atuais -> num_rows;
+
+                    echo '<li><div class="nav-projetos-item"><p class="nome-projeto">'.$nome_projeto.'</p>'.($hierarquia == "DIRETOR" ? '' : '<div><span>'.$quantidade_tarefas_atuais.'</span></div>').'</div></li>';
                 }
             ?>
         </ul>

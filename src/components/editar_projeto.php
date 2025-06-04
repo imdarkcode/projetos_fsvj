@@ -25,29 +25,29 @@
         $escopo_projeto = $row_projeto["ESCOPO"];
         
         echo '
-            <section id="informacoesProjeto'.$id_projeto.'" class="informacoes-projeto">
+            <section id="editarProjeto'.$id_projeto.'" class="editar-projeto">
                 <div class="fundo-escuro">
-                    <div class="card-informacoes-projeto">
-                        <div class="card-header">
-                            <h2>Informações do projeto</h2>
-                            <i class="bi bi-x-lg" onclick=FecharInformacoesProjeto'.$id_projeto.'()></i>
+                    <div class="card-editar-projeto">
+                        <div class="card-editar-header">
+                            <h2>Editar projeto</h2>
+                            <i class="bi bi-x-lg" onclick=FecharEditarProjeto'.$id_projeto.'()></i>
                         </div>
 
-                        <div class="card-main">
-                            <div class="form">
+                        <div class="card-editar-main">
+                            <form class="form">
                                 <div class="input-group input-nome-projeto">
                                     <label for="inputNomeProjeto'.$id_projeto.'">Nome do projeto</label>
-                                    <input id="inputNomeProjeto'.$id_projeto.'" type="text" value="'.$nome_projeto.'" disabled>
+                                    <input id="inputNomeProjeto'.$id_projeto.'" type="text" value="'.$nome_projeto.'">
                                 </div>
 
                                 <div class="input-group">
                                     <label for="inputDataInicio'.$id_projeto.'">Data de início</label>
-                                    <input id="inputDataInicio'.$id_projeto.'" type="text" value="'.$data_inicio_projeto.'" disabled>
+                                    <input id="inputDataInicio'.$id_projeto.'" type="date" value="'.$data_inicio_projeto.'">
                                 </div>
 
                                 <div class="input-group">
                                     <label for="inputDataTermino'.$id_projeto.'">Data de término</label>
-                                    <input id="inputDataTermino'.$id_projeto.'" type="text" value="'.$data_termino_projeto.'" disabled>
+                                    <input id="inputDataTermino'.$id_projeto.'" type="date" value="'.$data_termino_projeto.'">
                                 </div>';
 
                                 if ($hierarquia != "VOLUNTARIO") {
@@ -76,24 +76,24 @@
                                     echo '
                                         <div class="input-group">
                                             <label for="inputDiretor'.$id_projeto.'">Diretor Responsável</label>
-                                            <input id="inputDiretor'.$id_projeto.'" type="text" value="'.$nome_diretor.'" disabled>
+                                            <input id="inputDiretor'.$id_projeto.'" type="text" value="'.$nome_diretor.'">
                                         </div>
 
                                         <div class="input-group">
                                             <label for="inputCoordenador'.$id_projeto.'">Coordenador Responsável</label>
-                                            <input id="inputCoordenador'.$id_projeto.'" type="text" value="'.$nome_coordenador.'" disabled>
+                                            <input id="inputCoordenador'.$id_projeto.'" type="text" value="'.$nome_coordenador.'">
                                         </div>
 
                                         <div class="input-group input-local">
                                             <label for="inputLocal'.$id_projeto.'">Local</label>
-                                            <input id="inputLocal'.$id_projeto.'" type="text" value="'.($nome_local ? $nome_local : '').'" disabled>
+                                            <input id="inputLocal'.$id_projeto.'" type="text" value="'.($nome_local ? $nome_local : '').'">
                                         </div>
                                     ';
                                 }
 
                                 echo '<div class="input-group input-escopo">
                                     <label for="inputEscopo'.$id_projeto.'">Escopo</label>
-                                    <textarea id="inputEscopo'.$id_projeto.'" disabled>'.$escopo_projeto.'</textarea>
+                                    <textarea id="inputEscopo'.$id_projeto.'">'.$escopo_projeto.'</textarea>
                                 </div>';
 
                                 if ($hierarquia != "VOLUNTARIO") {
@@ -104,6 +104,7 @@
                                     echo '
                                         <div class="input-group input-documentos">
                                             <label>Documentos ('.$quantidade_documentos.')</label>
+                                            <button><i class="bi bi-plus-lg"></i> Adicionar documento</button>
                                     ';
 
                                     while ($row_documento = $query_documento -> fetch_assoc()) {
@@ -111,7 +112,7 @@
 
                                         echo '<div class="documento-container">
                                                 <div class="documento-input"><i class="bi bi-file-earmark-fill"></i><input type="text" value="'.$nome_documento.'.pdf" disabled></div>
-                                                <button><i class="bi bi-download"></i></button>
+                                                <button class="botao-pequeno botao-preto"><i class="bi bi-download"></i></button>
                                             </div>
                                         </div>';
                                     }
@@ -123,13 +124,14 @@
                                     echo '
                                         <div class="input-group input-equipamentos">
                                             <label>Equipamentos ('.$quantidade_equipamentos.')</label>
+                                            <div class="input-cadastrar"><input placeholder="Nome do equipamento"><input placeholder="Quantidade"><button class="botao-pequeno botao-preto"><i class="bi bi-plus-lg"></i></button></div>
                                     ';
 
                                     while ($row_equipamento = $query_equipamento -> fetch_assoc()) {
                                         $nome_equipamento = $row_equipamento["NOME"];
                                         $quantidade_equipamento_disponivel = $row_equipamento["QUANTIDADE_DISPONIVEL"];
 
-                                        echo '<input type="text" value="'.$nome_equipamento.' ('.$quantidade_equipamento_disponivel.')" disabled>';
+                                        echo '<div class="input-editar"><input type="text" value="'.$nome_equipamento.' ('.$quantidade_equipamento_disponivel.')" disabled><button class="botao-pequeno botao-vermelho"><i class="bi bi-trash3-fill"></i></button></div>';
                                     }
 
                                     $sql = "SELECT SUM(R.VALOR) AS SOMA_RECURSO FROM RECURSOS R INNER JOIN PROJETOS P ON R.ID_PROJETO = P.ID_PROJETO WHERE P.ID_PROJETO = '$id_projeto'";
@@ -141,6 +143,7 @@
                                         </div>
                                         <div class="input-group input-recursos">
                                             <label>Recursos (R$'.$soma_recurso.')</label>
+                                            <div class="input-cadastrar"><input placeholder="Fonte do recurso"><input placeholder="Valor"><button class="botao-pequeno botao-preto"><i class="bi bi-plus-lg"></i></button></div>
                                     ';
 
                                     $sql = "SELECT R.FONTE, R.VALOR FROM RECURSOS R INNER JOIN PROJETOS P ON R.ID_PROJETO = P.ID_PROJETO WHERE P.ID_PROJETO = '$id_projeto'";
@@ -150,27 +153,29 @@
                                         $fonte_recurso = $row_recurso["FONTE"];
                                         $valor_recurso = $row_recurso["VALOR"];
 
-                                        echo '<input type="text" value="'.$fonte_recurso.' - R$ '.$valor_recurso.'" disabled>';
+                                        echo '<div class="input-editar"><input type="text" value="'.$fonte_recurso.' - R$ '.$valor_recurso.'" disabled><button class="botao-pequeno botao-vermelho"><i class="bi bi-trash3-fill"></i></button></div>';
                                     }
                                     
                                     echo '</div>';
                                 }
 
-                            echo '</div>
+                            echo '
+                                <button class="botao-texto botao-preto">Editar projeto</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </section>
 
             <script>
-                function FecharInformacoesProjeto'.$id_projeto.'() {
-                    let informacoesProjeto = document.getElementById("informacoesProjeto'.$id_projeto.'");
-                    informacoesProjeto.style.display = "none";
+                function FecharEditarProjeto'.$id_projeto.'() {
+                    let editarProjeto = document.getElementById("editarProjeto'.$id_projeto.'");
+                    editarProjeto.style.display = "none";
                 }
 
-                function AbrirInformacoesProjeto'.$id_projeto.'() {
-                    let informacoesProjeto = document.getElementById("informacoesProjeto'.$id_projeto.'");
-                    informacoesProjeto.style.display = "block";
+                function AbrirEditarProjeto'.$id_projeto.'() {
+                    let editarProjeto = document.getElementById("editarProjeto'.$id_projeto.'");
+                    editarProjeto.style.display = "block";
                 }
             </script>
         ';

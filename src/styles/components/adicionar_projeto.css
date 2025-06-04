@@ -1,4 +1,4 @@
-.informacoes-projeto {
+.adicionar-projeto {
     position: absolute;
     display: none;
 }
@@ -12,7 +12,7 @@
     align-items: center;
 }
 
-.card-informacoes-projeto {
+.card-adicionar-projeto {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -22,7 +22,7 @@
     height: 928px;
 }
 
-.card-informacoes-projeto > .card-header {
+.card-adicionar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,7 +34,7 @@
     padding: 0 48px;
 }
 
-.card-informacoes-projeto > .card-header > h2 {
+.card-adicionar-header > h2 {
     font-family: 'Poppins';
     font-size: 24px;
     line-height: 1.5;
@@ -42,7 +42,7 @@
     font-weight: var(--regular);
 }
 
-.card-informacoes-projeto > .card-header > i {
+.card-adicionar-header > i {
     font-family: 'Poppins';
     font-size: 24px;
     color: var(--g1);
@@ -50,12 +50,12 @@
     cursor: pointer;
 }
 
-.card-informacoes-projeto > .card-main {
+.card-adicionar-main {
     max-height: 864px;
     overflow: auto;
 }
 
-.card-informacoes-projeto > .card-main > .form {
+.card-adicionar-main > .form {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 24px;
@@ -64,14 +64,14 @@
     padding: 24px 48px;
 }
 
-.card-informacoes-projeto label {
+.card-adicionar-projeto label {
     font-family: 'Roboto';
     color: var(--g11);
     font-weight: var(--medium);
     line-height: 1.5;
 }
 
-.card-informacoes-projeto input {
+.card-adicionar-projeto input {
     height: 48px;
     border: none;
     background-color: var(--g2);
@@ -83,7 +83,7 @@
     font-size: 16px;
 }
 
-.card-informacoes-projeto textarea {
+.card-adicionar-projeto textarea {
     min-height: 320px;
     max-width: 100%;
     min-width: 100%;
@@ -101,10 +101,27 @@
     grid-column: 1 / 3;
 }
 
-.card-informacoes-projeto .input-group {
+.card-adicionar-projeto .input-group {
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
+
+.input-documentos > button {
+    background-color: var(--g11);
+    color: var(--g1);
+    border-radius: 12px;
+    height: 48px;
+    width: 230px;
+    border: none;
+    font-size: 16px;
+    font-weight: var(--medium);
+    background-color: 0.3s;
+    cursor: pointer;
+}
+
+.input-documentos > button > i {
+    margin-right: 8px;
 }
 
 .documento-container {
@@ -133,7 +150,7 @@
     padding: 0;
 }
 
-.documento-container button {
+.botao-pequeno{
     background-color: var(--g11);
     width: 48px;
     height: 48px;
@@ -144,21 +161,54 @@
     cursor: pointer;
 }
 
-.card-informacoes-projeto > .card-main::-webkit-scrollbar {
+.botao-vermelho {
+    background-color: var(--r8);
+}
+
+.botao-preto {
+    background-color: var(--g11);
+}
+
+.input-cadastrar {
+    display: grid;
+    grid-template-columns: 1fr 240px auto;
+    gap: 8px;
+}
+
+.input-adicionar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+}
+
+.botao-texto {
+    grid-column: 1 / 3;
+    justify-self: end;
+    background-color: var(--g11);
+    height: 48px;
+    border: none;
+    font-size: 16px;
+    border-radius: 12px;
+    color: var(--g1);
+    cursor: pointer;
+    padding: 0 24px;
+}
+
+.card-adicionar-main::-webkit-scrollbar {
   width: 10px;
 }
 
-.card-informacoes-projeto > .card-main::-webkit-scrollbar-track {
+.card-adicionar-main::-webkit-scrollbar-track {
   background: var(--g1);
   margin: 16px 0;
   border-radius: 20px;
 }
 
-.card-informacoes-projeto > .card-main::-webkit-scrollbar-thumb {
+.card-adicionar-main::-webkit-scrollbar-thumb {
   background: var(--g8);
   border-radius: 20px;
 }
 
-.card-informacoes-projeto > .card-main::-webkit-scrollbar-thumb:hover {
+.card-adicionar-main::-webkit-scrollbar-thumb:hover {
   background: var(--g10);
 }
