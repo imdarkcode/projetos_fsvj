@@ -92,24 +92,24 @@ body {
     font-size: 20px;
 }
 
-.botoes-header button:nth-child(1) {
+.botao-verde {
     background-color: var(--gr8); 
 }
 
-.botoes-header button:nth-child(2){
+.botao-vermelho {
     background-color: var(--r8); 
 }
 
-.botoes-header button:nth-child(3) {
+.botao-cinza {
     background-color: var(--g10); 
 
 }
 
-.botoes-header button:nth-child(4) {
+.botao-laranja {
     background-color: var(--o8); 
 }
 
-.botoes-header button:nth-child(5) {
+.botao-preto {
     background-color: var(--g11); 
 }
 
