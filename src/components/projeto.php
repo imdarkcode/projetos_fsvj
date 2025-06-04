@@ -34,7 +34,7 @@
                     </div>
                     <div class="botoes-projeto">
                         '.($hierarquia == "DIRETOR" ? '<button id="btnExcluirProjeto'.$id_projeto.'" onclick="AbrirExcluirProjeto'.$id_projeto.'()"><i class="bi bi-trash3-fill"></i></button>' : '').'
-                        '.($hierarquia == "COORDENADOR" ? '<button id="btnAdcionarFase'.$id_projeto.'" onclick="AdicionarFase()"><i class="bi bi-plus-lg"></i></button>' : '').'
+                        '.($hierarquia == "COORDENADOR" ? '<button id="btnAdcionarFase'.$id_projeto.'" onclick="AbrirAdicionarFase'.$id_projeto.'()"><i class="bi bi-plus-lg"></i></button>' : '').'
                         '.($hierarquia == "DIRETOR" ? '<button id="btnEditarProjeto'.$id_projeto.'" onclick="AbrirEditarProjeto'.$id_projeto.'()"><i class="bi bi-sliders"></i></button>' : '').'
                         '.($hierarquia != "VOLUNTÁRIO" ? '<button id="btnParticipantesProjeto'.$id_projeto.'" onclick="AbrirParticipantesProjeto'.$id_projeto.'()"><i class="bi bi-people-fill"></i></button>' : '').'
 

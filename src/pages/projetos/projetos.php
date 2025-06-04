@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="../../styles/components/adicionar_projeto.css" />
         <link rel="stylesheet" href="../../styles/components/excluir_projeto.css" />
         <link rel="stylesheet" href="../../styles/components/filtrar_projeto.css" />
+        <link rel="stylesheet" href="../../styles/components/adicionar_fase.css" />
     </head>
 
     <body>
@@ -30,6 +31,7 @@
         <?php include("../../components/adicionar_projeto.php"); ?>
         <?php include("../../components/excluir_projeto.php"); ?>
         <?php include("../../components/filtrar_projeto.php"); ?>
+        <?php include("../../components/adicionar_fase.php"); ?>
         
         <main class="main-container">
             <section class="main-header">
