@@ -12,6 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Projetos FSVJ - Tarefas</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+        <link rel="shortcut icon" href="../../assets/images/favicon.svg">
         <link rel="stylesheet" href="fase.css" />
         <link rel="stylesheet" href="../../styles/components/navbar.css" />
         <link rel="stylesheet" href="../../styles/components/tarefa.css" />
