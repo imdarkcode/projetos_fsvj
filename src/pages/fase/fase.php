@@ -28,6 +28,7 @@
         <?php include("../../components/informacoes_fase.php"); ?>
         <?php include("../../components/editar_fase.php"); ?>
         <?php include("../../components/excluir_fase.php"); ?>
+        <?php include("../../components/criar_tarefa.php"); ?>
 
         <?php
             $sql = "SELECT P.NOME AS NOME_PROJETO, F.NOME AS NOME_FASE, P.ID_COORDENADOR, F.ESTADO AS ESTADO_FASE FROM PROJETOS P INNER JOIN FASES F ON P.ID_PROJETO = F.ID_PROJETO WHERE F.ID_FASE = '$id_fase'";
@@ -43,19 +44,19 @@
         <main>
             <section class="main-header">
                 <div class="titulo-container">
-                    <button class="btn-voltar"><i class="bi bi-arrow-left"></i></button>
+                    <button class="botao-voltar"><i class="bi bi-arrow-left"></i></button>
                     <div class="titulo">
-                        <p><?php echo $nome_projeto; ?></p>
-                        <h1><?php echo $nome_fase; ?></h1>                    
+                        <p class="sub-titulo"><?php echo $nome_projeto; ?></p>
+                        <h1 class="titulo-grande"><?php echo $nome_fase; ?></h1>                    
                     </div>
                 </div>
                 
                 <div class="botoes-header">
-                    <?php if ($hierarquia != "VOLUNTÁRIO" and $estado_fase == "CONCLUÍDA") {echo '<button class="botao-verde"><i class="bi bi-download"></i> Baixar Relatório</button>';} ?>
-                    <?php if ($hierarquia == "COORDENADOR") {echo '<button class="botao-vermelho" onclick="AbrirExcluirFase()"><i class="bi bi-trash-fill"></i> Excluir Fase</button>';} ?>
-                    <?php if ($hierarquia == "COORDENADOR") {echo '<button class="botao-cinza" onclick="AbrirEditarFase()"><i class="bi bi-sliders"></i> Editar Fase</button>';} ?>
-                    <?php if ($hierarquia != "VOLUNTÁRIO") {echo '<button class="botao-laranja" onclick="AbrirInformacoesFase()"><i class="bi bi-info"></i> Informações</button>';} ?>
-                    <?php if ($hierarquia == "COORDENADOR") {echo '<button class="botao-preto" onclick="AbrirCriarTarefa()"><i class="bi bi-plus-lg"></i> Criar Tarefa</button>';} ?>      
+                    <?php if ($hierarquia != "VOLUNTÁRIO" and $estado_fase == "CONCLUÍDA") {echo '<button class="botao-grande fundo-verde"><i class="bi bi-download"></i> Baixar Relatório</button>';} ?>
+                    <?php if ($hierarquia == "COORDENADOR") {echo '<button class="botao-grande fundo-vermelho" onclick="AbrirExcluirFase()"><i class="bi bi-trash-fill"></i> Excluir Fase</button>';} ?>
+                    <?php if ($hierarquia == "COORDENADOR") {echo '<button class="botao-grande fundo-cinza-escuro" onclick="AbrirEditarFase()"><i class="bi bi-sliders"></i> Editar Fase</button>';} ?>
+                    <?php if ($hierarquia != "VOLUNTÁRIO") {echo '<button class="botao-grande fundo-laranja" onclick="AbrirInformacoesFase()"><i class="bi bi-info"></i> Informações</button>';} ?>
+                    <?php if ($hierarquia == "COORDENADOR") {echo '<button class="botao-grande fundo-preto" onclick="AbrirCriarTarefa()"><i class="bi bi-plus-lg"></i> Criar Tarefa</button>';} ?>      
                 </div>
             </section>
 

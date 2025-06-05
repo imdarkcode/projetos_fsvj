@@ -44,15 +44,15 @@
                             </select>
                         </div>
 
-                        <div class="input-group">
+                        <div class="input-container">
                             <label class="label">Descrição</label>
                             <textarea class="textarea" disabled>'.$descricao_tarefa.'</textarea>
                         </div>
 
-                        <div class="input-group">
+                        <div class="input-container">
                             <label class="label">Anexo</label>
-                            <div class="input-sem-anexo">
-                                <div class="input">Nenhum arquivo anexado</div>
+                            <div class="input-grupo">
+                                <input type="text" class="input" value="Nenhum arquivo anexado" disabled>
                                 <button class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>
                             </div>
                         </div>

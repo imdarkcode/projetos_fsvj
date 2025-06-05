@@ -14,34 +14,34 @@
                     </div>
 
                     <div class="modal-conteudo">
-                        <div class="input-group">
+                        <div class="input-container">
                             <label class="label">Nome da fase</label>
                             <input type="text" class="input" disabled>
                         </div>
 
-                        <div class="input-duplo">
-                            <div class="input-group">
+                        <div class="input-coluna">
+                            <div class="input-container">
                                 <label class="label">Data de início</label>
                                 <input type="text" class="input" disabled>
                             </div>
 
-                            <div class="input-group">
+                            <div class="input-container">
                                 <label class="label">Data de termino</label>
                                 <input type="text" class="input" disabled>
                             </div>
                         </div>
 
-                        <div class="input-group">
+                        <div class="input-container">
                             <label class="label">Escopo</label>
                             <textarea class="textarea"></textarea>
                         </div>
 
-                        <div class="input-group">
+                        <div class="input-container">
                             <label class="label">Gastos</label>
                             <input type="text" class="input" disabled>
                         </div>
 
-                        <div class="input-group">
+                        <div class="input-container">
                             <label class="label">Equipamentos utilizados</label>
                             <input type="text" class="input" disabled>
                         </div>

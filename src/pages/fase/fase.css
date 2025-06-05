@@ -1,11 +1,5 @@
 @import url('../../styles/global.css');
 
-* {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
 body {
     background-color: var(--g2);
     display: grid;
@@ -19,38 +13,6 @@ body {
     display: flex;
     margin-top: 32px;
     margin-right: 32px;
-}
-
-.btn-voltar {
-    background-color: var(--g11);
-    border: none;
-    color: var(--g1);
-    border-radius: 20px;
-    width: 36px;
-    height: 36px;
-}
-
-.btn-voltar i {
-    font-size: 20px;
-}
-
-.titulo {
-    display: block;
-}
-
-.titulo p {
-    font-family: 'Roboto';
-    color: var(--g5);
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-.titulo h1 {
-    font-family: 'Roboto';
-    color: var(--g11);
-    font-size: 32px;
-    font-weight: var(--semibold);
-    line-height: 1.5;
 }
 
 .main-header p {
@@ -73,44 +35,6 @@ body {
     display: flex;
     gap: 16px;
     align-self: start;
-}
-
-.botoes-header button {
-    color: var(--g1);
-    font-weight: var(--medium);
-    font-family: "Roboto";
-    border: none;
-    padding: 12px 24px;
-    font-size: 16px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.botoes-header button i {
-    margin-right: 8px;
-    font-size: 20px;
-}
-
-.botao-verde {
-    background-color: var(--gr8); 
-}
-
-.botao-vermelho {
-    background-color: var(--r8); 
-}
-
-.botao-cinza {
-    background-color: var(--g10); 
-
-}
-
-.botao-laranja {
-    background-color: var(--o8); 
-}
-
-.botao-preto {
-    background-color: var(--g11); 
 }
 
 .titulo-container {

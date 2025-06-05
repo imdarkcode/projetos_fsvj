@@ -19,42 +19,42 @@
                     </div>
 
                     <div class="modal-conteudo">
-                        <div class="input-group">
+                        <div class="input-container">
                             <label class="label">Nome da fase</label>
                             <input type="text" class="input" placeholder="Nome da fase" value="'.$nome_fase.'">
                         </div>
 
-                        <div class="input-duplo">
-                            <div class="input-group">
+                        <div class="input-coluna">
+                            <div class="input-container">
                                 <label class="label">Data de início</label>
                                 <input type="date" class="input" value="'.$data_inicio.'">
                             </div>
 
-                            <div class="input-group">
+                            <div class="input-container">
                                 <label class="label">Data de termino</label>
                                 <input type="date" class="input" value="'.$data_termino.'">
                             </div>
                         </div>
 
-                        <div class="input-group">
+                        <div class="input-container">
                             <label class="label">Escopo</label>
                             <textarea class="textarea" placeholder="Escopo">'.$escopo.'</textarea>
                         </div>
 
-                        <div class="input-group">
+                        <div class="input-container">
                             <label class="label">Gastos</label>
-                            <div class="input-duplo-botao">
+                            <div class="input-grupo">
                                 <input type="text" class="input" placeholder="Destino do gasto">
-                                <input type="text" class="input" placeholder="Valor">
+                                <input type="text" class="input-pequeno" placeholder="Valor">
                                 <button class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>
                             </div>
                         </div>
 
-                        <div class="input-group">
+                        <div class="input-container">
                             <label class="label">Equipamentos utilizados</label>
-                            <div class="input-duplo-botao">
+                            <div class="input-grupo">
                                 <input type="text" class="input" placeholder="Nome do equipamento">
-                                <input type="text" class="input" placeholder="Quantidade">
+                                <input type="text" class="input-pequeno" placeholder="Quantidade">
                                 <button class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>
                             </div>
                         </div>

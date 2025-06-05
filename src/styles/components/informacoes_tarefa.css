@@ -16,14 +16,3 @@
     grid-template-columns: 1fr auto;
     align-items: center;
 }
-
-.input-sem-anexo {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    column-gap: 8px;
-}
-
-.input-sem-anexo > div {
-    display: flex;
-    align-items: center;
-}
