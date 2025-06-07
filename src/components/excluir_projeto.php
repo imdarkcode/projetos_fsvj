@@ -7,24 +7,22 @@
         $nome_projeto = $row_projeto["NOME"];
 
         echo '
-            <section id="excluirProjeto'.$id_projeto.'" class="excluir-projeto">
-                <div class="fundo-escuro">
-                    <div class="card-excluir-projeto">
-                        <div class="card-excluir-header">
-                            <h2>Aviso de exclusão</h2>
-                            <i class="bi bi-x-lg" onclick=FecharExcluirProjeto'.$id_projeto.'()></i>
-                        </div>
-
-                        <div class="card-excluir-main">
-                            <form class="form">
-                                <h3>Atenção</h3>
-                                <p>Deseja excluir este o projeto '.$nome_projeto.'? Não será possível reverter esta ação após ser concluída.</p>   
-                                <input type="hidden" value="'.$id_projeto.'"> 
-                                
-                                <button type="submit" class="botao-texto botao-vermelho">Excluir</button>
-                            </form>
-                        </div>
+            <section id="excluirProjeto'.$id_projeto.'" class="fundo-modal">
+                <div class="modal-pequeno">
+                    <div class="modal-header">
+                        <h2>Aviso de exclusão</h2>
+                        <i class="bi bi-x-lg" onclick=FecharExcluirProjeto'.$id_projeto.'()></i>
                     </div>
+
+                    <form class="modal-conteudo"> 
+                        <div class="modal-aviso">
+                            <h3>Atenção</h3>
+                            <p>Deseja excluir este o projeto '.$nome_projeto.'? Não será possível reverter esta ação após ser concluída.</p>   
+                        </div>
+                        <input type="hidden" value="'.$id_projeto.'"> 
+                        
+                        <button type="submit" class="botao-form fundo-vermelho">Excluir</button>
+                    </form>
                 </div>
             </section>
 
@@ -36,7 +34,7 @@
 
                 function AbrirExcluirProjeto'.$id_projeto.'() {
                     let excluirProjeto = document.getElementById("excluirProjeto'.$id_projeto.'");
-                    excluirProjeto.style.display = "block";
+                    excluirProjeto.style.display = "flex";
                 }
             </script>
         ';

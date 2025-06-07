@@ -24,71 +24,72 @@
         $contador = $quantidade_participantes;
         
         echo '
-            <section id="participantesProjeto'.$id_projeto.'" class="particiantes-projeto">
-                <div class="fundo-escuro">
-                    <div class="card-particiantes-projeto">
-                        <div class="card-participantes-header">
-                            <h2>Participantes do projeto</h2>
-                            <i class="bi bi-x-lg" onclick=FecharParticipantesProjeto'.$id_projeto.'()></i>
-                        </div>
+            <section id="participantesProjeto'.$id_projeto.'" class="fundo-modal">
+                <div class="modal-grande">
+                    <div class="modal-header">
+                        <h2>Participantes do projeto</h2>
+                        <i class="bi bi-x-lg" onclick=FecharParticipantesProjeto'.$id_projeto.'()></i>
+                    </div>
 
-                        <div class="card-participantes-main">
-                            <div class="card-participantes-titulo">
-                                <h2>Participantes</h2>
-                                <p>Total de participantes: '.$quantidade_participantes.'</p>
-                            </div>';
+                    <div class="modal-conteudo">
+                        <div class="card-participantes-titulo">
+                            <h3 class="titulo-grande">Participantes</h3>
+                            <p class="sub-titulo">Total de participantes: '.$quantidade_participantes.'</p>
+                        </div>';
 
-                        if ($id_coordenador == $id_usuario) {
-                            echo '
-                                <div class="card-participantes-input-adicionar">
-                                    <label>Adicionar participantes</label>
-                                    <div><input placeholder="Nome do usuário"><button><i class="bi bi-plus-lg"></i></button></div>
-                                    <p><i class="bi bi-exclamation-circle-fill"></i> Usuário não encontrado</p>
+                    if ($id_coordenador == $id_usuario) {
+                        echo '
+                            <div class="input-container">
+                                <label class="label">Adicionar participantes</label>
+                                <div class="input-grupo">
+                                    <input class="input" placeholder="Nome do usuário">
+                                    <button class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>
                                 </div>
-                            ';
-                        }
+                                <p class="mensagem-erro"><i class="bi bi-exclamation-circle-fill"></i> Usuário não encontrado</p>
+                            </div>
+                        ';
+                    }
+
+                    echo '
+                        <div class="card-participantes-usuario">
+                            <div>
+                                <h4 class="label">'.$nome_coordenador.' '.($id_coordenador == $id_usuario ? '(você)' : '').'</h4>
+                                <p class="sub-titulo primeira-letra-maiuscula">Coordenador</p>
+                            </div>
+                        </div>
+                    ';
+
+                    if ($contador > 1) {
+                        echo '
+                            <div class="divisor fundo-cinza"></div>
+                        ';
+                        $contador -= 1;
+                    }
+
+                    while ($row_participantes = $query_participantes -> fetch_assoc()) {
+                        $nome_participante = $row_participantes["NOME"];
+                        $hierarquia_participante = $row_participantes["HIERARQUIA"];
 
                         echo '
-                            <div class="card-participantes-usuario">
-                                <div>
-                                    <h3>'.$nome_coordenador.' '.($id_coordenador == $id_usuario ? '(você)' : '').'</h3>
-                                    <p>Coordenador</p>
+                            <div class="elemento-lista">
+                                <div class="elemento-titulo">
+                                    <h4 class="label">'.$nome_participante.' '.($id_coordenador == $id_usuario ? '(você)' : '').'</h4>
+                                    <p class="sub-titulo primeira-letra-maiuscula">'.$hierarquia_participante.'</p>
                                 </div>
+                                <button class="botao-pequeno fundo-vermelho"><i class="bi bi-person-dash-fill"></i></button>
                             </div>
                         ';
 
                         if ($contador > 1) {
                             echo '
-                                <div class="card-participantes-divisor"></div>
+                                <div class="divisor fundo-cinza"></div>
                             ';
                             $contador -= 1;
                         }
+                    }
 
-                        while ($row_participantes = $query_participantes -> fetch_assoc()) {
-                            $nome_participante = $row_participantes["NOME"];
-                            $hierarquia_participante = $row_participantes["HIERARQUIA"];
-
-                            echo '
-                                <div class="card-participantes-usuario">
-                                    <div>
-                                        <h3>'.$nome_participante.' '.($id_coordenador == $id_usuario ? '(você)' : '').'</h3>
-                                        <p>'.$hierarquia_participante.'</p>
-                                    </div>
-                                    <button><i class="bi bi-person-dash-fill"></i></button>
-                                </div>
-                            ';
-
-                            if ($contador > 1) {
-                                echo '
-                                    <div class="card-participantes-divisor"></div>
-                                ';
-                                $contador -= 1;
-                            }
-                        }
-
-                            
-                        echo '</div>
-                    </div>
+                        
+                    echo '</div>
                 </div>
             </section>
 
@@ -100,7 +101,7 @@
 
                 function AbrirParticipantesProjeto'.$id_projeto.'() {
                     let participantesProjeto = document.getElementById("participantesProjeto'.$id_projeto.'");
-                    participantesProjeto.style.display = "block";
+                    participantesProjeto.style.display = "flex";
                 }
             </script>
         ';

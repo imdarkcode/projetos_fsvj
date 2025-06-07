@@ -44,7 +44,7 @@
         <main>
             <section class="main-header">
                 <div class="titulo-container">
-                    <button class="botao-voltar"><i class="bi bi-arrow-left"></i></button>
+                    <a class="botao-voltar" href="../projetos/projetos.php?id_usuario=<?php echo $id_usuario; ?>"><i class="bi bi-arrow-left"></i></a>
                     <div class="titulo">
                         <p class="sub-titulo"><?php echo $nome_projeto; ?></p>
                         <h1 class="titulo-grande"><?php echo $nome_fase; ?></h1>                    
