@@ -7,22 +7,25 @@
                         <i class="bi bi-x-lg" onclick=FecharCriarTarefa()></i>
                     </div>
 
-                    <div class="modal-conteudo">
+                    <form method="GET" action="../../functions/criar_tarefa.php" class="modal-conteudo">
+                        <input type="hidden" name="id_usuario" value="'.$id_usuario.'">
+                        <input type="hidden" name="id_fase" value="'.$id_fase.'">
+
                         <div class="input-coluna">
                             <div class="input-container">
                                 <label class="label">Nome da tarefa</label>
-                                <input type="text" class="input" placeholder="Nome da tarefa">
+                                <input type="text" name="nome_tarefa" class="input" placeholder="Nome da tarefa">
                             </div>
 
                             <div class="input-container">
-                                <label class="label">Data de vencimento</label>
-                                <input type="date" class="input">
+                                <label class="label">Data de término</label>
+                                <input type="date" name="data_vencimento" class="input">
                             </div>
                         </div>
 
                         <div class="input-container">
                             <label class="label">Descrição</label>
-                            <textarea class="textarea" placeholder="Descrição da tarefa"></textarea>
+                            <textarea class="textarea" name="descricao" placeholder="Descrição da tarefa"></textarea>
                         </div>
 
                         <div class="input-container">
@@ -33,8 +36,8 @@
                             </div>
                         </div>
 
-                        <button class="botao-form fundo-preto">Criar tarefa</button>
-                    </div>
+                        <button type="submit" class="botao-form fundo-preto">Criar tarefa</button>
+                    </form>
                 </div>
             </section>
 

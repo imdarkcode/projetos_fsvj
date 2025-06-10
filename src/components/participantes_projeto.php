@@ -18,7 +18,7 @@
         $id_projeto = $row_projeto["ID_PROJETO"];
         $id_coordenador = $row_projeto["ID_COORDENADOR"];
 
-        $sql = "SELECT DISTINCT U.NOME, U.HIERARQUIA FROM PROJETOS P INNER JOIN USUARIOS_PROJETOS UP ON P.ID_PROJETO = UP.ID_PROJETO INNER JOIN USUARIOS U ON UP.ID_USUARIO = U.ID_USUARIO WHERE P.ID_PROJETO = '$id_projeto'";
+        $sql = "SELECT U.ID_USUARIO, U.NOME, U.HIERARQUIA FROM PROJETOS P INNER JOIN USUARIOS_PROJETOS UP ON P.ID_PROJETO = UP.ID_PROJETO INNER JOIN USUARIOS U ON UP.ID_USUARIO = U.ID_USUARIO WHERE P.ID_PROJETO = '$id_projeto'";
         $query_participantes = $mysqli -> query($sql);
         $quantidade_participantes = $query_participantes -> num_rows + 1;
         $contador = $quantidade_participantes;
@@ -39,14 +39,17 @@
 
                     if ($id_coordenador == $id_usuario) {
                         echo '
-                            <div class="input-container">
+                            <form method="GET" action="../../functions/participantes_projeto.php" class="input-container">
+                                <input type="hidden" name="id_usuario" value="'.$id_usuario.'">
+                                <input type="hidden" name="id_projeto" value="'.$id_projeto.'">
+
                                 <label class="label">Adicionar participantes</label>
                                 <div class="input-grupo">
-                                    <input class="input" placeholder="Nome do usuário">
-                                    <button class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>
+                                    <input class="input" type="text" name="nome_participante" placeholder="Nome do usuário">
+                                    <button type="submit" class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>
                                 </div>
                                 <p class="mensagem-erro"><i class="bi bi-exclamation-circle-fill"></i> Usuário não encontrado</p>
-                            </div>
+                            </form>
                         ';
                     }
 
@@ -67,13 +70,14 @@
                     }
 
                     while ($row_participantes = $query_participantes -> fetch_assoc()) {
+                        $id_participante = $row_participantes["ID_USUARIO"];
                         $nome_participante = $row_participantes["NOME"];
                         $hierarquia_participante = $row_participantes["HIERARQUIA"];
 
                         echo '
                             <div class="elemento-lista">
                                 <div class="elemento-titulo">
-                                    <h4 class="label">'.$nome_participante.' '.($id_coordenador == $id_usuario ? '(você)' : '').'</h4>
+                                    <h4 class="label">'.$nome_participante.'</h4>
                                     <p class="sub-titulo primeira-letra-maiuscula">'.$hierarquia_participante.'</p>
                                 </div>
                                 <button class="botao-pequeno fundo-vermelho"><i class="bi bi-person-dash-fill"></i></button>

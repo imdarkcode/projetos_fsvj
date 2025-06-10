@@ -18,27 +18,30 @@
                         <i class="bi bi-x-lg" onclick=FecharEditarFase()></i>
                     </div>
 
-                    <div class="modal-conteudo">
+                    <form method="GET" action="../../functions/editar_fase.php" class="modal-conteudo">
+                        <input type="hidden" name="id_usuario" value="'.$id_usuario.'">
+                        <input type="hidden" name="id_fase" value="'.$id_fase.'">
+
                         <div class="input-container">
                             <label class="label">Nome da fase</label>
-                            <input type="text" class="input" placeholder="Nome da fase" value="'.$nome_fase.'">
+                            <input type="text" class="input" name="nome_fase" placeholder="Nome da fase" value="'.$nome_fase.'">
                         </div>
 
                         <div class="input-coluna">
                             <div class="input-container">
                                 <label class="label">Data de início</label>
-                                <input type="date" class="input" value="'.$data_inicio.'">
+                                <input type="date" class="input" name="data_inicio" value="'.$data_inicio.'">
                             </div>
 
                             <div class="input-container">
                                 <label class="label">Data de termino</label>
-                                <input type="date" class="input" value="'.$data_termino.'">
+                                <input type="date" class="input" name="data_termino" value="'.$data_termino.'">
                             </div>
                         </div>
 
                         <div class="input-container">
                             <label class="label">Escopo</label>
-                            <textarea class="textarea" placeholder="Escopo">'.$escopo.'</textarea>
+                            <textarea class="textarea" name="escopo" placeholder="Escopo">'.$escopo.'</textarea>
                         </div>
 
                         <div class="input-container">
@@ -59,8 +62,8 @@
                             </div>
                         </div>
 
-                        <button class="botao-form fundo-preto">Editar Fase</button>
-                    </div>
+                        <button type="submit" class="botao-form fundo-preto">Editar Fase</button>
+                    </form>
                 </div>
             </section>
 

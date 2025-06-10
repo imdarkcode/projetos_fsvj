@@ -63,12 +63,12 @@
             <section class="kanban-container">
                 <div class="kanban-coluna">
                     <?php
-                        if ($hierarquia == "VOLUNTÁRIO" or $hierarquia == "COORDENADOR" and $id_coordenador != $id_usuario) {
-                            $sql = "SELECT * FROM TAREFAS T INNER JOIN USUARIOS_TAREFAS UT ON UT.ID_TAREFA = T.ID_TAREFA WHERE T.ESTADO = 'A FAZER' AND UT.ID_USUARIO = '$id_usuario'";
+                        if ($hierarquia == "VOLUNTÁRIO" OR $hierarquia == "COORDENADOR" AND $id_coordenador != $id_usuario) {
+                            $sql = "SELECT * FROM TAREFAS T INNER JOIN USUARIOS_TAREFAS UT ON UT.ID_TAREFA = T.ID_TAREFA WHERE T.ESTADO = 'A FAZER' AND UT.ID_USUARIO = '$id_usuario' AND T.ID_FASE = '$id_fase'";
                             $query_tarefa = $mysqli -> query($sql);
                         }
                         else {
-                            $sql = "SELECT * FROM TAREFAS T INNER JOIN USUARIOS_TAREFAS UT ON UT.ID_TAREFA = T.ID_TAREFA WHERE T.ESTADO = 'A FAZER'";
+                            $sql = "SELECT * FROM TAREFAS T WHERE T.ESTADO = 'A FAZER' AND T.ID_FASE = '$id_fase'";
                             $query_tarefa = $mysqli -> query($sql);
                         }
                     ?>
@@ -83,11 +83,11 @@
                 <div class="kanban-coluna">
                     <?php
                         if ($hierarquia == "VOLUNTÁRIO" or $hierarquia == "COORDENADOR" and $id_coordenador != $id_usuario) {
-                            $sql = "SELECT * FROM TAREFAS T INNER JOIN USUARIOS_TAREFAS UT ON UT.ID_TAREFA = T.ID_TAREFA WHERE T.ESTADO = 'EM ANDAMENTO' AND UT.ID_USUARIO = '$id_usuario'";
+                            $sql = "SELECT * FROM TAREFAS T INNER JOIN USUARIOS_TAREFAS UT ON UT.ID_TAREFA = T.ID_TAREFA WHERE T.ESTADO = 'EM ANDAMENTO' AND UT.ID_USUARIO = '$id_usuario' AND T.ID_FASE = '$id_fase'";
                             $query_tarefa = $mysqli -> query($sql);
                         }
                         else {
-                            $sql = "SELECT * FROM TAREFAS T INNER JOIN USUARIOS_TAREFAS UT ON UT.ID_TAREFA = T.ID_TAREFA WHERE T.ESTADO = 'EM ANDAMENTO'";
+                            $sql = "SELECT * FROM TAREFAS T LEFT JOIN USUARIOS_TAREFAS UT ON UT.ID_TAREFA = T.ID_TAREFA WHERE T.ESTADO = 'EM ANDAMENTO' AND T.ID_FASE = '$id_fase'";
                             $query_tarefa = $mysqli -> query($sql);
                         }
                     ?>
@@ -109,11 +109,11 @@
                 <div class="kanban-coluna">
                     <?php
                         if ($hierarquia == "VOLUNTÁRIO" or $hierarquia == "COORDENADOR" and $id_coordenador != $id_usuario) {
-                            $sql = "SELECT * FROM TAREFAS T INNER JOIN USUARIOS_TAREFAS UT ON UT.ID_TAREFA = T.ID_TAREFA WHERE T.ESTADO = 'CONCLUÍDA' AND UT.ID_USUARIO = '$id_usuario'";
+                            $sql = "SELECT * FROM TAREFAS T INNER JOIN USUARIOS_TAREFAS UT ON UT.ID_TAREFA = T.ID_TAREFA WHERE T.ESTADO = 'CONCLUÍDA' AND UT.ID_USUARIO = '$id_usuario' AND T.ID_FASE = '$id_fase'";
                             $query_tarefa = $mysqli -> query($sql);
                         }
                         else {
-                            $sql = "SELECT * FROM TAREFAS T INNER JOIN USUARIOS_TAREFAS UT ON UT.ID_TAREFA = T.ID_TAREFA WHERE T.ESTADO = 'CONCLUÍDA'";
+                            $sql = "SELECT * FROM TAREFAS T LEFT JOIN USUARIOS_TAREFAS UT ON UT.ID_TAREFA = T.ID_TAREFA WHERE T.ESTADO = 'CONCLUÍDA' AND T.ID_FASE = '$id_fase'";
                             $query_tarefa = $mysqli -> query($sql);
                         }
                     ?>

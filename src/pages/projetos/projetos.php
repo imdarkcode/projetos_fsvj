@@ -15,13 +15,6 @@
         <link rel="stylesheet" href="projetos.css" />
         <link rel="stylesheet" href="../../styles/components/navbar.css" />
         <link rel="stylesheet" href="../../styles/components/projeto.css" />
-        <link rel="stylesheet" href="../../styles/components/informacoes_projeto.css" />
-        <link rel="stylesheet" href="../../styles/components/participantes_projeto.css" />
-        <link rel="stylesheet" href="../../styles/components/editar_projeto.css" />
-        <link rel="stylesheet" href="../../styles/components/adicionar_projeto.css" />
-        <link rel="stylesheet" href="../../styles/components/excluir_projeto.css" />
-        <link rel="stylesheet" href="../../styles/components/filtrar_projeto.css" />
-        <link rel="stylesheet" href="../../styles/components/adicionar_fase.css" />
     </head>
 
     <body>

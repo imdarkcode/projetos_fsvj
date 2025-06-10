@@ -1,8 +1,10 @@
 <?php
-    $sql = "SELECT * FROM PROJETOS P LEFT JOIN usuarios_projetos UP ON UP.ID_PROJETO = P.ID_PROJETO WHERE P.ID_COORDENADOR = '$id_usuario'";
+    $sql = "SELECT P.ID_PROJETO FROM PROJETOS P WHERE P.ID_COORDENADOR = '$id_usuario'";
     $query_projeto = $mysqli -> query($sql);
 
     while ($row_projeto = $query_projeto -> fetch_assoc()) {
+        $id_projeto = $row_projeto["ID_PROJETO"];
+
         echo '
             <section id="adicionarFase'.$id_projeto.'" class="fundo-modal">
                 <div class="modal-grande">
@@ -11,27 +13,30 @@
                         <i class="bi bi-x-lg" onclick=FecharAdicionarFase'.$id_projeto.'()></i>
                     </div>
 
-                    <form class="modal-conteudo">
+                    <form method="GET" action="../../functions/adicionar_fase.php" class="modal-conteudo">
+                        <input type="hidden" name="id_usuario" value="'.$id_usuario.'">
+                        <input type="hidden" name="id_projeto" value="'.$id_projeto.'">
+
                         <div class="input-container">
                             <label class="label">Nome da fase</label>
-                            <input type="text" class="input" placeholder="Nome da Fase">
+                            <input type="text" name="nome_fase" class="input" placeholder="Nome da Fase">
                         </div>
 
                         <div class="input-coluna">
                             <div class="input-container">
                                 <label class="label">Data de início</label>
-                                <input type="date" class="input">
+                                <input type="date" name="data_inicio" class="input">
                             </div>
 
                             <div class="input-container">
                                 <label class="label">Data de termino</label>
-                                <input type="date" class="input">
+                                <input type="date" name="data_termino" class="input">
                             </div>
                         </div>
 
                         <div class="input-container">
                             <label class="label">Escopo</label>
-                            <textarea class="textarea" placeholder="Escopo da fase"></textarea>
+                            <textarea class="textarea" name="escopo" placeholder="Escopo da fase"></textarea>
                         </div>
 
                         <div class="input-container">
@@ -52,7 +57,7 @@
                             </div>
                         </div>
 
-                        <button class="botao-form fundo-preto">Adicionar Fase</button>
+                        <button type="submit" class="botao-form fundo-preto">Adicionar Fase</button>
                     </form>
                 </div>
             </section>

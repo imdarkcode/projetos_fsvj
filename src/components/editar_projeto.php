@@ -32,21 +32,24 @@
                         <i class="bi bi-x-lg" onclick=FecharEditarProjeto'.$id_projeto.'()></i>
                     </div>
 
-                    <form class="modal-conteudo">
+                    <form method="GET" action="../../functions/editar_projeto.php" class="modal-conteudo">
+                        <input type="hidden" name="id_usuario" value="'.$id_usuario.'">
+                        <input type="hidden" name="id_projeto" value="'.$id_projeto.'">
+
                         <div class="input-container">
                             <label class="label" for="inputNomeProjeto'.$id_projeto.'">Nome do projeto</label>
-                            <input id="inputNomeProjeto'.$id_projeto.'" type="text" value="'.$nome_projeto.'" class="input">
+                            <input id="inputNomeProjeto'.$id_projeto.'" type="text" placeholder="Nome do projeto" name="nome_projeto" value="'.$nome_projeto.'" class="input">
                         </div>
 
                         <div class="input-coluna">
                             <div class="input-container">
                                 <label class="label" for="inputDataInicio'.$id_projeto.'">Data de início</label>
-                                <input id="inputDataInicio'.$id_projeto.'" type="date" value="'.$data_inicio_projeto.'" class="input">
+                                <input id="inputDataInicio'.$id_projeto.'" type="date" name="data_inicio" value="'.$data_inicio_projeto.'" class="input">
                             </div>
 
                             <div class="input-container">
                                 <label class="label" for="inputDataTermino'.$id_projeto.'">Data de término</label>
-                                <input id="inputDataTermino'.$id_projeto.'" type="date" value="'.$data_termino_projeto.'" class="input">
+                                <input id="inputDataTermino'.$id_projeto.'" type="date" name="data_termino" value="'.$data_termino_projeto.'" class="input">
                             </div>
                         </div>';
 
@@ -77,25 +80,61 @@
                                 <div class="input-coluna">
                                     <div class="input-container">
                                         <label class="label" for="inputDiretor'.$id_projeto.'">Diretor Responsável</label>
-                                        <input id="inputDiretor'.$id_projeto.'" type="text" value="'.$nome_diretor.'" class="input">
+                                        <input id="inputDiretor'.$id_projeto.'" type="text" placeholder="Nome do diretor" name="nome_diretor" value="'.$nome_diretor.'" class="input" list="listaDiretores" require>
                                     </div>
+
+                                    <datalist id="listaDiretores">
+                                         ';
+                                            $sql = "SELECT U.NOME FROM USUARIOS U WHERE U.HIERARQUIA = 'DIRETOR'";
+                                            $query_diretor = $mysqli -> query($sql);
+
+                                            while ($row_diretor = $query_diretor -> fetch_assoc()) {
+                                                $nome_usuario = $row_diretor["NOME"];
+                                                echo '<option value="'.$nome_usuario.'">'.$nome_usuario.'</option>';
+                                            }
+                                        echo '
+                                    </datalist>
 
                                     <div class="input-container">
                                         <label class="label" for="inputCoordenador'.$id_projeto.'">Coordenador Responsável</label>
-                                        <input id="inputCoordenador'.$id_projeto.'" type="text" value="'.$nome_coordenador.'" class="input">
+                                        <input id="inputCoordenador'.$id_projeto.'" type="text" placeholder="Nome do coordenador" name="nome_coordenador" value="'.$nome_coordenador.'" class="input" list="listaCoordenadores" require>
                                     </div>
+
+                                    <datalist id="listaCoordenadores">
+                                        '; 
+                                            $sql = "SELECT U.NOME FROM USUARIOS U WHERE U.HIERARQUIA = 'COORDENADOR'";
+                                            $query_coordenador = $mysqli -> query($sql);
+
+                                            while ($row_coordenador = $query_coordenador -> fetch_assoc()) {
+                                                $nome_usuario = $row_coordenador["NOME"];
+                                                echo '<option value="'.$nome_usuario.'">'.$nome_usuario.'</option>';
+                                            }
+                                        echo '
+                                    </datalist>
                                 </div>
 
                                 <div class="input-container">
                                     <label class="label" for="inputLocal'.$id_projeto.'">Local</label>
-                                    <input id="inputLocal'.$id_projeto.'" type="text" value="'.($nome_local ? $nome_local : '').'" class="input">
+                                    <input id="inputLocal'.$id_projeto.'" type="text" name="nome_local" placeholder="Nome do local" value="'.($nome_local ? $nome_local : '').'" class="input" list="listaLocais">
+
+                                    <datalist id="listaLocais">
+                                        '; 
+                                            $sql = "SELECT L.NOME FROM LOCAIS L";
+                                            $query_local = $mysqli -> query($sql);
+
+                                            while ($row_local = $query_local -> fetch_assoc()) {
+                                                $nome_local = $row_local["NOME"];
+                                                echo '<option value="'.$nome_local.'">'.$nome_local.'</option>';
+                                            }
+                                        echo '
+                                    </datalist>
                                 </div>
                             ';
                         }
 
                         echo '<div class="input-container">
                             <label class="label" for="inputEscopo'.$id_projeto.'">Escopo</label>
-                            <textarea id="inputEscopo'.$id_projeto.'" class="textarea">'.$escopo_projeto.'</textarea>
+                            <textarea id="inputEscopo'.$id_projeto.'" name="escopo" placeholder="Escopo do projeto" class="textarea">'.$escopo_projeto.'</textarea>
                         </div>';
 
                         if ($hierarquia != "VOLUNTARIO") {
@@ -114,7 +153,7 @@
 
                                 echo '<div class="input-grupo">
                                         <input class="input" value="'.$nome_documento.'.pdf" disabled>
-                                        <button class="botao-pequeno botao-preto"><i class="bi bi-download"></i></button>
+                                        <button class="botao-pequeno fundo-preto"><i class="bi bi-download"></i></button>
                                     </div>
                                 </div>';
                             }
@@ -129,7 +168,7 @@
                                     <div class="input-grupo">
                                         <input class="input" placeholder="Nome do equipamento">
                                         <input class="input-pequeno" placeholder="Quantidade">
-                                        <button class="botao-pequeno botao-preto"><i class="bi bi-plus-lg"></i></button>
+                                        <button class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>
                                     </div>
                             ';
 
@@ -139,7 +178,7 @@
 
                                 echo '<div class="input-grupo">
                                     <input class="input" value="'.$nome_equipamento.' ('.$quantidade_equipamento_disponivel.')" disabled>
-                                    <button class="botao-pequeno botao-vermelho"><i class="bi bi-trash3-fill"></i></button>
+                                    <button class="botao-pequeno fundo-vermelho"><i class="bi bi-trash3-fill"></i></button>
                                 </div>';
                             }
 
@@ -155,7 +194,7 @@
                                     <div class="input-grupo">
                                         <input class="input" placeholder="Fonte do recurso">
                                         <input class="input-pequeno" placeholder="Valor">
-                                        <button class="botao-pequeno botao-preto"><i class="bi bi-plus-lg"></i></button>
+                                        <button class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>
                                     </div>
                             ';
 
@@ -168,7 +207,7 @@
 
                                  echo '<div class="input-grupo">
                                     <input class="input" value="'.$fonte_recurso.' - R$ '.$valor_recurso.'" disabled>
-                                    <button class="botao-pequeno botao-vermelho"><i class="bi bi-trash3-fill"></i></button>
+                                    <button class="botao-pequeno fundo-vermelho"><i class="bi bi-trash3-fill"></i></button>
                                 </div>';
                             }
                             
@@ -176,7 +215,7 @@
                         }
 
                     echo '
-                        <button class="botao-form botao-preto">Editar projeto</button>
+                        <button class="botao-form fundo-preto">Editar projeto</button>
                     </form>
                 </div>
             </section>

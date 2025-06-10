@@ -51,7 +51,7 @@
                 $quantidade_projetos_atuais = $query_projetos_atuais -> num_rows;
             }
             elseif ($hierarquia == "COORDENADOR") {
-                $sql = "SELECT DISTINCT P.ID_PROJETO, P.NOME FROM PROJETOS P INNER JOIN USUARIOS_PROJETOS UP ON P.ID_PROJETO = UP.ID_PROJETO WHERE UP.ID_USUARIO = '$id_usuario' AND P.DATA_INICIO <= CURRENT_DATE() AND P.DATA_TERMINO >= CURRENT_DATE() OR P.ID_COORDENADOR = '$id_usuario' AND P.DATA_INICIO <= CURRENT_DATE() AND P.DATA_TERMINO >= CURRENT_DATE()";
+                $sql = "SELECT P.ID_PROJETO, P.NOME FROM PROJETOS P LEFT JOIN USUARIOS_PROJETOS UP ON UP.ID_PROJETO = P.ID_PROJETO WHERE UP.ID_USUARIO = '$id_usuario' AND P.DATA_INICIO <= CURRENT_DATE() AND P.DATA_TERMINO >= CURRENT_DATE() OR P.ID_COORDENADOR = '$id_usuario' AND P.DATA_INICIO <= CURRENT_DATE() AND P.DATA_TERMINO >= CURRENT_DATE()";
                 $query_projetos_atuais = $mysqli -> query($sql);
                 $quantidade_projetos_atuais = $query_projetos_atuais -> num_rows;
             }

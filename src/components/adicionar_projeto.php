@@ -5,44 +5,85 @@
             <i class="bi bi-x-lg" onclick=FecharAdicionarProjeto()></i>
         </div>
 
-        <form class="modal-conteudo">
+        <form id="formularioAdicionarProjeto" method="GET" action="../../functions/adicionar_projeto.php" class="modal-conteudo">
+            <input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>">
+
             <div class="input-container">
                 <label class="label" for="inputNomeProjeto">Nome do projeto</label>
-                <input id="inputNomeProjeto" type="text" placeholder="Nome do projeto" class="input">
+                <input id="inputNomeProjeto" name="nome_projeto" type="text" placeholder="Nome do projeto" class="input" require>
             </div>
 
             <div class="input-coluna">
                 <div class="input-container">
                     <label class="label" for="inputDataInicio">Data de início</label>
-                    <input id="inputDataInicio" type="date" placeholder="00/00/0000" class="input">
+                    <input id="inputDataInicio" name="data_inicio" type="date" class="input" require>
                 </div>
 
                 <div class="input-container">
                     <label class="label" for="inputDataTermino">Data de término</label>
-                    <input id="inputDataTermino" type="date" placeholder="00/00/0000" class="input">
+                    <input id="inputDataTermino" name="data_termino" type="date" class="input" require>
                 </div>
             </div>
 
             <div class="input-coluna">
                 <div class="input-container">
                     <label class="label" for="inputDiretor">Diretor Responsável</label>
-                    <input id="inputDiretor" type="text" placeholder="Nome do diretor" class="input">
+                    <input id="inputDiretor" name="nome_diretor" type="text" placeholder="Nome do diretor" class="input" list="listaDiretores" require>
+                    <p class="mensagem-erro"><i class="bi bi-exclamation-circle-fill"></i> Usuário não encontrado</p>
+
+                    <datalist id="listaDiretores">
+                        <?php 
+                            $sql = "SELECT U.NOME FROM USUARIOS U WHERE U.HIERARQUIA = 'DIRETOR'";
+                            $query_diretor = $mysqli -> query($sql);
+
+                            while ($row_diretor = $query_diretor -> fetch_assoc()) {
+                                $nome_usuario = $row_diretor["NOME"];
+                                echo '<option value="'.$nome_usuario.'">'.$nome_usuario.'</option>';
+                            }
+                        ?>
+                    </datalist>
                 </div>
 
                 <div class="input-container">
                     <label class="label" for="inputCoordenador">Coordenador Responsável</label>
-                    <input id="inputCoordenador" type="text" placeholder="Nome do coordenador" class="input">
+                    <input id="inputCoordenador" name="nome_coordenador" type="text" placeholder="Nome do coordenador" class="input" list="listaCoordenadores" require>
+                    <p class="mensagem-erro"><i class="bi bi-exclamation-circle-fill"></i> Usuário não encontrado</p>
+
+                    <datalist id="listaCoordenadores">
+                        <?php 
+                            $sql = "SELECT U.NOME FROM USUARIOS U WHERE U.HIERARQUIA = 'COORDENADOR'";
+                            $query_coordenador = $mysqli -> query($sql);
+
+                            while ($row_coordenador = $query_coordenador -> fetch_assoc()) {
+                                $nome_usuario = $row_coordenador["NOME"];
+                                echo '<option value="'.$nome_usuario.'">'.$nome_usuario.'</option>';
+                            }
+                        ?>
+                    </datalist>
                 </div>
             </div>
 
             <div class="input-container">
                 <label class="label" for="inputLocal">Local</label>
-                <input id="inputLocal" type="text" placeholder="Nome do local" class="input">
+                <input id="inputLocal" name="nome_local" type="text" placeholder="Nome do local" class="input" list="listaLocais">
+                <p class="mensagem-erro"><i class="bi bi-exclamation-circle-fill"></i> Local não encontrado</p>
+
+                <datalist id="listaLocais">
+                    <?php 
+                        $sql = "SELECT L.NOME FROM LOCAIS L";
+                        $query_local = $mysqli -> query($sql);
+
+                        while ($row_local = $query_local -> fetch_assoc()) {
+                            $nome_local = $row_local["NOME"];
+                            echo '<option value="'.$nome_local.'">'.$nome_local.'</option>';
+                        }
+                    ?>
+                </datalist>
             </div>
 
             <div class="input-container">
                 <label class="label" for="inputEscopo">Escopo</label>
-                <textarea id="inputEscopo" placeholder="Escopo do projeto" class="textarea"></textarea>
+                <textarea id="inputEscopo" name="escopo" placeholder="Escopo do projeto" class="textarea"></textarea>
             </div>
 
             <div class="input-container">
@@ -55,7 +96,7 @@
                 <div class="input-grupo">
                     <input placeholder="Nome do equipamento" class="input">
                     <input placeholder="Quantidade" class="input-pequeno">
-                    <button class="botao-pequeno botao-preto"><i class="bi bi-plus-lg"></i></button>
+                    <button class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>
                 </div>
             </div>
 
@@ -64,11 +105,11 @@
                 <div class="input-grupo">
                     <input placeholder="Fonte do recurso" class="input">
                     <input placeholder="Valor" class="input-pequeno">
-                    <button class="botao-pequeno botao-preto"><i class="bi bi-plus-lg"></i></button>
+                    <button class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>
                 </div>
             </div>
 
-            <button class="botao-form botao-preto">Adicionar projeto</button>
+            <button type="submit" class="botao-form fundo-preto">Adicionar projeto</button>
         </form>
     </div>
 </section>

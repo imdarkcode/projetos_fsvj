@@ -106,7 +106,6 @@
     color: var(--r8);
     font-size: 16px;
     font-weight: var(--semibold);
-    margin-bottom: 24px;
     line-height: 1.5;
     font-family: 'Roboto';
     display: none;
@@ -227,9 +226,9 @@
 
 .input-container {
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .input-coluna {

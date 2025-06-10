@@ -10,7 +10,7 @@
         $query_tarefa = $mysqli -> query($sql);
     }
     else {
-        $sql = "SELECT T.ID_TAREFA, T.NOME, T.DATA_VENCIMENTO, T.DESCRICAO, T.ESTADO, UT.ID_USUARIO FROM TAREFAS T INNER JOIN USUARIOS_TAREFAS UT ON UT.ID_TAREFA = T.ID_TAREFA WHERE T.ESTADO = 'A FAZER'";
+        $sql = "SELECT T.ID_TAREFA, T.NOME, T.DATA_VENCIMENTO, T.DESCRICAO, T.ESTADO, UT.ID_USUARIO FROM TAREFAS T LEFT JOIN USUARIOS_TAREFAS UT ON UT.ID_TAREFA = T.ID_TAREFA WHERE T.ESTADO = 'A FAZER'";
         $query_tarefa = $mysqli -> query($sql);
     }
 
@@ -53,7 +53,7 @@
                             <label class="label">Anexo</label>
                             <div class="input-grupo">
                                 <input type="text" class="input" value="Nenhum arquivo anexado" disabled>
-                                <button class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>
+                                '.($id_usuario_tarefa == $id_usuario ? '<button class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>' : '').'
                             </div>
                         </div>
                     </div>

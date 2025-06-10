@@ -14,14 +14,17 @@
                         <i class="bi bi-x-lg" onclick=FecharExcluirFase()></i>
                     </div>
 
-                    <div class="modal-conteudo"> 
+                    <form method="GET" action="../../functions/excluir_fase.php" class="modal-conteudo"> 
                         <div class="modal-aviso">
                             <h3>Aviso</h3>
                             <p>Deseja excluir a fase '.$nome_fase.'? Não será possível reverter esta ação após ser concluída.</p>
                         </div>
 
-                        <button class="botao-form fundo-vermelho">Excluir</button>
-                    </div>
+                        <input type="hidden" name="id_usuario" value="'.$id_usuario.'"> 
+                        <input type="hidden" name="id_fase" value="'.$id_fase.'"> 
+
+                        <button type="submit" class="botao-form fundo-vermelho">Excluir</button>
+                    </form>
                 </div>
             </section>
 
