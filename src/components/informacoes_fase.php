@@ -21,24 +21,24 @@
                     <div class="modal-conteudo">
                         <div class="input-container">
                             <label class="label">Nome da fase</label>
-                            <input type="text" class="input" value="'.$nome_fase.'" disabled>
+                            <input type="text" class="input fundo-cinza-claro" value="'.$nome_fase.'" disabled>
                         </div>
 
                         <div class="input-coluna">
                             <div class="input-container">
                                 <label class="label">Data de início</label>
-                                <input type="date" class="input" value="'.$data_inicio.'" disabled>
+                                <input type="date" class="input fundo-cinza-claro" value="'.$data_inicio.'" disabled>
                             </div>
 
                             <div class="input-container">
                                 <label class="label">Data de termino</label>
-                                <input type="date" class="input" value="'.$data_termino.'" disabled>
+                                <input type="date" class="input fundo-cinza-claro" value="'.$data_termino.'" disabled>
                             </div>
                         </div>
 
                         <div class="input-container">
                             <label class="label">Escopo</label>
-                            <textarea class="textarea" disabled>'.$escopo.'</textarea>
+                            <textarea class="textarea fundo-cinza-claro" disabled>'.$escopo.'</textarea>
                         </div>';
 
                         $sql = "SELECT SUM(G.VALOR) AS SOMA_GASTO FROM GASTOS G INNER JOIN FASES F ON G.ID_FASE = F.ID_FASE WHERE F.ID_FASE = '$id_fase'";
@@ -58,7 +58,7 @@
                             $destino_gasto = $row_gasto["DESTINO"];
                             $valor_gasto = $row_gasto["VALOR"];
 
-                            echo '<input class="input" value="'.$destino_gasto.' - R$ '.$valor_gasto.'" disabled>';
+                            echo '<input class="input fundo-cinza-claro" value="'.$destino_gasto.' - R$ '.$valor_gasto.'" disabled>';
                         }
 
                         $sql = "SELECT E.NOME, EU.QUANTIDADE_UTILIZADA FROM EQUIPAMENTOS E INNER JOIN EQUIPAMENTOS_UTILIZADOS EU ON E.ID_EQUIPAMENTO = EU.ID_EQUIPAMENTO INNER JOIN FASES F ON EU.ID_FASE = F.ID_FASE WHERE F.ID_FASE = '$id_fase'";
@@ -75,7 +75,7 @@
                             $nome_equipamento_utilizado = $row_equipamento_utilizado["NOME"];
                             $quantidade_utilizada = $row_equipamento_utilizado["QUANTIDADE_UTILIZADA"];
 
-                            echo '<input class="input" value="'.$nome_equipamento_utilizado.' ('.$quantidade_utilizada.')" disabled>';
+                            echo '<input class="input fundo-cinza-claro" value="'.$nome_equipamento_utilizado.' ('.$quantidade_utilizada.')" disabled>';
                         }
                         
                         echo '</div>

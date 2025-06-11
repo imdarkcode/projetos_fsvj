@@ -45,7 +45,7 @@
 
                                 <label class="label">Adicionar participantes</label>
                                 <div class="input-grupo">
-                                    <input class="input" type="text" name="nome_participante" placeholder="Nome do usuário">
+                                    <input class="input fundo-cinza-claro" type="text" name="nome_participante" placeholder="Nome do usuário">
                                     <button type="submit" class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>
                                 </div>
                                 <p class="mensagem-erro"><i class="bi bi-exclamation-circle-fill"></i> Usuário não encontrado</p>

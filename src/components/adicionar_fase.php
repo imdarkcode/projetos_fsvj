@@ -19,31 +19,31 @@
 
                         <div class="input-container">
                             <label class="label">Nome da fase</label>
-                            <input type="text" name="nome_fase" class="input" placeholder="Nome da Fase">
+                            <input type="text" name="nome_fase" class="input fundo-cinza-claro" placeholder="Nome da Fase">
                         </div>
 
                         <div class="input-coluna">
                             <div class="input-container">
                                 <label class="label">Data de início</label>
-                                <input type="date" name="data_inicio" class="input">
+                                <input type="date" name="data_inicio" class="input fundo-cinza-claro">
                             </div>
 
                             <div class="input-container">
                                 <label class="label">Data de termino</label>
-                                <input type="date" name="data_termino" class="input">
+                                <input type="date" name="data_termino" class="input fundo-cinza-claro">
                             </div>
                         </div>
 
                         <div class="input-container">
                             <label class="label">Escopo</label>
-                            <textarea class="textarea" name="escopo" placeholder="Escopo da fase"></textarea>
+                            <textarea class="textarea fundo-cinza-claro" name="escopo" placeholder="Escopo da fase"></textarea>
                         </div>
 
                         <div class="input-container">
                             <label class="label">Gastos</label>
                             <div class="input-grupo">
-                                <input type="text" class="input" placeholder="Destino do gasto">
-                                <input type="text" class="input-pequeno" placeholder="Valor">
+                                <input type="text" class="input fundo-cinza-claro" placeholder="Destino do gasto">
+                                <input type="text" class="input-pequeno fundo-cinza-claro" placeholder="Valor">
                                 <button class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>
                             </div>
                         </div>
@@ -51,8 +51,8 @@
                         <div class="input-container">
                             <label class="label">Equipamentos utilizados</label>
                             <div class="input-grupo">
-                                <input type="text" class="input" placeholder="Nome do equipamento">
-                                <input type="text" class="input-pequeno" placeholder="Quantidade">
+                                <input type="text" class="input fundo-cinza-claro" placeholder="Nome do equipamento">
+                                <input type="text" class="input-pequeno fundo-cinza-claro" placeholder="Quantidade">
                                 <button class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>
                             </div>
                         </div>

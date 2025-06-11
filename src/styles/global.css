@@ -31,6 +31,40 @@
     list-style-type: none;
 }
 
+body {
+    background-color: var(--g2);
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    height: 100vh;
+}
+
+.main-container {
+    margin-right: 32px;
+}
+
+.main-header {
+    display: flex;
+    margin-top: 32px;
+    justify-content: space-between;
+}
+
+.botoes-container {
+    display: flex;
+    gap: 16px;
+}
+
+.usuario-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 16px 0;
+}
+
+.barra-pesquisa {
+    display: flex;
+    gap: 8px;
+    margin: 24px 0;
+}
+
 .fundo-vermelho {
     background-color: var(--r8);
 }
@@ -244,7 +278,6 @@
 .input {
     height: 48px;
     border: none;
-    background-color: var(--g2);
     color: var(--g11);
     border-radius: 12px;
     box-sizing: border-box;
@@ -257,7 +290,6 @@
 .input-pequeno {
     height: 48px;
     border: none;
-    background-color: var(--g2);
     color: var(--g11);
     border-radius: 12px;
     box-sizing: border-box;
@@ -273,7 +305,6 @@
     max-width: max-content;
     min-width: 100%;
     border: none;
-    background-color: var(--g2);
     color: var(--g11);
     border-radius: 12px;
     box-sizing: border-box;

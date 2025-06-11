@@ -30,10 +30,10 @@
         
         <main class="main-container">
             <section class="main-header">
-                <h1>Projetos</h1>
-                <div class="botoes-header">
-                    <?php if ($hierarquia == "DIRETOR") {echo '<button class="adicionar" onclick="AbrirAdicionarProjeto()"><i class="bi bi-plus-lg"></i> Adicionar Projeto</button>';} ?>
-                    <button class="filtrar" onclick="AbrirFiltrarProjeto()"><i class="bi bi-funnel-fill"></i>Filtrar</button>
+                <h1 class="titulo-grande">Projetos</h1>
+                <div class="botoes-container">
+                    <?php if ($hierarquia == "DIRETOR") {echo '<button class="botao-grande fundo-cinza-escuro" onclick="AbrirAdicionarProjeto()"><i class="bi bi-plus-lg"></i> Adicionar Projeto</button>';} ?>
+                    <button class="botao-grande fundo-preto" onclick="AbrirFiltrarProjeto()"><i class="bi bi-funnel-fill"></i>Filtrar</button>
                 </div>
             </section>
 

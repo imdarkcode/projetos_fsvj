@@ -14,24 +14,24 @@
                         <div class="input-coluna">
                             <div class="input-container">
                                 <label class="label">Nome da tarefa</label>
-                                <input type="text" name="nome_tarefa" class="input" placeholder="Nome da tarefa">
+                                <input type="text" name="nome_tarefa" class="input fundo-cinza-claro" placeholder="Nome da tarefa">
                             </div>
 
                             <div class="input-container">
                                 <label class="label">Data de término</label>
-                                <input type="date" name="data_vencimento" class="input">
+                                <input type="date" name="data_vencimento" class="input fundo-cinza-claro">
                             </div>
                         </div>
 
                         <div class="input-container">
                             <label class="label">Descrição</label>
-                            <textarea class="textarea" name="descricao" placeholder="Descrição da tarefa"></textarea>
+                            <textarea class="textarea fundo-cinza-claro" name="descricao" placeholder="Descrição da tarefa"></textarea>
                         </div>
 
                         <div class="input-container">
                             <label class="label">Participante</label>
                             <div class="input-grupo">
-                                <input type="text" class="input" placeholder="Nome do usuário">
+                                <input type="text" class="input fundo-cinza-claro" placeholder="Nome do usuário">
                                 <button class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>
                             </div>
                         </div>

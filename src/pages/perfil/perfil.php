@@ -1,4 +1,10 @@
+<?php
+    include("../../../conexao.php");
+    $id_usuario = $_GET["id_usuario"];
+?>
+
 <!DOCTYPE html>
+
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
@@ -6,121 +12,106 @@
         <title>Projetos FSVJ - Perfil</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
         <link rel="shortcut icon" href="../../assets/images/favicon.svg">
+        <link rel="stylesheet" href="../../styles/components/navbar.css" />
         <link rel="stylesheet" href="perfil.css" />
     </head>
+
     <body>
-        <nav class="nav-container">
-                <section class="nav-logo">
-                    <img class="logo" src="../../assets/images/logo_menu.svg" alt="Logo do software">                
-                </section>
-                <div>
-                    <p class="mensagem-usuario">Olá, Usuário</p>
-                </div>
+        
+    <?php include("../../components/navbar.php"); ?>
 
-                <section class="nav-menu">
-                    <h2>Menu</h2>
-                    <ul>
-                        <li>
-                            <a href="#"><i class="bi bi-archive-fill"></i> Projetos</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="bi bi-people-fill"></i>Usuário</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="bi bi-geo-alt-fill"></i>Locais</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="bi bi-person-circle"></i>Perfil</a>
-                        </li>
-                        <li>                        
-                            <a href=""><i class="bi bi-box-arrow-right"></i> Sair</a>
-                        </li>
-                    </ul>
-                </section>
-
-                <section class="nav-projetos">
-                    <h2>Projetos Atuais</h2>
-                    <span>0</span>
-                    <ul>
-                        <li>
-                            <p class="nome-projeto">Nome do Projeto</p>
-                        </li>
-                    </ul>
-                </section>
-        </nav>
         <main>
             <section class="main-header">
                 <div class="titulo-container">
-                    <h1>Meu perfil</h1>
-                    <p>Gerenciar Perfil</p>
+                    <h1 class="titulo-grande">Meu perfil</h1>
+                    <p class="sub-titulo">Gerenciar Perfil</p>
                 </div>
             </section>
-            <section class="perfil-container">
-                <form method="POST">
-                    <div class="dados-container">
-                        <label for="inputNome">Nome do Usuário</label>
-                        <input type="text" id="inputNome" name="nome" placeholder="Nome do Usuário" autocomplete="off">
-                    </div>
-                    <div class="dados-container">
-                        <label for="inputCargo">Cargo</label>
-                        <select name="cargo" id="cargo">
-                            <option value="Escolha-Cargo">Escolha o Cargo</option>
-                            <option value="Voluntário">Voluntário</option>
-                            <option value="Coordenador">Coordenador</option>
-                            <option value="Diretor">Diretor</option>
-                        </select>
-                    </div>
-                    <div class="dados-container">
-                        <label for="inputEmail">E-mail</label>
-                        <input type="email" id="inputEmail" name="email" placeholder="usuario@email.com" autocomplete="off" />
-                    </div>
-                    <div class="dados-container input-senha">
-                        <label for="inputSenha">Senha</label>
-                        <div class="input-senha">
-                            <input type="password" name="senha" placeholder="Digite sua senha" autocomplete="off" />
-                            <i class="bi bi-eye-slash-fill senha-escondida" onclick="ExibirSenha()"></i>
-                            <i class="bi bi-eye-fill senha-exibida" onclick="EsconderSenha()"></i>
-                        </div>
-                    </div>
 
-                    <div class="perfil-divisor"></div>
+            <?php
+                $sql = "SELECT * FROM USUARIOS U WHERE U.ID_USUARIO = '$id_usuario'";
+                $query_usuario = $mysqli -> query($sql);
 
-                    <div class="editar-container">
-                        <h2>Editar Informações</h2>
-                    </div>
-                    <div class="editar-container">
-                        <label for="nomeEditar">Nome do Usuário</label>
-                        <input type="text" id="nomeEditar" name="nome" placeholder="Nome do Usuário" autocomplete="off">
-                    </div>
-                    <div class="editar-container">
-                        <label for="inputCargo">Cargo</label>
-                        <select name="cargo" id="cargoEditar">
-                            <option value="Escolha-Cargo">Escolha o Cargo</option>
-                            <option value="Voluntário">Voluntário</option>
-                            <option value="Coordenador">Coordenador</option>
-                            <option value="Diretor">Diretor</option>
-                        </select>
-                    </div>
+                $row_usuario = $query_usuario -> fetch_assoc();
+                $hierarquia = $row_usuario["HIERARQUIA"];
+                $nome_usuario = $row_usuario["NOME"];
+                $email = $row_usuario["EMAIL"];
+                $senha = $row_usuario["SENHA"];
 
-                    <div class="editar-container">
-                        <label for="emailEditar">E-mail</label>
-                        <input type="email" id="emailEditar" name="emailEditar" placeholder="usuario@email.com" autocomplete="off" />
-                    </div>
-                    <span class="erro"><i class="bi bi-exclamation-circle-fill"></i> Formato de E-mail Inválido</span>
+                if ($hierarquia != 'DIRETOR') {
+                    echo '
+                        <section class="informacoes-perfil">
+                            <div class="input-container-reto">
+                                <label class="label">Nome do usuário</label>
+                                <input type="text" name="nome_usuario" class="input fundo-branco" placeholder="Nome do usuário" value="'.$nome_usuario.'" disabled>
+                            </div>
 
-                    <div class="dados-container input-senhaEditar">
-                        <label for="inputSenhaEditar">Nova Senha</label>
-                        <div class="input-senhaEditar">
-                            <input type="password" id="inputSenhaEditar" name="senhaEditar" placeholder="Digite sua senha" autocomplete="off" />
-                            <i class="bi bi-eye-slash-fill senha-escondida" onclick="ExibirSenha()"></i>
-                            <i class="bi bi-eye-fill senha-exibida" onclick="EsconderSenha()"></i>
-                         </div>
-                        </div>
-                        <span class="erro"><i class="bi bi-exclamation-circle-fill"></i> Senha precisa conter caracteres especiais</span>
-                    <div  class="botao-container">
-                        <button type="submit" class="botao-salvar">Salvar</button>
-                    </div>
-                </form>
+                             <div class="input-container-reto">
+                                <label class="label">Cargo</label>
+                                <select class="input fundo-branco" name="hierarquia_usuario" disabled>
+                                    <option value="VOLUNTÁRIO" '.($hierarquia == 'VOLUNTÁRIO' ? 'selected' : '').'>Voluntário</option>
+                                    <option value="COORDENADOR" '.($hierarquia == 'COORDENADOR' ? 'selected' : '').'>Coordenador</option>
+                                </select>
+                            </div>
+
+                            <div class="input-container-reto">
+                                <label class="label">E-mail</label>
+                                <input type="text" name="email_usuario" class="input fundo-branco" placeholder="E-mail do usuário" value="'.$email.'" disabled>
+                            </div>
+
+                            <div class="input-container-reto">
+                                <label class="label">Senha</label>
+                                <input type="text" name="senha_usuario" class="input fundo-branco" placeholder="Senha do usuário" value="'.$senha.'" disabled>
+                            </div>
+                        </section>
+
+                        <div class="divisor fundo-cinza"></div>
+                    ';
+                }
+            ?>
+            
+            <form method="GET" action="../../functions/editar_perfil.php" class="informacoes-perfil"> 
+                <h2 class="titulo-grande">Editar Informações</h2>
+
+                <input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>">
+
+                <?php 
+                    if ($hierarquia == 'DIRETOR') {
+                        echo '
+                            <div class="input-container-reto">
+                                <label class="label">Nome do usuário</label>
+                                <input type="text" name="nome_usuario" class="input fundo-branco" placeholder="Nome do usuário" value="'.$nome_usuario.'">
+                            </div>
+
+                            <div class="input-container-reto">
+                                <label class="label">Cargo</label>
+                                <select class="input fundo-branco" name="hierarquia_usuario">
+                                    <option value="VOLUNTÁRIO" '.($hierarquia == 'VOLUNTÁRIO' ? 'selected' : '').'>Voluntário</option>
+                                    <option value="COORDENADOR" '.($hierarquia == 'COORDENADOR' ? 'selected' : '').'>Coordenador</option>
+                                    <option value="DIRETOR" '.($hierarquia == 'DIRETOR' ? 'selected' : '').'>Diretor</option>
+                                </select>
+                            </div>
+                        ';
+                    }
+                    else {
+                        echo '
+                            <input type="hidden" name="nome_usuario" value="'.$nome_usuario.'">
+                            <input type="hidden" name="hierarquia_usuario" value="'.$hierarquia.'">
+                        ';
+                    }
+                ?>
+
+                <div class="input-container-reto">
+                    <label class="label">E-mail</label>
+                    <input type="text" name="email_usuario" class="input fundo-branco" placeholder="E-mail do usuário" value="<?php echo $email; ?>">
+                </div>
+
+                <div class="input-container-reto">
+                    <label class="label">Senha</label>
+                    <input type="text" name="senha_usuario" class="input fundo-branco" placeholder="Senha do usuário" value="<?php echo $senha; ?>">
+                </div>
+
+                <button type="submit" class="botao-form fundo-preto">Editar</button>
             </section>
         </main>
     </body>

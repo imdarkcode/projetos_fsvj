@@ -35,18 +35,18 @@
                     <div class="modal-conteudo">
                             <div class="input-container">
                                 <label class="label" for="inputNomeProjeto'.$id_projeto.'">Nome do projeto</label>
-                                <input id="inputNomeProjeto'.$id_projeto.'" type="text" value="'.$nome_projeto.'" class="input" disabled>
+                                <input id="inputNomeProjeto'.$id_projeto.'" type="text" value="'.$nome_projeto.'" class="input fundo-cinza-claro" disabled>
                             </div>
 
                             <div class="input-coluna">
                                 <div class="input-container">
                                     <label class="label" for="inputDataInicio'.$id_projeto.'">Data de início</label>
-                                    <input id="inputDataInicio'.$id_projeto.'" type="date" value="'.$data_inicio_projeto.'" class="input" disabled>
+                                    <input id="inputDataInicio'.$id_projeto.'" type="date" value="'.$data_inicio_projeto.'" class="input fundo-cinza-claro" disabled>
                                 </div>
 
                                 <div class="input-container">
                                     <label class="label" for="inputDataTermino'.$id_projeto.'">Data de término</label>
-                                    <input id="inputDataTermino'.$id_projeto.'" type="date" value="'.$data_termino_projeto.'" class="input" disabled>
+                                    <input id="inputDataTermino'.$id_projeto.'" type="date" value="'.$data_termino_projeto.'" class="input fundo-cinza-claro" disabled>
                                 </div>
                             </div>';
 
@@ -77,25 +77,25 @@
                                     <div class="input-coluna">
                                         <div class="input-container">
                                             <label class="label" for="inputDiretor'.$id_projeto.'">Diretor Responsável</label>
-                                            <input id="inputDiretor'.$id_projeto.'" type="text" value="'.$nome_diretor.'" class="input" disabled>
+                                            <input id="inputDiretor'.$id_projeto.'" type="text" value="'.$nome_diretor.'" class="input fundo-cinza-claro" disabled>
                                         </div>
 
                                         <div class="input-container">
                                             <label class="label" for="inputCoordenador'.$id_projeto.'">Coordenador Responsável</label>
-                                            <input id="inputCoordenador'.$id_projeto.'" type="text" value="'.$nome_coordenador.'" class="input" disabled>
+                                            <input id="inputCoordenador'.$id_projeto.'" type="text" value="'.$nome_coordenador.'" class="input fundo-cinza-claro" disabled>
                                         </div>
                                     </div>
 
                                     <div class="input-container">
                                         <label class="label" for="inputLocal'.$id_projeto.'">Local</label>
-                                        <input id="inputLocal'.$id_projeto.'" type="text" value="'.($nome_local ? $nome_local : '').'" class="input" disabled>
+                                        <input id="inputLocal'.$id_projeto.'" type="text" value="'.($nome_local ? $nome_local : '').'" class="input fundo-cinza-claro" disabled>
                                     </div>
                                 ';
                             }
 
                             echo '<div class="input-container">
                                 <label class="label" for="inputEscopo'.$id_projeto.'">Escopo</label>
-                                <textarea id="inputEscopo'.$id_projeto.'" class="textarea" disabled>'.$escopo_projeto.'</textarea>
+                                <textarea id="inputEscopo'.$id_projeto.'" class="textarea fundo-cinza-claro" disabled>'.$escopo_projeto.'</textarea>
                             </div>';
 
                             if ($hierarquia != "VOLUNTÁRIO") {
@@ -112,8 +112,8 @@
                                     $nome_documento = $row_documento["NOME"];
 
                                     echo '<div class="input-grupo">
-                                            <input class="input" value="'.$nome_documento.'.pdf" disabled>
-                                            <button class="botao-pequeno botao-preto"><i class="bi bi-download"></i></button>
+                                            <input class="input fundo-cinza-claro" value="'.$nome_documento.'.pdf" disabled>
+                                            <button class="botao-pequeno fundo-preto"><i class="bi bi-download"></i></button>
                                         </div>
                                     </div>';
                                 }
@@ -131,7 +131,7 @@
                                     $nome_equipamento = $row_equipamento["NOME"];
                                     $quantidade_equipamento_disponivel = $row_equipamento["QUANTIDADE_DISPONIVEL"];
 
-                                    echo '<input class="input" value="'.$nome_equipamento.' ('.$quantidade_equipamento_disponivel.')" disabled>';
+                                    echo '<input class="input fundo-cinza-claro" value="'.$nome_equipamento.' ('.$quantidade_equipamento_disponivel.')" disabled>';
                                 }
 
                                 $sql = "SELECT SUM(R.VALOR) AS SOMA_RECURSO FROM RECURSOS R INNER JOIN PROJETOS P ON R.ID_PROJETO = P.ID_PROJETO WHERE P.ID_PROJETO = '$id_projeto'";
@@ -152,7 +152,7 @@
                                     $fonte_recurso = $row_recurso["FONTE"];
                                     $valor_recurso = $row_recurso["VALOR"];
 
-                                    echo '<input class="input" value="'.$fonte_recurso.' - R$ '.$valor_recurso.'" disabled>';
+                                    echo '<input class="input fundo-cinza-claro" value="'.$fonte_recurso.' - R$ '.$valor_recurso.'" disabled>';
                                 }
                                 
                                 echo '</div>';

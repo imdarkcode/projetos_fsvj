@@ -6,5 +6,6 @@
 
     $sql = "DELETE FROM PROJETOS WHERE ID_PROJETO = '$id_projeto'";
     $mysqli -> query($sql);
+
     header("Location: ../pages/projetos/projetos.php?id_usuario=$id_usuario");
 ?>

@@ -38,18 +38,18 @@
 
                         <div class="input-container">
                             <label class="label" for="inputNomeProjeto'.$id_projeto.'">Nome do projeto</label>
-                            <input id="inputNomeProjeto'.$id_projeto.'" type="text" placeholder="Nome do projeto" name="nome_projeto" value="'.$nome_projeto.'" class="input">
+                            <input id="inputNomeProjeto'.$id_projeto.'" type="text" placeholder="Nome do projeto" name="nome_projeto" value="'.$nome_projeto.'" class="input fundo-cinza-claro">
                         </div>
 
                         <div class="input-coluna">
                             <div class="input-container">
                                 <label class="label" for="inputDataInicio'.$id_projeto.'">Data de início</label>
-                                <input id="inputDataInicio'.$id_projeto.'" type="date" name="data_inicio" value="'.$data_inicio_projeto.'" class="input">
+                                <input id="inputDataInicio'.$id_projeto.'" type="date" name="data_inicio" value="'.$data_inicio_projeto.'" class="input fundo-cinza-claro">
                             </div>
 
                             <div class="input-container">
                                 <label class="label" for="inputDataTermino'.$id_projeto.'">Data de término</label>
-                                <input id="inputDataTermino'.$id_projeto.'" type="date" name="data_termino" value="'.$data_termino_projeto.'" class="input">
+                                <input id="inputDataTermino'.$id_projeto.'" type="date" name="data_termino" value="'.$data_termino_projeto.'" class="input fundo-cinza-claro">
                             </div>
                         </div>';
 
@@ -80,7 +80,7 @@
                                 <div class="input-coluna">
                                     <div class="input-container">
                                         <label class="label" for="inputDiretor'.$id_projeto.'">Diretor Responsável</label>
-                                        <input id="inputDiretor'.$id_projeto.'" type="text" placeholder="Nome do diretor" name="nome_diretor" value="'.$nome_diretor.'" class="input" list="listaDiretores" require>
+                                        <input id="inputDiretor'.$id_projeto.'" type="text" placeholder="Nome do diretor" name="nome_diretor" value="'.$nome_diretor.'" class="input fundo-cinza-claro" list="listaDiretores" require>
                                     </div>
 
                                     <datalist id="listaDiretores">
@@ -97,7 +97,7 @@
 
                                     <div class="input-container">
                                         <label class="label" for="inputCoordenador'.$id_projeto.'">Coordenador Responsável</label>
-                                        <input id="inputCoordenador'.$id_projeto.'" type="text" placeholder="Nome do coordenador" name="nome_coordenador" value="'.$nome_coordenador.'" class="input" list="listaCoordenadores" require>
+                                        <input id="inputCoordenador'.$id_projeto.'" type="text" placeholder="Nome do coordenador" name="nome_coordenador" value="'.$nome_coordenador.'" class="input fundo-cinza-claro" list="listaCoordenadores" require>
                                     </div>
 
                                     <datalist id="listaCoordenadores">
@@ -115,7 +115,7 @@
 
                                 <div class="input-container">
                                     <label class="label" for="inputLocal'.$id_projeto.'">Local</label>
-                                    <input id="inputLocal'.$id_projeto.'" type="text" name="nome_local" placeholder="Nome do local" value="'.($nome_local ? $nome_local : '').'" class="input" list="listaLocais">
+                                    <input id="inputLocal'.$id_projeto.'" type="text" name="nome_local" placeholder="Nome do local" value="'.($nome_local ? $nome_local : '').'" class="input fundo-cinza-claro" list="listaLocais">
 
                                     <datalist id="listaLocais">
                                         '; 
@@ -134,7 +134,7 @@
 
                         echo '<div class="input-container">
                             <label class="label" for="inputEscopo'.$id_projeto.'">Escopo</label>
-                            <textarea id="inputEscopo'.$id_projeto.'" name="escopo" placeholder="Escopo do projeto" class="textarea">'.$escopo_projeto.'</textarea>
+                            <textarea id="inputEscopo'.$id_projeto.'" name="escopo" placeholder="Escopo do projeto" class="textarea fundo-cinza-claro">'.$escopo_projeto.'</textarea>
                         </div>';
 
                         if ($hierarquia != "VOLUNTARIO") {
@@ -152,7 +152,7 @@
                                 $nome_documento = $row_documento["NOME"];
 
                                 echo '<div class="input-grupo">
-                                        <input class="input" value="'.$nome_documento.'.pdf" disabled>
+                                        <input class="input fundo-cinza-claro" value="'.$nome_documento.'.pdf" disabled>
                                         <button class="botao-pequeno fundo-preto"><i class="bi bi-download"></i></button>
                                     </div>
                                 </div>';
@@ -166,8 +166,8 @@
                                 <div class="input-container">
                                     <label class="label">Equipamentos ('.$quantidade_equipamentos.')</label>
                                     <div class="input-grupo">
-                                        <input class="input" placeholder="Nome do equipamento">
-                                        <input class="input-pequeno" placeholder="Quantidade">
+                                        <input class="input fundo-cinza-claro" placeholder="Nome do equipamento">
+                                        <input class="input-pequeno fundo-cinza-claro" placeholder="Quantidade">
                                         <button class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>
                                     </div>
                             ';
@@ -177,7 +177,7 @@
                                 $quantidade_equipamento_disponivel = $row_equipamento["QUANTIDADE_DISPONIVEL"];
 
                                 echo '<div class="input-grupo">
-                                    <input class="input" value="'.$nome_equipamento.' ('.$quantidade_equipamento_disponivel.')" disabled>
+                                    <input class="input fundo-cinza-claro" value="'.$nome_equipamento.' ('.$quantidade_equipamento_disponivel.')" disabled>
                                     <button class="botao-pequeno fundo-vermelho"><i class="bi bi-trash3-fill"></i></button>
                                 </div>';
                             }
@@ -192,8 +192,8 @@
                                 <div class="input-container">
                                     <label class="label">Recursos (R$'.$soma_recurso.')</label>
                                     <div class="input-grupo">
-                                        <input class="input" placeholder="Fonte do recurso">
-                                        <input class="input-pequeno" placeholder="Valor">
+                                        <input class="input fundo-cinza-claro" placeholder="Fonte do recurso">
+                                        <input class="input-pequeno fundo-cinza-claro" placeholder="Valor">
                                         <button class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>
                                     </div>
                             ';
@@ -206,7 +206,7 @@
                                 $valor_recurso = $row_recurso["VALOR"];
 
                                  echo '<div class="input-grupo">
-                                    <input class="input" value="'.$fonte_recurso.' - R$ '.$valor_recurso.'" disabled>
+                                    <input class="input fundo-cinza-claro" value="'.$fonte_recurso.' - R$ '.$valor_recurso.'" disabled>
                                     <button class="botao-pequeno fundo-vermelho"><i class="bi bi-trash3-fill"></i></button>
                                 </div>';
                             }

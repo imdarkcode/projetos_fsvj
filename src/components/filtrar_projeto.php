@@ -8,7 +8,7 @@
         <form class="modal-conteudo">
             <div class="input-container">
                 <label class="label">Coordenador responsável</label>
-                <select class="input">
+                <select class="input fundo-cinza-claro">
                     <option>Todos</option>
                     <?php
                         $sql = "SELECT U.NOME FROM USUARIOS U WHERE U.HIERARQUIA = 'COORDENADOR' ";
@@ -19,14 +19,13 @@
 
                             echo '<option>'.$nome_coordenador.'</option>';
                         }
-        
                     ?>
                 </select>
             </div>
 
             <div class="input-container">
                 <label class="label">Estado do projeto</label>
-                <select class="input">
+                <select class="input fundo-cinza-claro">
                     <option>Todos</option>
                     <option>Não iniciado</option>
                     <option>Em andamento</option>
@@ -37,8 +36,8 @@
             <div class="input-container">
                 <label class="label">Período</label>
                 <div class="input-coluna">
-                    <input type="date" class="input">
-                    <input type="date" class="input">
+                    <input type="date" class="input fundo-cinza-claro">
+                    <input type="date" class="input fundo-cinza-claro">
                 </div>
             </div>
             

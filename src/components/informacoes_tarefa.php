@@ -46,13 +46,13 @@
 
                         <div class="input-container">
                             <label class="label">Descrição</label>
-                            <textarea class="textarea" disabled>'.$descricao_tarefa.'</textarea>
+                            <textarea class="textarea fundo-cinza-claro" disabled>'.$descricao_tarefa.'</textarea>
                         </div>
 
                         <div class="input-container">
                             <label class="label">Anexo</label>
                             <div class="input-grupo">
-                                <input type="text" class="input" value="Nenhum arquivo anexado" disabled>
+                                <input type="text" class="input fundo-cinza-claro" value="Nenhum arquivo anexado" disabled>
                                 '.($id_usuario_tarefa == $id_usuario ? '<button class="botao-pequeno fundo-preto"><i class="bi bi-plus-lg"></i></button>' : '').'
                             </div>
                         </div>

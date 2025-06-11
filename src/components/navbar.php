@@ -33,8 +33,8 @@
                 </div>
             </li>
 
-            <?php if ($hierarquia == "DIRETOR") {echo '<li><a href="../usuarios/usuarios.php?id_usuario=<?php echo $id_usuario; ?>"><i class="bi bi-people-fill"></i>Usuário</a></li>';} ?>
-            <?php if ($hierarquia == "DIRETOR") {echo '<li><a href="../locais/locais.php?id_usuario=<?php echo $id_usuario; ?>"><i class="bi bi-geo-alt-fill"></i>Locais</a></li>';} ?>
+            <?php if ($hierarquia == "DIRETOR") {echo '<li><a href="../usuarios/usuarios.php?id_usuario='.$id_usuario.'"><i class="bi bi-people-fill"></i>Usuário</a></li>';} ?>
+            <?php if ($hierarquia == "DIRETOR") {echo '<li><a href="../locais/locais.php?id_usuario='.$id_usuario.'"><i class="bi bi-geo-alt-fill"></i>Locais</a></li>';} ?>
             
             <li><a href="../perfil/perfil.php?id_usuario=<?php echo $id_usuario; ?>"><i class="bi bi-person-circle"></i>Perfil</a></li>
             <li><a href="../../../index.php"><i class="bi bi-box-arrow-right"></i>Sair</a></li>
