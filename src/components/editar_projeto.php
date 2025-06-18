@@ -38,18 +38,18 @@
 
                         <div class="input-container">
                             <label class="label" for="inputNomeProjeto'.$id_projeto.'">Nome do projeto</label>
-                            <input id="inputNomeProjeto'.$id_projeto.'" type="text" placeholder="Nome do projeto" name="nome_projeto" value="'.$nome_projeto.'" class="input fundo-cinza-claro">
+                            <input id="inputNomeProjeto'.$id_projeto.'" type="text" placeholder="Nome do projeto" name="nome_projeto" value="'.$nome_projeto.'" class="input fundo-cinza-claro" autocomplete="off" required>
                         </div>
 
                         <div class="input-coluna">
                             <div class="input-container">
                                 <label class="label" for="inputDataInicio'.$id_projeto.'">Data de início</label>
-                                <input id="inputDataInicio'.$id_projeto.'" type="date" name="data_inicio" value="'.$data_inicio_projeto.'" class="input fundo-cinza-claro">
+                                <input id="inputDataInicio'.$id_projeto.'" type="date" name="data_inicio" value="'.$data_inicio_projeto.'" class="input fundo-cinza-claro" required>
                             </div>
 
                             <div class="input-container">
                                 <label class="label" for="inputDataTermino'.$id_projeto.'">Data de término</label>
-                                <input id="inputDataTermino'.$id_projeto.'" type="date" name="data_termino" value="'.$data_termino_projeto.'" class="input fundo-cinza-claro">
+                                <input id="inputDataTermino'.$id_projeto.'" type="date" name="data_termino" value="'.$data_termino_projeto.'" class="input fundo-cinza-claro" required>
                             </div>
                         </div>';
 
@@ -80,7 +80,7 @@
                                 <div class="input-coluna">
                                     <div class="input-container">
                                         <label class="label" for="inputDiretor'.$id_projeto.'">Diretor Responsável</label>
-                                        <input id="inputDiretor'.$id_projeto.'" type="text" placeholder="Nome do diretor" name="nome_diretor" value="'.$nome_diretor.'" class="input fundo-cinza-claro" list="listaDiretores" require>
+                                        <input id="inputDiretor'.$id_projeto.'" type="text" placeholder="Nome do diretor" name="nome_diretor" value="'.$nome_diretor.'" class="input fundo-cinza-claro" list="listaDiretores" autocomplete="off" required>
                                     </div>
 
                                     <datalist id="listaDiretores">
@@ -97,7 +97,7 @@
 
                                     <div class="input-container">
                                         <label class="label" for="inputCoordenador'.$id_projeto.'">Coordenador Responsável</label>
-                                        <input id="inputCoordenador'.$id_projeto.'" type="text" placeholder="Nome do coordenador" name="nome_coordenador" value="'.$nome_coordenador.'" class="input fundo-cinza-claro" list="listaCoordenadores" require>
+                                        <input id="inputCoordenador'.$id_projeto.'" type="text" placeholder="Nome do coordenador" name="nome_coordenador" value="'.$nome_coordenador.'" class="input fundo-cinza-claro" list="listaCoordenadores" autocomplete="off" required>
                                     </div>
 
                                     <datalist id="listaCoordenadores">
@@ -115,7 +115,7 @@
 
                                 <div class="input-container">
                                     <label class="label" for="inputLocal'.$id_projeto.'">Local</label>
-                                    <input id="inputLocal'.$id_projeto.'" type="text" name="nome_local" placeholder="Nome do local" value="'.($nome_local ? $nome_local : '').'" class="input fundo-cinza-claro" list="listaLocais">
+                                    <input id="inputLocal'.$id_projeto.'" type="text" name="nome_local" placeholder="Nome do local" value="'.($nome_local ? $nome_local : '').'" class="input fundo-cinza-claro" list="listaLocais" autocomplete="off">
 
                                     <datalist id="listaLocais">
                                         '; 
@@ -134,7 +134,7 @@
 
                         echo '<div class="input-container">
                             <label class="label" for="inputEscopo'.$id_projeto.'">Escopo</label>
-                            <textarea id="inputEscopo'.$id_projeto.'" name="escopo" placeholder="Escopo do projeto" class="textarea fundo-cinza-claro">'.$escopo_projeto.'</textarea>
+                            <textarea id="inputEscopo'.$id_projeto.'" name="escopo" placeholder="Escopo do projeto" class="textarea fundo-cinza-claro" autocomplete="off">'.$escopo_projeto.'</textarea>
                         </div>';
 
                         if ($hierarquia != "VOLUNTARIO") {

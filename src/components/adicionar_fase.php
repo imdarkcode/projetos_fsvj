@@ -19,24 +19,24 @@
 
                         <div class="input-container">
                             <label class="label">Nome da fase</label>
-                            <input type="text" name="nome_fase" class="input fundo-cinza-claro" placeholder="Nome da Fase">
+                            <input type="text" name="nome_fase" class="input fundo-cinza-claro" placeholder="Nome da Fase" autocomplete="off" required>
                         </div>
 
                         <div class="input-coluna">
                             <div class="input-container">
                                 <label class="label">Data de início</label>
-                                <input type="date" name="data_inicio" class="input fundo-cinza-claro">
+                                <input type="date" name="data_inicio" class="input fundo-cinza-claro" required>
                             </div>
 
                             <div class="input-container">
                                 <label class="label">Data de termino</label>
-                                <input type="date" name="data_termino" class="input fundo-cinza-claro">
+                                <input type="date" name="data_termino" class="input fundo-cinza-claro" required>
                             </div>
                         </div>
 
                         <div class="input-container">
                             <label class="label">Escopo</label>
-                            <textarea class="textarea fundo-cinza-claro" name="escopo" placeholder="Escopo da fase"></textarea>
+                            <textarea class="textarea fundo-cinza-claro" name="escopo" placeholder="Escopo da fase" autocomplete="off"></textarea>
                         </div>
 
                         <div class="input-container">

@@ -10,17 +10,17 @@
 
             <div class="input-container">
                 <label class="label">Nome</label>
-                <input type="text" name="nome_usuario" class="input fundo-cinza-claro" placeholder="Nome do usuário">
+                <input type="text" name="nome_usuario" class="input fundo-cinza-claro" placeholder="Nome do usuário" autocomplete="off" required>
             </div>
 
             <div class="input-container">
                 <label class="label">E-mail</label>
-                <input type="text" name="email_usuario" class="input fundo-cinza-claro" placeholder="E-mail do usuário">
+                <input type="text" name="email_usuario" class="input fundo-cinza-claro" placeholder="E-mail do usuário" autocomplete="off" required>
             </div>
 
             <div class="input-container">
                 <label class="label">Senha</label>
-                <input type="text" name="senha_usuario" class="input fundo-cinza-claro" placeholder="Senha do usuário">
+                <input type="text" name="senha_usuario" class="input fundo-cinza-claro" placeholder="Senha do usuário" autocomplete="off" required>
             </div>
 
             <div class="input-container">

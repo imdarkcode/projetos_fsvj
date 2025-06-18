@@ -10,32 +10,32 @@
 
             <div class="input-container">
                 <label class="label">Nome do local</label>
-                <input type="text" name="nome_local" class="input fundo-cinza-claro" placeholder="Ex: Edídula São Martins">
+                <input type="text" name="nome_local" class="input fundo-cinza-claro" placeholder="Ex: Edídula São Martins" autocomplete="off" required>
             </div>
 
             <div class="input-container">
                 <label class="label">Rua</label>
-                <input type="text" name="rua" class="input fundo-cinza-claro" placeholder="Ex: Rua das Flores">
+                <input type="text" name="rua" class="input fundo-cinza-claro" placeholder="Ex: Rua das Flores" autocomplete="off" required>
             </div>
 
             <div class="input-container">
                 <label class="label">Bairro</label>
-                <input type="text" name="bairro" class="input fundo-cinza-claro" placeholder="Ex: Centro">
+                <input type="text" name="bairro" class="input fundo-cinza-claro" placeholder="Ex: Centro" autocomplete="off" required>
             </div>
 
             <div class="input-container">
                 <label class="label">Número</label>
-                <input type="text" name="numero" class="input fundo-cinza-claro" placeholder="Ex: 123">
+                <input type="text" name="numero" class="input fundo-cinza-claro" placeholder="Ex: 123" autocomplete="off" required>
             </div>
 
                 <div class="input-container">
                 <label class="label">Cidade</label>
-                <input type="text" name="cidade" class="input fundo-cinza-claro" placeholder="Ex: Taquaritinga">
+                <input type="text" name="cidade" class="input fundo-cinza-claro" placeholder="Ex: Taquaritinga" autocomplete="off" required>
             </div>
 
                 <div class="input-container">
                 <label class="label">CEP</label>
-                <input type="text" name="cep" class="input fundo-cinza-claro" placeholder="Ex: 15900-000">
+                <input type="text" name="cep" class="input fundo-cinza-claro" placeholder="Ex: 15900-000" autocomplete="off">
             </div>
             
             <button type="submit" class="botao-form fundo-preto">Adicionar</button>

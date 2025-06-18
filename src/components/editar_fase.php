@@ -24,24 +24,24 @@
 
                         <div class="input-container">
                             <label class="label">Nome da fase</label>
-                            <input type="text" class="input fundo-cinza-claro" name="nome_fase" placeholder="Nome da fase" value="'.$nome_fase.'">
+                            <input type="text" class="input fundo-cinza-claro" name="nome_fase" placeholder="Nome da fase" value="'.$nome_fase.'" autocomplete="off" required>
                         </div>
 
                         <div class="input-coluna">
                             <div class="input-container">
                                 <label class="label">Data de início</label>
-                                <input type="date" class="input fundo-cinza-claro" name="data_inicio" value="'.$data_inicio.'">
+                                <input type="date" class="input fundo-cinza-claro" name="data_inicio" value="'.$data_inicio.'" required>
                             </div>
 
                             <div class="input-container">
                                 <label class="label">Data de termino</label>
-                                <input type="date" class="input fundo-cinza-claro" name="data_termino" value="'.$data_termino.'">
+                                <input type="date" class="input fundo-cinza-claro" name="data_termino" value="'.$data_termino.'" required>
                             </div>
                         </div>
 
                         <div class="input-container">
                             <label class="label">Escopo</label>
-                            <textarea class="textarea fundo-cinza-claro" name="escopo" placeholder="Escopo">'.$escopo.'</textarea>
+                            <textarea class="textarea fundo-cinza-claro" name="escopo" placeholder="Escopo" autocomplete="off">'.$escopo.'</textarea>
                         </div>
 
                         <div class="input-container">

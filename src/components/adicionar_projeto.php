@@ -10,25 +10,25 @@
 
             <div class="input-container">
                 <label class="label" for="inputNomeProjeto">Nome do projeto</label>
-                <input id="inputNomeProjeto" name="nome_projeto" type="text" placeholder="Nome do projeto" class="input fundo-cinza-claro" require>
+                <input id="inputNomeProjeto" name="nome_projeto" type="text" placeholder="Nome do projeto" class="input fundo-cinza-claro" autocomplete="off" required>
             </div>
 
             <div class="input-coluna">
                 <div class="input-container">
                     <label class="label" for="inputDataInicio">Data de início</label>
-                    <input id="inputDataInicio" name="data_inicio" type="date" class="input fundo-cinza-claro" require>
+                    <input id="inputDataInicio" name="data_inicio" type="date" class="input fundo-cinza-claro" required>
                 </div>
 
                 <div class="input-container">
                     <label class="label" for="inputDataTermino">Data de término</label>
-                    <input id="inputDataTermino" name="data_termino" type="date" class="input fundo-cinza-claro" require>
+                    <input id="inputDataTermino" name="data_termino" type="date" class="input fundo-cinza-claro" required>
                 </div>
             </div>
 
             <div class="input-coluna">
                 <div class="input-container">
                     <label class="label" for="inputDiretor">Diretor Responsável</label>
-                    <input id="inputDiretor" name="nome_diretor" type="text" placeholder="Nome do diretor" class="input fundo-cinza-claro" list="listaDiretores" require>
+                    <input id="inputDiretor" name="nome_diretor" type="text" placeholder="Nome do diretor" class="input fundo-cinza-claro" list="listaDiretores" autocomplete="off" required>
                     <p class="mensagem-erro"><i class="bi bi-exclamation-circle-fill"></i> Usuário não encontrado</p>
 
                     <datalist id="listaDiretores">
@@ -46,7 +46,7 @@
 
                 <div class="input-container">
                     <label class="label" for="inputCoordenador">Coordenador Responsável</label>
-                    <input id="inputCoordenador" name="nome_coordenador" type="text" placeholder="Nome do coordenador" class="input fundo-cinza-claro" list="listaCoordenadores" require>
+                    <input id="inputCoordenador" name="nome_coordenador" type="text" placeholder="Nome do coordenador" class="input fundo-cinza-claro" list="listaCoordenadores" autocomplete="off" required>
                     <p class="mensagem-erro"><i class="bi bi-exclamation-circle-fill"></i> Usuário não encontrado</p>
 
                     <datalist id="listaCoordenadores">
@@ -65,7 +65,7 @@
 
             <div class="input-container">
                 <label class="label" for="inputLocal">Local</label>
-                <input id="inputLocal" name="nome_local" type="text" placeholder="Nome do local" class="input fundo-cinza-claro" list="listaLocais">
+                <input id="inputLocal" name="nome_local" type="text" placeholder="Nome do local" class="input fundo-cinza-claro" list="listaLocais" autocomplete="off">
                 <p class="mensagem-erro"><i class="bi bi-exclamation-circle-fill"></i> Local não encontrado</p>
 
                 <datalist id="listaLocais">
@@ -83,7 +83,7 @@
 
             <div class="input-container">
                 <label class="label" for="inputEscopo">Escopo</label>
-                <textarea id="inputEscopo" name="escopo" placeholder="Escopo do projeto" class="textarea fundo-cinza-claro"></textarea>
+                <textarea id="inputEscopo" name="escopo" placeholder="Escopo do projeto" class="textarea fundo-cinza-claro" autocomplete="off"></textarea>
             </div>
 
             <div class="input-container">

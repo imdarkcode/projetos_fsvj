@@ -23,17 +23,17 @@
 
                         <div class="input-container">
                             <label class="label">Nome</label>
-                            <input type="text" name="nome_usuario" class="input fundo-cinza-claro" placeholder="Nome do usuário" value="'.$nome_usuario_sistema.'">
+                            <input type="text" name="nome_usuario" class="input fundo-cinza-claro" placeholder="Nome do usuário" value="'.$nome_usuario_sistema.'" autocomplete="off" required>
                         </div>
 
                         <div class="input-container">
                             <label class="label">E-mail</label>
-                            <input type="text" name="email_usuario" class="input fundo-cinza-claro" placeholder="E-mail do usuário" value="'.$email_usuario_sistema.'">
+                            <input type="text" name="email_usuario" class="input fundo-cinza-claro" placeholder="E-mail do usuário" value="'.$email_usuario_sistema.'" autocomplete="off" required>
                         </div>
 
                         <div class="input-container">
                             <label class="label">Senha</label>
-                            <input type="text" name="senha_usuario" class="input fundo-cinza-claro" placeholder="Senha do usuário" value="'.$senha_usuario_sistema.'">
+                            <input type="text" name="senha_usuario" class="input fundo-cinza-claro" placeholder="Senha do usuário" value="'.$senha_usuario_sistema.'" autocomplete="off" required>
                         </div>
 
                         <div class="input-container">

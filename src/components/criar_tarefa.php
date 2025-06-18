@@ -14,18 +14,18 @@
                         <div class="input-coluna">
                             <div class="input-container">
                                 <label class="label">Nome da tarefa</label>
-                                <input type="text" name="nome_tarefa" class="input fundo-cinza-claro" placeholder="Nome da tarefa">
+                                <input type="text" name="nome_tarefa" class="input fundo-cinza-claro" placeholder="Nome da tarefa" autocomplete="off" required>
                             </div>
 
                             <div class="input-container">
                                 <label class="label">Data de término</label>
-                                <input type="date" name="data_vencimento" class="input fundo-cinza-claro">
+                                <input type="date" name="data_vencimento" class="input fundo-cinza-claro" required>
                             </div>
                         </div>
 
                         <div class="input-container">
                             <label class="label">Descrição</label>
-                            <textarea class="textarea fundo-cinza-claro" name="descricao" placeholder="Descrição da tarefa"></textarea>
+                            <textarea class="textarea fundo-cinza-claro" name="descricao" placeholder="Descrição da tarefa" autocomplete="off"></textarea>
                         </div>
 
                         <div class="input-container">
